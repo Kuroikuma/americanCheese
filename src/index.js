@@ -1,7 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
+<<<<<<< HEAD
 import Combos from "./app/components/combos/combos";
+=======
+import Home from "./app/page/client/menu/menu-drink/menu-drink";
+>>>>>>> 213782638adbdef8a2099a28d05e7d0c0f5b9450
 
 ReactDOM.render(
   <React.StrictMode>
