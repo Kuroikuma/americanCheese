@@ -2,7 +2,7 @@ import "./home.style.css";
 import Layout from "../../../components/shared/theme/layout";
 import Slider from "../../../components/shared/slider/slider";
 
-const Home = (props) => {
+const HomeView = (props) => {
   const { data } = props;
   return (
     <>
@@ -30,4 +30,4 @@ const Home = (props) => {
     </>
   );
 };
-export default Home;
+export default HomeView;

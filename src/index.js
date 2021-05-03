@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import Home from "./app/page/client/home/home";
+import Home from "./app/page/client/menu/menu-drink/menu-drink";
 
 ReactDOM.render(
   <React.StrictMode>
