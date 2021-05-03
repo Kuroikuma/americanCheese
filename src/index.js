@@ -1,11 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import Home from "./app/page/client/home/home";
+import Combos from "./app/components/combos/combos";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Home />
+    <Combos />
   </React.StrictMode>,
   document.getElementById("root")
 );
