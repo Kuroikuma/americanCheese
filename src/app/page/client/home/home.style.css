@@ -1,0 +1,57 @@
+.containerHome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 160vh;
+  background: linear-gradient(#db545a, #f5d654);
+  width: 100vw;
+}
+.sliderHome {
+  width: 90% !important;
+}
+.imgBackground2 {
+  height: 60%;
+  width: 80%;
+  margin-top: 3%;
+}
+.img1 {
+  position: absolute;
+  height: 40%;
+  width: 20%;
+  bottom: -45%;
+  left: 10%;
+}
+.img2 {
+  position: absolute;
+  height: 40%;
+  width: 20%;
+  bottom: -55%;
+  left: 42%;
+}
+.img3 {
+  position: absolute;
+  height: 40%;
+  width: 20%;
+  bottom: -30%;
+  left: 72%;
+}
+
+.title {
+  position: absolute;
+  font-size: 250%;
+  color: #fff;
+  left: 8.1%;
+  top: 40%;
+}
+.h1 {
+  margin: -15px;
+}
+.footer {
+  display: flex;
+  height: 10vh;
+  margin: 22% 0px 0px 0px;
+  background: blue;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+}
