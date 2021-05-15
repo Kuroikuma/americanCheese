@@ -1,13 +1,13 @@
 import React from "react";
 import "./menu-drink.style.css";
-import Layout from "../../../../components/side-bar/side-bar";
+import Menu from "../menu";
 
 const MenuDrinkView = (props) => {
   const { data } = props;
 
   return (
     <>
-      <Layout />
+      <Menu />
       <div className="container-drink">
         <div className="drink">
           <div className="drink__title">

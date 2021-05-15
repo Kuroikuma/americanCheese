@@ -1,5 +1,6 @@
 import React from "react";
 import "./side-bar.style.css";
+import { NavLink } from "react-router-dom";
 
 const SideBarView = (props) => {
   const { data } = props;
@@ -33,7 +34,9 @@ const SideBarView = (props) => {
 
           <div className="bottom-nav">
             <div className="nav-bootom__menu">
-              <a className="menu-item">MENU</a>
+              <NavLink to="/menu" className="menu-item">
+                MENU
+              </NavLink>
               <a className="menu-item">PROMOCIONES</a>
               <a className="menu-item">SUCURSALES</a>
               <a className="menu-item">CONTACTO</a>

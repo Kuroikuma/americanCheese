@@ -1,0 +1,34 @@
+body {
+  display: flex;
+  justify-content: center;
+}
+.container {
+  height: 15vh;
+  width: 70vw;
+  display: flex;
+  align-items: center;
+}
+.menu-bar {
+  height: 70%;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 100%;
+  grid-template-columns: repeat(7, 11%);
+  justify-content: space-evenly;
+  align-items: center;
+}
+.menu__items {
+  height: 100%;
+  background: rgb(255, 255, 255);
+  border-radius: 10px;
+  border: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.menu__items:hover {
+  background: tomato;
+}
+.active {
+  background: tomato;
+}

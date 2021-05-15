@@ -1,11 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import Home from "./app/page/client/menu/menu-pizza/menupizza";
+import IndexRoutes from "./app/routes/index.routes";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Home />
+    <IndexRoutes />
   </React.StrictMode>,
   document.getElementById("root")
 );

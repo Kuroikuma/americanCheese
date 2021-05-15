@@ -1,5 +1,6 @@
 import "./customization.style.css";
 import Layout from "../../../components/shared/theme/layout";
+import image from "../../../../assets/image/backclip.jpg";
 
 const CustomizationView = (props) => {
   return (
@@ -10,7 +11,12 @@ const CustomizationView = (props) => {
           <div className="build__header">
             <h1 className="build-header__title">Custom your own pizza!</h1>
           </div>
-          <div className="build__aside"></div>
+          <div className="build__aside">
+            <div className="build__pizza"></div>
+            <div className="build__img">
+              <img src={image} />
+            </div>
+          </div>
           <div className="build__footer">
             <div className="build-footer__slice">
               <div className="build-footer__title">
