@@ -1,6 +1,6 @@
 import React from "react";
 import "./side-bar.style.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 const SideBarView = (props) => {
   const { data } = props;
@@ -9,9 +9,9 @@ const SideBarView = (props) => {
     <>
       {data.map((data) => (
         <div className="SideBarContainer">
-          <div className="logo">
+          <Link to="/home" className="logo">
             <img src={data.img} />
-          </div>
+          </Link>
 
           <div className="top-nav">
             <div className="top-nav__component">
