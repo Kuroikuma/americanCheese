@@ -1,0 +1,152 @@
+body {
+  display: block;
+}
+.container-sale {
+  height: 100vh;
+  width: 98vw;
+  margin: 0px;
+  margin-top: 10px;
+  padding: 0px;
+}
+.side-bar-sale {
+  height: 5%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.img-sale {
+  display: flex;
+  height: 100%;
+  width: 15%;
+  justify-content: space-between;
+}
+.img-sale img {
+  height: 100%;
+  width: 22%;
+}
+.sale {
+  height: 95%;
+  width: 100%;
+  display: flex;
+}
+.sale__data {
+  height: 100%;
+  width: 69%;
+  display: flex;
+  flex-direction: column;
+}
+.data__bar {
+  height: 5%;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.data__detail {
+  background-color: black;
+  height: 90%;
+  width: 100%;
+}
+.sale__calculate {
+  height: 97%;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+.title-total {
+  width: 100%;
+  height: 5%;
+}
+.texfield {
+  height: 7%;
+  width: 50%;
+}
+.calculate {
+  font-size: 2rem;
+  height: 50%;
+  width: 100%;
+  display: grid;
+  grid-template-rows: repeat(4, 20%);
+  grid-template-columns: repeat(6, 14%);
+
+  grid-template-areas:
+    "uno dos tres amount amount amount"
+    "cuatro cinco seis price price price"
+    "siete ocho nueve discount discount discount"
+    "cero coma borrar income income income";
+  gap: 10px;
+}
+.uno {
+  grid-area: uno;
+  border: 2px solid #000;
+}
+.dos {
+  grid-area: dos;
+  border: 2px solid #000;
+}
+.tres {
+  grid-area: tres;
+  border: 2px solid #000;
+}
+.cuatro {
+  grid-area: cuatro;
+  border: 2px solid #000;
+}
+.cinco {
+  grid-area: cinco;
+  border: 2px solid #000;
+}
+.seis {
+  grid-area: seis;
+  border: 2px solid #000;
+}
+.siete {
+  grid-area: siete;
+  border: 2px solid #000;
+}
+.ocho {
+  grid-area: ocho;
+  border: 2px solid #000;
+}
+.nueve {
+  grid-area: nueve;
+  border: 2px solid #000;
+}
+.cero {
+  grid-area: cero;
+  border: 2px solid #000;
+}
+.coma {
+  grid-area: coma;
+  border: 2px solid #000;
+}
+.borrar {
+  grid-area: borrar;
+  display: flex;
+  flex-wrap: wrap;
+  border: 2px solid #000;
+  font-size: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.amount {
+  grid-area: amount;
+  border: 2px solid #000;
+}
+.price {
+  grid-area: price;
+  border: 2px solid #000;
+}
+.discount {
+  grid-area: discount;
+  border: 2px solid #000;
+}
+.income {
+  grid-area: income;
+  border: 2px solid #000;
+}
+.grid-item-sale {
+  text-align: center;
+}

@@ -11,7 +11,7 @@ const MenuView = () => {
         <div className="menu-bar">
           <button className="menu__items">Promociones</button>
           <NavLink
-            to="/menupizza"
+            to="/menu-pizza"
             className="menu__items"
             activeClassName="active"
           >
@@ -19,20 +19,26 @@ const MenuView = () => {
           </NavLink>
           <button className="menu__items">calzone</button>
           <NavLink
-            to="/menudrink"
+            to="/menu-drink"
             className="menu__items"
             activeClassName="active"
           >
             bebida
           </NavLink>
           <NavLink
-            to="/menucombo"
+            to="/menu-combo"
             className="menu__items"
             activeClassName="active"
           >
             combo
           </NavLink>
-          <button className="menu__items">batido</button>
+          <NavLink
+            to="/menu-smoothie"
+            className="menu__items"
+            activeClassName="active"
+          >
+            Batido
+          </NavLink>
           <button className="menu__items">extra</button>
         </div>
       </div>

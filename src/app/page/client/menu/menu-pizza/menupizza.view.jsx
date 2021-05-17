@@ -21,7 +21,7 @@ const MenuPizzaView = (props) => {
             <div className="pizza-image">
               <div className="info-pizza">
                 <h2 className="name"> {data.name}</h2>
-                <h3 className="price"> {data.price} </h3>
+                <h3> {data.price} </h3>
                 <button className="buyonline">ADD TO CART</button>
               </div>
               <img src={data.img} />
