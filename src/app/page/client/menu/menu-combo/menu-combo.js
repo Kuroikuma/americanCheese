@@ -11,6 +11,18 @@ data.push({
   description:
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Autaspernatur quasi voluptas pariatur animi in omnis at vel illumamet laudantium distinctio nam Cupiditate deserunt ullam veroquas nulla Voluptates",
 });
+data.push({
+  img: image,
+  name: "Combo f",
+  description:
+    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Autaspernatur quasi voluptas pariatur animi in omnis at vel illumamet laudantium distinctio nam Cupiditate deserunt ullam veroquas nulla Voluptates",
+});
+data.push({
+  img: image,
+  name: "Combo f",
+  description:
+    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Autaspernatur quasi voluptas pariatur animi in omnis at vel illumamet laudantium distinctio nam Cupiditate deserunt ullam veroquas nulla Voluptates",
+});
 
 data.push({
   img: image2,

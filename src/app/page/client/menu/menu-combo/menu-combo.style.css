@@ -1,15 +1,15 @@
 .Combos {
-  width: 100vw;
-  height: 210vh;
+  width: 100%;
+  height: 100%;
   background-color: orange;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+ justify-content: space-evenly;
+ flex-wrap: wrap;
 }
 
 .combos-tittle {
   width: 100%;
-  height: 10%;
+  height: 20%;
   text-align: center;
   font-size: 25px;
 }
@@ -29,7 +29,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100%; 
   border-radius: 20px;
   /*overflow: hidden; -- Con el over no resale la Imagen*/
 }
@@ -41,11 +41,12 @@
   width: 100%;
   height: 100%;
   background:blueviolet;
-  clip-path: circle(120px at center);
+  /*clip-path: circle(120px at center);*/
+ clip-path: circle( 160px at center);
   transition: 0.5s;
 }
 .card-combo:hover .circle-combo:before {
-  background: orange;
+  background: palegreen;
   clip-path: circle(400px at center);
   border-radius: 50px;
 }
