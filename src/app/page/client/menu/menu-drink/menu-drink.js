@@ -39,7 +39,14 @@ data.push({
   img: image4,
   name: "Agua En Botella",
 });
-
+data.push({
+  img: image3,
+  name: "Coca-Cola",
+});
+data.push({
+  img: image4,
+  name: "Agua En Botella",
+});
 function MenuDrink() {
   return <MenuDrinkView data={data} />;
 }
