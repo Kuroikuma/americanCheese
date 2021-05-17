@@ -16,6 +16,7 @@
   height: 70%;
   width: 70%;
   background: rgb(34, 223, 151);
+  border-radius: 20px;
 }
 .top-nav__component {
   height: 100%;

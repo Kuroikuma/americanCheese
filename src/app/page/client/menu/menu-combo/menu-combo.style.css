@@ -40,13 +40,14 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: red;
+  background:blueviolet;
   clip-path: circle(120px at center);
   transition: 0.5s;
 }
 .card-combo:hover .circle-combo:before {
-  background: blue;
+  background: orange;
   clip-path: circle(400px at center);
+  border-radius: 50px;
 }
 .card-combo img {
   position: absolute;
