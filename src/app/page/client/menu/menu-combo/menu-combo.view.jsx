@@ -9,14 +9,15 @@ const MenuComboView = (props) => {
   return (
     <>
       <Menu />
-      <div className="combos-tittle">
+      <div className="Combos">
+        <div className="combos-tittle">
           <h1>Lista de Combos</h1>
         </div>
-      <div className="Combos">
-        
-        {data.map((data, index) => (
-          <CardCombo {...data} index={index} />
-        ))}
+        <div className="cards-combo">
+          {data.map((data, index) => (
+            <CardCombo {...data} index={index} />
+          ))}
+        </div>
       </div>
     </>
   );

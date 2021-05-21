@@ -7,57 +7,40 @@ import user from "../../../../assets/image/usuario.png";
 const PointOfSaleView = (props) => {
   return (
     <>
-      <div className="container-sale">
-        <div className="side-bar-sale">
-          <input type="text" placeholder="Buscar Producto" />
-          <button> Cerrar Turno</button>
-          <div className="img-sale">
-            <img src={notificacion} />
-            <img src={tab} />
-            <img src={user} />
+      <div className="container-sucursal">
+        <div className="sucursal__bar">
+          <div className="bar__sucursal"></div>
+          <div className="bar__date"></div>
+          <div className="bar__search"></div>
+          <div className="bar__dependent"></div>
+        </div>
+        <div className="sucursal__data">
+          <div className="data__textArea">
+            <div className="textArea__bar">
+              <div className="vacio"></div>
+              <div className="textArea__name"></div>
+              <div className="textArea__price"></div>
+              <div className="textArea__amount"></div>
+              <div className="textArea__tax"></div>
+              <div className="textArea__enter"></div>
+              <div className="textArea__change"></div>
+            </div>
+          </div>
+          <div className="data__buttom">
+            <button className="buttom__report"></button>
+            <button className="buttom__save"></button>
+            <button className="buttom__cancel"></button>
           </div>
         </div>
-        <div className="sale">
-          <div className="sale__data">
-            <div className="data__bar">
-              <h5>Producto</h5>
-              <h5>Cantidad</h5>
-              <h5>P.Unitario</h5>
-              <h5>Importe</h5>
-              <h5>Cambio</h5>
-              <h5>Ingreso</h5>
-              <h5>P.Total</h5>
-            </div>
-            <div className="data__detail"></div>
+        <div className="sucursal__footer">
+          <div className="footer__buttom">
+            <div className="buttom__orders"></div>
+            <div className="buttom__Inventory"></div>
+            <div className="buttom__managet"></div>
           </div>
-          <div className="sale__calculate">
-            <div className="title-total">
-              <h5>TOTAL: 0</h5>
-            </div>
-            <div className="texfield">
-              <input type="text" />
-            </div>
-            <div className="calculate">
-              <div className="uno grid-item-sale">1</div>
-              <div className="dos grid-item-sale">2</div>
-              <div className="tres grid-item-sale">3</div>
-              <div className="cuatro grid-item-sale">4</div>
-              <div className="cinco grid-item-sale">5</div>
-              <div className="seis grid-item-sale">6</div>
-              <div className="siete grid-item-sale">7</div>
-              <div className="ocho grid-item-sale">8</div>
-              <div className="nueve grid-item-sale">9</div>
-              <div className="cero grid-item-sale">0</div>
-              <div className="coma grid-item-sale">,</div>
-              <div className="borrar grid-item-sale">
-                <div>borrar</div>
-              </div>
-              <div className="amount grid-item-sale">cantidad</div>
-              <div className="price grid-item-sale">precio</div>
-              <div className="discount grid-item-sale">descuento</div>
-              <div className="income grid-item-sale">ingreso</div>
-            </div>
-            <button>COBRAR</button>
+          <div className="footer__pay">
+            <div className="pay__summation"></div>
+            <div className="pay__total"></div>
           </div>
         </div>
       </div>

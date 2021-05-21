@@ -7,7 +7,7 @@ const MenuView = () => {
   return (
     <>
       <Layout />
-      <div className="container">
+      <div className="menu-container">
         <div className="menu-bar">
           <button className="menu__items">Promociones</button>
           <NavLink

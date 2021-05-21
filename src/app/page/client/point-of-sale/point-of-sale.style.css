@@ -1,0 +1,153 @@
+.container-order {
+  height: 100vh;
+  width: 100vw;
+  margin: 0px;
+}
+.bar__order {
+  background: #000aff;
+  height: 10%;
+  width: 100%;
+}
+.data__order {
+  height: 90%;
+  width: 100%;
+  display: flex;
+}
+.product__data {
+  height: 100%;
+  width: 15%;
+}
+.product__data > h4 {
+  border: black solid 1px;
+  margin: 0px;
+  line-height: 2;
+  text-align: center;
+}
+.product__data > p {
+  border: black solid 1px;
+  margin: 0px;
+  text-align: center;
+}
+.product__data span {
+  color: #877f7f;
+}
+
+.order__data {
+  height: 100%;
+  width: 65%;
+  background-color: blueviolet;
+  display: flex;
+  flex-direction: column;
+}
+.order__data__bar {
+  height: 15%;
+  width: 100%;
+  background-color: #ebf5fc;
+  display: flex;
+  flex-direction: column;
+}
+.bar__title {
+  height: 50%;
+  width: 100%;
+  margin: 0px;
+  text-align: center;
+}
+.bar__title h3 {
+  text-align: center;
+  margin: 0px;
+}
+.bar__input {
+  height: 50%;
+  width: 50%;
+  margin: 0px;
+}
+.bar__input {
+  margin: 0px;
+  height: 30%;
+  width: 50%;
+  outline: none;
+  line-height: 10px;
+  border-radius: 40px;
+  box-shadow: inset -5px -5px 15px rgb(255, 255, 255, 0.8),
+    inset 5px 5px 10px rgba(0, 0, 0, 0.1);
+  border: 0 none;
+  background: #e9f6ff;
+}
+
+.order {
+  height: 85%;
+  width: 100%;
+  background-color: #f99601;
+  display: flex;
+  justify-content: center;
+}
+.product__order {
+  height: 100%;
+  width: 90%;
+  background-color: #05ba37;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.cardProducto:nth-child(1) {
+  margin-top: 30px;
+}
+.cardProducto:nth-child(2) {
+  margin-top: 30px;
+}
+.cardProducto {
+  margin-top: 10px;
+  width: 340px;
+  height: 178px;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0px 4px 4px 3px rgba(5, 116, 36, 0.79);
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.product {
+  height: 90%;
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.product__image {
+  margin: 0px;
+  height: 80%;
+  width: 80%;
+}
+.product__image img {
+  height: 80%;
+  width: 100%;
+  object-fit: cover;
+  margin: 0px;
+  clip-path: circle(67%);
+}
+.product__image p {
+  color: #000aff;
+  margin: 0px;
+  font-weight: 600;
+}
+.ingredients {
+  height: 90%;
+  width: 60%;
+}
+.ingredients h3 {
+  margin: 0px;
+}
+.ingredients p {
+  margin: 0px;
+}
+.price {
+  height: 10%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.currentOrder__data {
+  height: 100%;
+  width: 30%;
+}

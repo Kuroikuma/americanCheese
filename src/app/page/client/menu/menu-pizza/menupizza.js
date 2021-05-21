@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React } from "react";
 import pizza1 from "../../../../../assets/image/MenuPizzas/menupizza1.jpg";
 import pizza2 from "../../../../../assets/image/MenuPizzas/menupizza2.jpeg";
 import pizza3 from "../../../../../assets/image/MenuPizzas/menupizza3.jpg";

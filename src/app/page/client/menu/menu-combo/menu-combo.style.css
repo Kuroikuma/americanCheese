@@ -3,8 +3,9 @@
   height: 100%;
   background-color: orange;
   display: flex;
- justify-content: space-evenly;
- flex-wrap: wrap;
+  flex-direction: column;
+  align-content: center;
+  flex-wrap: wrap;
 }
 
 .combos-tittle {
@@ -13,7 +14,10 @@
   text-align: center;
   font-size: 25px;
 }
-
+.cards-combo {
+  display: flex;
+  flex-wrap: wrap;
+}
 .card-combo {
   position: relative;
   width: 600px;
@@ -29,7 +33,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%; 
+  height: 100%;
   border-radius: 20px;
   /*overflow: hidden; -- Con el over no resale la Imagen*/
 }
@@ -40,9 +44,9 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background:blueviolet;
+  background: blueviolet;
   /*clip-path: circle(120px at center);*/
- clip-path: circle( 160px at center);
+  clip-path: circle(160px at center);
   transition: 0.5s;
 }
 .card-combo:hover .circle-combo:before {
