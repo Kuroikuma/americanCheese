@@ -227,4 +227,5 @@
 .saleItems__products img {
   height: 30%;
   width: 30%;
+  clip-path: circle(69%);
 }

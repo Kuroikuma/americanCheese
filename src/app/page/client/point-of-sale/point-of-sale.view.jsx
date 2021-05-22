@@ -1,7 +1,7 @@
 import React from "react";
-import pizza1 from "../../../../assets/image/MenuPizzas/menupizza1.jpg";
 import image from "../../../../assets/image/logo.png";
 import "./point-of-sale.style.css";
+import { Link } from "react-router-dom";
 
 const PointOfSaleView = (props) => {
   const { data, sale } = props;
@@ -9,7 +9,9 @@ const PointOfSaleView = (props) => {
     <>
       <div className="container-order">
         <div className="bar__order">
-          <img src={image} />
+          <Link to="/home">
+            <img src={image} />
+          </Link>
         </div>
         <div className="data__order">
           <div className="product__data">
