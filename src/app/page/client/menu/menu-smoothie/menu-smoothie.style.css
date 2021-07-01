@@ -8,7 +8,7 @@
 .smoothie {
   height: 150vh;
   width: 80vw;
-  background: rgb(3, 217, 255);
+  background: rgba(56, 150, 237, 1);
   margin: 0px;
   display: flex;
   flex-direction: column;

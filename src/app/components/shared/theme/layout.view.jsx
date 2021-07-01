@@ -1,10 +1,10 @@
 import "./layout.style.css";
-import SideBar from "../../side-bar/side-bar";
+import Header from "../../header/header";
 
 const LayoutView = (props) => {
   return (
     <>
-      <SideBar />
+      <Header />
     </>
   );
 };

@@ -4,7 +4,8 @@ import "./point-of-sale.style.css";
 import { Link } from "react-router-dom";
 
 const PointOfSaleView = (props) => {
-  const { data, sale } = props;
+  const { data, Sale, handleID, handleFdetail } = props;
+  const ImageUrl = process.env.REACT_APP_URL_IMAGE || "https://localhost:44389";
   return (
     <>
       <div className="container-order">
@@ -16,12 +17,8 @@ const PointOfSaleView = (props) => {
         <div className="data__order">
           <div className="product__data">
             <h4>PRODUCTO</h4>
-            <p>
-              pizza <span>(20)</span>
-            </p>
-            <p>
-              bebidas <span>(15)</span>
-            </p>
+            <button onClick={handleID}>Pizza</button>
+            <button onClick={handleID}>Bebida</button>
             <p>
               combo <span>(6)</span>
             </p>
@@ -40,19 +37,24 @@ const PointOfSaleView = (props) => {
             <div className="order">
               <div className="product__order">
                 {data.map((data) => (
-                  <div className="cardProducto">
+                  <div
+                    onClick={() => handleFdetail(data)}
+                    className="cardProducto"
+                  >
                     <div className="product">
                       <div className="product__image">
-                        <img src={data.image} />
-                        <p>{data.title}</p>
+                        <img src={ImageUrl + data.imagen} />
+                        <p>{data.producto}</p>
                       </div>
                     </div>
                     <div className="ingredients">
                       <h3>Ingredientes</h3>
-                      <p>{data.ingredients}</p>
+                      {data.ingrediente.map((item) => (
+                        <p>{item.ingrediente}</p>
+                      ))}
                     </div>
                     <div className="price">
-                      <div>C${data.price}</div>
+                      <div>C${data.precio}</div>
                     </div>
                   </div>
                 ))}
@@ -64,7 +66,7 @@ const PointOfSaleView = (props) => {
               <h2>Current order</h2>
             </div>
             <div className="products__currentOrder">
-              {sale.map((sale) => (
+              {Sale.map((sale) => (
                 <div className="saleItems__products">
                   <img src={sale.image} />
                   <p>{sale.title}</p>

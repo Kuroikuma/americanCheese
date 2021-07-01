@@ -1,0 +1,12 @@
+.FormAddProduct__container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.FormAddProduct__container_item {
+  height: 6%;
+  width: 80%;
+}

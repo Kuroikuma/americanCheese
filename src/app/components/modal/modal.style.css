@@ -1,0 +1,29 @@
+.modal {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  min-height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+.modal.is-open {
+  display: flex;
+}
+.modal__container {
+  position: relative;
+  height: 85vh;
+  width: 40vw;
+  background-color: white;
+  overflow-y: auto;
+  white-space: nowrap;
+  border-radius: 10px;
+}
+.modal-change {
+  position: absolute;
+  right: 5px;
+  top: 4px;
+}

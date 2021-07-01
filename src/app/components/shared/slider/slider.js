@@ -9,7 +9,7 @@ import Heroes from "../../../../assets/image/Heroes.jpg";
 import banda from "../../../../assets/image/Banda.jpg";
 import categories3 from "../../../../assets/image/pizza3.jpg";
 
-const styles = { height: 400, width: "100%" };
+const styles = { height: 200, width: "100%", objectFit: "cover" };
 const icon_glass = <span className="fa fa-glass" />;
 const icon_music = <span className="fa fa-music" />;
 const data = [];
@@ -82,7 +82,7 @@ class Slider extends React.PureComponent {
               {data.map((data) => (
                 <div
                   style={{
-                    height: 541,
+                    height: 341,
                     display: "flex",
                     justifyContent: "center",
                   }}

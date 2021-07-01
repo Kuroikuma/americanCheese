@@ -5,6 +5,7 @@ import image from "../../assets/image/logo.png";
 const Customization = lazy(() =>
   import("../page/client/customization/customization")
 );
+const Textfield = lazy(() => import("../components/textfield/texfield"));
 //import Menu from "../page/client/menu/menu";
 const MenuCombo = lazy(() =>
   import("../page/client/menu/menu-combo/menu-combo")
@@ -44,6 +45,8 @@ function ClientRoutes() {
           <Route exact path="/menu-pizza" component={MenuPizza} />
           <Route exact path="/menu-smoothie" component={MenuSmoothie} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/textfield" component={Textfield} />
+
           <Route component={Home} />
         </Switch>
       </Suspense>

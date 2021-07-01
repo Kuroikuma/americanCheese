@@ -1,6 +1,7 @@
 import React from "react";
 import "./menu-smoothie.style.css";
 import Menu from "../menu";
+import { Link } from "react-router-dom";
 
 const MenuSmoothieView = (props) => {
   const { data } = props;
@@ -20,9 +21,9 @@ const MenuSmoothieView = (props) => {
                   <img className="smoothie_img" src={data.img} />
                 </div>
                 <div className="smoothie__name"> {data.name}</div>
-                <div className="smoothie__order">
+                <Link to="/point-of-sale" className="smoothie__order">
                   <button className="smoothie--button"> ORDENAR </button>
-                </div>
+                </Link>
               </div>
             ))}
           </div>

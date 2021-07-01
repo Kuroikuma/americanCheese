@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import image from "../../../assets/image/logo.png";
 import imageUser from "../../../assets/image/userLogo.png";
 import pizzaCarrito from "../../../assets/image/pizzaCarrito.png";
-import SideBarView from "./side-bar.view";
+import HeaderView from "./header.view";
 
 const data = [];
 
@@ -12,8 +12,8 @@ data.push({
   imgC: pizzaCarrito,
 });
 
-function SideBar() {
-  return <SideBarView data={data} />;
+function Header() {
+  return <HeaderView data={data} />;
 }
 
-export default SideBar;
+export default Header;

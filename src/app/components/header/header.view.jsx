@@ -1,14 +1,14 @@
 import React from "react";
-import "./side-bar.style.css";
+import "./header.style.css";
 import { NavLink, Link } from "react-router-dom";
 
-const SideBarView = (props) => {
+const HeaderView = (props) => {
   const { data } = props;
 
   return (
     <>
       {data.map((data) => (
-        <div className="SideBarContainer">
+        <div className="HeaderContainer">
           <Link to="/home" className="logo">
             <img src={data.img} />
           </Link>
@@ -16,9 +16,9 @@ const SideBarView = (props) => {
           <div className="top-nav">
             <div className="top-nav__component">
               <div className="button-nav">
-                <div className="button__top-nav">
+                <Link to="/point-of-sale" className="button__top-nav">
                   <button>ORDENE EN LINEA</button>
-                </div>
+                </Link>
                 <div className="button__top-nav">
                   <button>DELIVERY</button>
                 </div>
@@ -48,4 +48,4 @@ const SideBarView = (props) => {
   );
 };
 
-export default SideBarView;
+export default HeaderView;

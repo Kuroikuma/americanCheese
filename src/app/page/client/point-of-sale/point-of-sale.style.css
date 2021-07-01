@@ -1,5 +1,5 @@
 .container-order {
-  height: auto;
+  height: 100vh;
   width: 100vw;
   margin: 0px;
 }
@@ -19,7 +19,6 @@
 }
 .product__data {
   min-height: 90vh;
-  height: auto;
   width: 15%;
   border: black solid 1px;
 }
@@ -81,21 +80,19 @@
 }
 
 .order {
-  height: auto;
-  min-height: 90vh;
+  height: 80vh;
   width: 100%;
   background-color: #f97801;
   display: flex;
   justify-content: center;
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
 }
 .product__order {
+  min-height: 80vh;
   height: auto;
   width: 90%;
+  overflow: auto;
+  white-space: nowrap;
   background-color: #05ba37;
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -163,7 +160,7 @@
 }
 .currentOrder {
   min-height: 90vh;
-  height: auto;
+
   width: 30%;
   border: black solid 1px;
 }
@@ -172,10 +169,12 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  border-bottom: black solid 1px;
 }
 .products__currentOrder {
-  min-height: 60vh;
-  height: auto;
+  height: 62vh;
+  overflow: auto;
+  white-space: nowrap;
   width: 100%;
 }
 .currentOrden__transaction {
@@ -221,9 +220,7 @@
   border-left: none;
   border-right: none;
 }
-.saleItems__products:nth-child(1) {
-  border-top: black solid 1px;
-}
+
 .saleItems__products img {
   height: 30%;
   width: 30%;

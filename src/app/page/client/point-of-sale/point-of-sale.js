@@ -1,89 +1,50 @@
-import { React } from "react";
+import { React, useState, useEffect } from "react";
 import pizza1 from "../../../../assets/image/MenuPizzas/menupizza1.jpg";
 import PointOfSaleView from "./point-of-sale.view";
+import ServicesPizza from "../../../../services/services-pizza";
 
 function PointOfSale() {
-  const data = [];
-  const sale = [];
-  sale.push({
-    title: "pizza de queso",
-    amount: 2,
-    price: 500,
-    image: pizza1,
-  });
-  sale.push({
-    title: "pizza de queso",
-    amount: 2,
-    price: 500,
-    image: pizza1,
-  });
-  sale.push({
-    title: "pizza de queso",
-    amount: 2,
-    price: 500,
-    image: pizza1,
-  });
-  sale.push({
-    title: "pizza de queso",
-    amount: 2,
-    price: 500,
-    image: pizza1,
-  });
-  sale.push({
-    title: "pizza de queso",
-    amount: 2,
-    price: 500,
-    image: pizza1,
-  });
-  sale.push({
-    title: "pizza de queso",
-    amount: 2,
-    price: 500,
-    image: pizza1,
-  });
-  data.push({
-    ingredients:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.",
-    title: "pizza de queso",
-    price: 500,
-    image: pizza1,
-  });
-  data.push({
-    ingredients:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.",
-    title: "pizza de queso",
-    price: 500,
-    image: pizza1,
-  });
-  data.push({
-    ingredients:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.",
-    title: "pizza de queso",
-    price: 500,
-    image: pizza1,
-  });
-  data.push({
-    ingredients:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.",
-    title: "pizza de queso",
-    price: 500,
-    image: pizza1,
-  });
-  data.push({
-    ingredients:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.",
-    title: "pizza de queso",
-    price: 500,
-    image: pizza1,
-  });
-  data.push({
-    ingredients:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.",
-    title: "pizza de queso",
-    price: 500,
-    image: pizza1,
-  });
+  const ImageUrl = process.env.REACT_APP_URL_IMAGE || "https://localhost:44389";
+  const [Sale, setSale] = useState([]);
 
-  return <PointOfSaleView data={data} sale={sale} />;
+  const [data, setData] = useState([]);
+  const [ID, setID] = useState(1);
+  const handleID = (e) => {
+    console.log(e.target.innerText);
+    switch (e.target.innerText) {
+      case "Pizza":
+        setID(1);
+        break;
+      case "Bebida":
+        setID(2);
+        break;
+    }
+  };
+  const handleFdetail = (data) => {
+    const sale = {
+      title: data.producto,
+      amount: 2,
+      price: data.precio,
+      image: ImageUrl + data.imagen,
+    };
+    console.log(sale);
+    setSale((prevSale) => [...prevSale, sale]);
+    console.log(Sale);
+  };
+
+  useEffect(() => {
+    ServicesPizza(ID).then((response) => setData(response));
+  }, [ID, Sale]);
+  console.log(data);
+  console.log(ID);
+  return (
+    <PointOfSaleView
+      data={data}
+      Sale={Sale}
+      handleID={handleID}
+      setID={setID}
+      handleFdetail={handleFdetail}
+    />
+  );
 }
 export default PointOfSale;

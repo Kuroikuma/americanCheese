@@ -1,10 +1,10 @@
-.SideBarContainer {
+.HeaderContainer {
   display: flex;
   background-color: #ff6961;
   flex-direction: column;
   flex-wrap: wrap;
   position: sticky;
-  height: 25vh;
+  height: 15vh;
   width: 100vw;
   margin: 0 !important;
   justify-content: center;
@@ -16,7 +16,7 @@
   height: 70%;
   width: 70%;
   background: rgb(34, 223, 151);
-  border-radius: 20px;
+  border-radius: 10px;
 }
 .top-nav__component {
   height: 100%;
@@ -36,12 +36,12 @@
 }
 .button__top-nav button {
   border-radius: 10px;
-  height: 40;
+  height: 30%;
   border: none;
   background: chocolate;
   color: #fff;
   font-weight: bold;
-  font-size: 100%;
+  font-size: 80%;
   line-height: 2.5;
 }
 .imgC {
@@ -87,7 +87,7 @@
   object-fit: cover;
 }
 @media screen and (max-width: 900px) {
-  .SideBarContainer {
+  .HeaderContainer {
     height: 12vh;
     font-size: 8px;
   }

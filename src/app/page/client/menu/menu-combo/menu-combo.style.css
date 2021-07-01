@@ -1,132 +1,78 @@
 .Combos {
-  width: 100%;
-  height: 100%;
-  background-color: orange;
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  flex-wrap: wrap;
-}
-
-.combos-tittle {
-  width: 100%;
-  height: 20%;
-  text-align: center;
-  font-size: 25px;
+  width: 100vw;
+  min-height: 100vh;
+  height: auto;
+  background-color: #f97801;
 }
 .cards-combo {
   display: flex;
   flex-wrap: wrap;
 }
-.card-combo {
-  position: relative;
-  width: 600px;
-  height: 390px;
-  border-radius: 20px;
+.combos-tittle {
+  text-align: center;
+  color: white;
+}
+
+.combos-card {
   display: flex;
+  flex-direction: column;
+  margin-left: 10%;
+  margin-top: 0px;
   align-items: center;
-  border-radius: 20px;
-  transition: 0.5s;
+  justify-content: start;
 }
-.card-combo .circle-combo {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+.image {
+  max-height: 70%;
+  min-height: 50%;
+  display: flex;
+  justify-content: center;
+}
+.image img {
   height: 100%;
-  border-radius: 20px;
-  /*overflow: hidden; -- Con el over no resale la Imagen*/
+  object-fit: cover;
+  clip-path: circle(69%);
 }
-.card-combo .circle-combo::before {
-  content: "";
+.combos-card p {
+  text-align: center;
+  color: white;
+}
+.BMore {
+  height: 30px;
+  color: white;
+  background-color: #05ba37;
+}
+.combos-description {
+  height: auto;
+  min-width: 10%;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: blueviolet;
-  /*clip-path: circle(120px at center);*/
-  clip-path: circle(160px at center);
-  transition: 0.5s;
-}
-.card-combo:hover .circle-combo:before {
-  background: palegreen;
-  clip-path: circle(400px at center);
-  border-radius: 50px;
-}
-.card-combo img {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  height: 200px;
-  pointer-events: none;
-  transition: 0.5s;
-}
-.card-combo:hover img {
-  left: 73%;
-  height: 340px;
-}
-.card-combo .content-combo {
-  position: relative;
-  width: 50%;
-  left: 20%;
-  padding: 20px 20px 20px 40px;
-  transition: 0.5s;
-  opacity: 0;
-  visibility: hidden;
-}
-.card-combo:hover .content-combo {
-  left: 0;
-  opacity: 1;
-  visibility: visible;
-}
-.card-combo .content-combo h2 {
-  color: #fff;
-  text-transform: uppercase;
-  font-size: 2em;
-  line-height: 1em;
-  margin-bottom: 5px;
-}
-.card-combo .content-combo p {
-  color: #fff;
-}
-.card-combo .content-combo a {
-  position: relative;
-  color: #fff;
-  padding: 10px 20px;
+  margin-top: 8%;
+  margin-left: 29%;
+  background: rgba(56, 150, 237, 1);
+  color: white;
   border-radius: 10px;
-  background: #fff;
-  color: #111;
-  margin-top: 10px;
-  display: inline-block;
-  text-decoration: none;
-  font-weight: 700;
+  z-index: 500;
 }
-@media (max-width: 300px) {
-  .card-combo {
-    width: auto;
-    max-width: 350px;
-    align-items: flex-start;
-    overflow: hidden;
-    margin: 10px;
-  }
-  .card-combo:hover {
-    height: 600px;
-  }
-  .card-combo .content-combo {
-    width: 100%;
-    left: 0;
-    padding: 30px;
-  }
-  .card-combo:hover img {
-    top: 70%;
-    left: 50%;
-    height: 320px;
-  }
+.combos-description-hidden {
+  height: auto;
+  width: auto;
+  position: absolute;
+  opacity: 0;
+  margin-top: 8%;
+  margin-left: 50%;
+  background: #3b4348;
+  border-radius: 10px;
 }
-@media (max-width: 50px) {
-  .card-combo .content-combo {
-    padding: 20px;
+@media screen and (max-width: 900px) {
+  .combos-tittle {
+  }
+  .image > img {
+  }
+  .Combos {
+  }
+  .info {
   }
 }

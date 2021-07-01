@@ -1,34 +1,17 @@
-import { React } from "react";
+import { React, useEffect, useState } from "react";
 import pizza1 from "../../../../../assets/image/MenuPizzas/menupizza1.jpg";
 import pizza2 from "../../../../../assets/image/MenuPizzas/menupizza2.jpeg";
 import pizza3 from "../../../../../assets/image/MenuPizzas/menupizza3.jpg";
 import pizza4 from "../../../../../assets/image/MenuPizzas/menupizza4.jpg";
+import ServicesPizza from "../../../../../services/services-pizza";
 import MenuPizzaView from "./menupizza.view";
 
-const data = [];
-
-data.push({
-  img: pizza1,
-  name: "Double Burger",
-  price: "$8.50"
-});
-data.push({
-img: pizza2,
-name: "Bacon Burger",
-price: "$8.00"
-});
-data.push({
-img: pizza3,
-name: "Hot Burger",
-price: "$7.50"
-});
-data.push({
-img: pizza4,
-name: "Hot Pizza",
-price: "$10.50"
-});
-
 function MenuPizza() {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    ServicesPizza(1).then((response) => setData(response));
+  }, []);
+  console.log(data);
   return <MenuPizzaView data={data} />;
 }
 

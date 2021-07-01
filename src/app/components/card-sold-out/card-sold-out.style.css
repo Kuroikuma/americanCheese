@@ -1,0 +1,38 @@
+.cardProducto {
+  height: 10vh;
+  width: 95%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+.cardProduct__image {
+  height: 90%;
+  width: 30%;
+}
+.cardProducto.red {
+  border: 2px solid red;
+}
+.cardProducto.yellow {
+  border: 2px solid yellow;
+}
+.cardProduct__image img {
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+  object-fit: cover;
+}
+.cardProduct__name {
+  height: 100%;
+  width: 45%;
+}
+.cardProduct__name p {
+  text-align: center;
+}
+.cardProducto__stock {
+  height: 100%;
+  width: 25%;
+}
+.cardProducto__stock p {
+  text-align: center;
+}
