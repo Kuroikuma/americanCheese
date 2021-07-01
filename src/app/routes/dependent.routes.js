@@ -7,6 +7,12 @@ const PointOfSale = lazy(() =>
 );
 const Inventory = lazy(() => import("../page/dependent/Inventory/inventory"));
 const Home = lazy(() => import("../page/client/home/home"));
+const OrderControl = lazy(() =>
+  import("../page/dependent/order-control/order-control")
+);
+const SalesReport = lazy(() =>
+  import("../page/dependent/sales-report/sales-report")
+);
 
 function DependentRoutes() {
   return (
@@ -14,7 +20,7 @@ function DependentRoutes() {
       <Suspense
         fallback={
           <div className="logo">
-            <img src={image} />
+            <img src={image} alt="" />
           </div>
         }
       >
@@ -22,6 +28,8 @@ function DependentRoutes() {
           <Route exact path="/" component={Home} />
           <Route exact path="/point-of-sale" component={PointOfSale} />
           <Route exact path="/inventory" component={Inventory} />
+          <Route exact path="/order-control" component={OrderControl} />
+          <Route exact path="/sales-report" component={SalesReport} />
           <Route component={Home} />
         </Switch>
       </Suspense>

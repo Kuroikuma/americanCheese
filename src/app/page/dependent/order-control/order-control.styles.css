@@ -1,0 +1,123 @@
+body {
+  font-family: monospace;
+  background: #f9960170;
+  height: 100vh;
+}
+.order-table {
+  width: 80%;
+  background: white;
+  margin: 30px auto;
+  box-shadow: 0 0 10px #333;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-auto-rows: 50px;
+}
+.order-tittle {
+  grid-column-start: 1;
+  grid-column-end: 6;
+  background: #f99601;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+}
+.order-agregar {
+  grid-column-start: 1;
+  grid-column-end: 6;
+  background: #c4c4c4;
+  text-align: center;
+}
+.button-agregar {
+  background: #f99601;
+  height: 75%;
+  width: 15%;
+  border-radius: 10px;
+  border: 2px solid black;
+  font-family: monospace;
+  font-weight: bold;
+  margin-top: 0.6%;
+}
+.order-columns,
+.order-filas {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.order-columns {
+  font-weight: bold;
+  font-size: 1em;
+  background: #c4c4c4;
+}
+.order-filas {
+  padding: 10px;
+  font-size: 1em;
+}
+.image-search {
+  width: 67%;
+  height: 54%;
+}
+.search {
+  margin-left: 62.5%;
+  position: absolute;
+  padding: 10px;
+}
+.search input {
+  width: 0px;
+  height: 30px;
+  outline: none;
+  border: 5px;
+  border-radius: 15px;
+  border: 2px solid #f9960170;
+  transition: all 0.5s ease;
+  font-family: monospace;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+.button-search {
+  position: absolute;
+  top: 7%;
+  right: 0;
+  width: 43px;
+  height: 43px;
+  background: white;
+  border-radius: 50%;
+  border: 2px solid #f9960170;
+  text-align: center;
+}
+.search:hover input {
+  width: 210px;
+}
+.search input:focus {
+  width: 210px;
+}
+.button-editar {
+  margin: 1%;
+  height: 45px;
+  width: 45px;
+  background: transparent;
+  border: transparent;
+}
+.button-eliminar {
+  margin: 1%;
+  height: 45px;
+  width: 45px;
+  background: transparent;
+  border: transparent;
+}
+.image-editar {
+  height: 33px;
+  width: 33px;
+}
+.image-eliminar {
+  height: 32px;
+  width: 32px;
+}
+.contenedor:hover .image-eliminar {
+  -webkit-transform: scale(1.3);
+  transform: scale(1.3);
+}
+.contenedor:hover .image-editar {
+  -webkit-transform: scale(1.3);
+  transform: scale(1.3);
+}
