@@ -10,3 +10,8 @@
   height: 6%;
   width: 80%;
 }
+.FormAddProduct__container--saveProduct {
+  height: 6%;
+  width: 60%;
+  margin-top: 10px;
+}

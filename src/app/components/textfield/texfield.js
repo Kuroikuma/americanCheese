@@ -2,8 +2,8 @@ import { React, useState } from "react";
 import "./textfield.style.css";
 
 const TextField = (props) => {
-  let { name, type } = props;
-
+  const { name, type, placeHolder, handlerChange } = props;
+  const handlerPropsInput = handlerChange ? handlerChange : null;
   const [focu, setFocu] = useState(false);
   const [field, setField] = useState("");
   const handleInput = (e) => {
@@ -15,11 +15,15 @@ const TextField = (props) => {
     }
   };
   const handlerInputChange = (e) => {
-    const { name, value } = e.target;
+    const { value } = e.target;
     setField(value);
     console.log(value);
+    if (handlerPropsInput) {
+      handlerPropsInput(e);
+    } else {
+      console.log("Hola");
+    }
   };
-
   return (
     <>
       <div className="texfield">
@@ -29,7 +33,7 @@ const TextField = (props) => {
             focu ? null : field ? "full" : null
           }`}
         >
-          {name}
+          {placeHolder}
         </label>
         <input
           name={name}

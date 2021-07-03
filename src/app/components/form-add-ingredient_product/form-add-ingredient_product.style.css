@@ -1,0 +1,56 @@
+.IngredientContainer {
+  height: 6%;
+  width: 60%;
+}
+.IngredientContainer--OpenModal {
+  height: 100%;
+  width: 100%;
+  margin-top: 10px;
+}
+.IngredientContainer__title {
+  margin: 0px;
+}
+.IngredientContainer__title h1 {
+  text-align: center;
+}
+.IngredientContainer__list {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.IngredientContainer__list__item {
+  height: 10%;
+  width: 90%;
+  margin: 0px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+}
+.IngredientContainer__list__item__placeholder {
+  height: 60%;
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.IngredientContainer__list__item__amount {
+  height: 60%;
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.IngredientContainer--addListIngredient {
+  height: 6%;
+  width: 60%;
+  margin-bottom: 10px;
+}
+.IngredientContainer--saveListIngredient {
+  height: 6%;
+  width: 60%;
+  margin-top: 10px;
+}

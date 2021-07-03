@@ -18,6 +18,7 @@ function PointOfSale() {
       case "Bebida":
         setID(2);
         break;
+        default :
     }
   };
   const handleFdetail = (data) => {
