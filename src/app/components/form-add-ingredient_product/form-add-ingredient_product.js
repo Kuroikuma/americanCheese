@@ -9,11 +9,14 @@ const FormAddIngredientPrduct = (props) => {
   const [isOpen, openModal, closeModal] = useModal(false);
 
   const handlerIngredientsList = () => {
-    const ingredient = {
-      Ingredient: "",
-      Amount: "",
-    };
-    setIngredientsList((prevIngredient) => [...prevIngredient, ingredient]);
+    setIngredientsList((prevIngredient) => [
+      ...prevIngredient,
+      {
+        IdIngrediente: "",
+        CantidadIngrediente: "",
+        PrecioIngrediente: "",
+      },
+    ]);
   };
   const handlerSaveIngredient = () => {
     console.log(ingredientsList);

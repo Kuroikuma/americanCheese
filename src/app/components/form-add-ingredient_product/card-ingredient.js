@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Texfield from "../textfield/texfield";
 import "./form-add-ingredient_product.style.css";
 const CardIngredient = (props) => {
@@ -7,17 +7,19 @@ const CardIngredient = (props) => {
   const handlerInputIngredient = (e) => {
     const { name, value } = e.target;
     if (name === "Ingrediente") {
-      ingredient.Ingredient = value;
+      ingredient.IdIngrediente = value;
     }
     if (name === "Cantidad") {
-      ingredient.Amount = value;
+      ingredient.CantidadIngrediente = value;
       console.log(value);
     }
   };
+  const handleSubmitIngredient = (e) => {};
   return (
     <>
       <div className="IngredientContainer__list__item__placeholder">
         <Texfield
+          handleSubmit={handleSubmitIngredient}
           handlerChange={handlerInputIngredient}
           name={"Ingrediente"}
           placeHolder={"Ingrediente"}

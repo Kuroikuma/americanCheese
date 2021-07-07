@@ -18,7 +18,11 @@ const FormAddProduct = () => {
   const [costo, setCosto] = useState();
   const [descripcion, setDescripcion] = useState();
   const [imagen, setImagen] = useState();
-  const [ingredientsList, setIngredientsList] = useState(ingredients);
+  const [ingredientsList, setIngredientsList] = useState({
+    IdIngrediente: "",
+    CantidadIngrediente: "",
+    PrecioIngrediente: "",
+  });
 
   const handlerProductChange = (e) => {
     const { name, value } = e.target;
