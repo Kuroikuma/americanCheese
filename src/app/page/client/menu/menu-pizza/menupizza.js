@@ -3,13 +3,13 @@ import pizza1 from "../../../../../assets/image/MenuPizzas/menupizza1.jpg";
 import pizza2 from "../../../../../assets/image/MenuPizzas/menupizza2.jpeg";
 import pizza3 from "../../../../../assets/image/MenuPizzas/menupizza3.jpg";
 import pizza4 from "../../../../../assets/image/MenuPizzas/menupizza4.jpg";
-import ServicesPizza from "../../../../../services/services-pizza";
+import ServicesCategoryProduct from "../../../../../services/services-pizza";
 import MenuPizzaView from "./menupizza.view";
 
 function MenuPizza() {
   const [data, setData] = useState([]);
   useEffect(() => {
-    ServicesPizza(1).then((response) => setData(response));
+    ServicesCategoryProduct(1).then((response) => setData(response));
   }, []);
   console.log(data);
   return <MenuPizzaView data={data} />;

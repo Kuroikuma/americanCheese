@@ -122,3 +122,17 @@ body {
   -webkit-transform: scale(1.3);
   transform: scale(1.3);
 }
+@media screen and (max-width: 900px) {
+  .order-table {
+    width: 100%;
+  }
+  .search {
+    margin-left: 4.5%;
+  }
+  .order-tittle {
+    justify-content: flex-end;
+  }
+  .search:hover input {
+    width: 135px;
+  }
+}

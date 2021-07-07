@@ -44,6 +44,7 @@
 }
 .Container__Inventory__Header__Filter input {
   height: 45%;
+  width: 35%;
   border-radius: 10px;
   border: 1px solid grey;
 }
@@ -144,4 +145,15 @@
 .Container__AlmostExhausted__LittleUrgent__Title h3 {
   margin: 0px;
   text-align: center;
+}
+@media screen and (max-width: 900px) {
+  .Container__Inventory {
+    width: 100%;
+  }
+  .Container__AlmostExhausted {
+    display: none;
+  }
+  .Container__Inventory__ContentsGrid__item h3 {
+    font-size: 15px;
+  }
 }

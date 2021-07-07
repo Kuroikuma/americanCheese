@@ -16,12 +16,8 @@ data.push({
   name: "Jugos",
 });
 data.push({
-  img: image3,
-  name: "Coca-Cola",
-});
-data.push({
   img: image4,
-  name: "Agua En Botella",
+  name: "Agua",
 });
 data.push({
   img: image,
@@ -35,18 +31,16 @@ data.push({
   img: image3,
   name: "Coca-Cola",
 });
+
 data.push({
-  img: image4,
-  name: "Agua En Botella",
+  img: image2,
+  name: "Jugos",
 });
 data.push({
   img: image3,
   name: "Coca-Cola",
 });
-data.push({
-  img: image4,
-  name: "Agua En Botella",
-});
+
 function MenuDrink() {
   return <MenuDrinkView data={data} />;
 }

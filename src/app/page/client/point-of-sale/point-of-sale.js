@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from "react";
 import pizza1 from "../../../../assets/image/MenuPizzas/menupizza1.jpg";
 import PointOfSaleView from "./point-of-sale.view";
-import ServicesPizza from "../../../../services/services-pizza";
+import ServicesCategoryProduct from "../../../../services/services-categoria__producto";
 
 function PointOfSale() {
   const ImageUrl = process.env.REACT_APP_URL_IMAGE || "https://localhost:44389";
@@ -18,7 +18,7 @@ function PointOfSale() {
       case "Bebida":
         setID(2);
         break;
-        default :
+      default:
     }
   };
   const handleFdetail = (data) => {
@@ -34,7 +34,7 @@ function PointOfSale() {
   };
 
   useEffect(() => {
-    ServicesPizza(ID).then((response) => setData(response));
+    ServicesCategoryProduct(ID).then((response) => setData(response));
   }, [ID, Sale]);
   console.log(data);
   console.log(ID);

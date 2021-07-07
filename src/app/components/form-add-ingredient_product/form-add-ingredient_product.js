@@ -7,6 +7,7 @@ import "./form-add-ingredient_product.style.css";
 const FormAddIngredientPrduct = (props) => {
   const { ingredientsList, setIngredientsList } = props;
   const [isOpen, openModal, closeModal] = useModal(false);
+
   const handlerIngredientsList = () => {
     const ingredient = {
       Ingredient: "",

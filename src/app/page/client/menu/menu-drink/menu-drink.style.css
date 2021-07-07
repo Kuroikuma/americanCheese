@@ -1,91 +1,77 @@
 .container-drink {
-  min-height: 100vh;
-  min-width: 100vw;
+  height: auto;
+  min-height: 80vh;
+  width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .drink {
-  height: 150vh;
-  width: 80vw;
-  background: rgb(3, 217, 255);
-  margin: 0px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-radius: 40px;
-}
-.drink__title {
+  height: auto;
+  min-height: 70vh;
   display: flex;
   justify-content: center;
-  align-items: center;
-  margin-top: -25%;
-  height: 6%;
-  width: 80%;
-  background: rgb(255, 251, 1);
-  border-radius: 10px;
-}
-.drink__title h1 {
-  font-size: 3em;
-  margin: 0px;
-  font-weight: bold;
-}
-.card-container {
-  height: 50%;
-  width: 100%;
-  display: flex;
-  justify-content: space-evenly;
   align-items: center;
   flex-wrap: wrap;
-}
-.drink__card {
-  display: flex;
-  flex-direction: column;
-  height: 80%;
-  width: 20%;
-  justify-content: space-evenly;
-  align-items: center;
-}
-.drink__name {
-  font-size: 1.6em;
-  font-weight: bold;
-}
-.drink__image {
-  height: 60%;
-  width: 60%;
-}
-.drink_img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
+  width: 80%;
+  background-color: aqua;
   border-radius: 20px;
 }
-.drink--button {
-  border-radius: 10px;
-  line-height: 2.5;
+.drink__title {
+  height: 10%;
+  width: 60%;
+  background-color: yellow;
+}
+.drink__title h1 {
+  margin: 0px;
+  color: black;
+  text-align: center;
+}
+.card-container {
+  height: 60vh;
   width: 100%;
-  background: chocolate;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  overflow-y: scroll;
+}
+.drink__card {
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 23%;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.drink__name {
+}
+.drink__image {
+  height: 80%;
+  width: 100%;
+  border-radius: 20px;
+}
+.drink__image img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+
+  object-position: center;
+}
+.drink--button {
+  background-color: darkorange;
   color: white;
-  font-weight: bold;
 }
 @media screen and (max-width: 900px) {
-  .drink {
-    font-size: 10px;
-  }
-  .drink__title {
-    height: 10%;
-    margin-top: 14%;
-  }
-  .card-container {
-    display: grid;
-    grid-template-rows: repeat(2, 50%);
-    grid-template-columns: repeat(2, 50%);
-    margin: 0px;
-    justify-content: center;
-    align-content: center;
-  }
   .drink__card {
-    width: 100%;
+    height: 20vh;
+    width: 30%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  .drink__image img {
+    object-fit: cover;
   }
 }

@@ -3,21 +3,20 @@ import { makeStyles } from "@material-ui/core/styles";
 const loginStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
-    marginTop: 80,
-    marginBottom: 10,
   },
   contentAll: {
     width: "100%",
-    maxWidth: 900,
+    height: "100%",
     margin: "auto",
     position: "relative",
   },
+
   backBox: {
     width: "100%",
-    height: 500,
+    height: "100vh",
     padding: "30px 20px",
     display: "flex",
-    justifyContent: "space-around",
+    justifyContent: "space-evenly",
     alignItems: "center",
     backdropFilter: "blur(10px)",
     color: "white",
@@ -71,11 +70,11 @@ const loginStyles = makeStyles((theme) => ({
   },
   inputLogin: {
     width: "80%",
+    color: "white !important",
     marginTop: 15,
     border: "none",
     fontSize: 16,
     letterSpacing: 0.15,
-    border: "none",
     outline: "none",
     fontFamily: "Montserrat, sans-serif",
     backgroundColor: "#ecf0f3",
@@ -143,7 +142,7 @@ const loginStyles = makeStyles((theme) => ({
     maxWidth: 460,
     position: "relative",
     top: "-420px",
-    left: "10px",
+    left: "200px",
   },
   closeRegister: {
     display: "flex",
@@ -153,7 +152,7 @@ const loginStyles = makeStyles((theme) => ({
     maxWidth: 460,
     position: "relative",
     top: "-400px",
-    left: "410px",
+    left: "710px",
   },
   boxOpen: {
     opacity: 0,

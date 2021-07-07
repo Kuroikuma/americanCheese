@@ -30,3 +30,11 @@
 .active {
   background: tomato;
 }
+@media screen and (max-width: 800px) {
+  .menu-container {
+    width: 100vw;
+  }
+  .menu__items {
+    font-size: 11px;
+  }
+}

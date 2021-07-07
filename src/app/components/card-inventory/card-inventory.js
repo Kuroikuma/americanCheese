@@ -7,7 +7,18 @@ import FormEditIngredients from "../form-edit-ingredients/form-edit-ingredients"
 
 export const CardInventory = (props) => {
   const [isOpen, openModal, closeModal] = useModal(false);
-
+  const {
+    Name,
+    Stok,
+    Category,
+    Price,
+    cost,
+    Description,
+    Image,
+    Sku,
+    Ingredients,
+    handlerProductDelete,
+  } = props;
   const ingredients = [
     {
       name: "chiltoma",
@@ -85,12 +96,12 @@ export const CardInventory = (props) => {
     console.log(product);
   };
 
-  const handleHidenEdit = (e) => {
+  const handlerHidenEdit = (e) => {
     console.log(e.target.checked);
-    if (e.target.checked == true) {
+    if (e.target.checked === true) {
       setIncrease(false);
     }
-    if (e.target.checked == false) {
+    if (e.target.checked === false) {
       setIncrease(true);
     }
   };
@@ -100,7 +111,10 @@ export const CardInventory = (props) => {
       <div className={increase ? "container-card increase" : "container-card"}>
         <div className="container-card__ContentsGrid">
           <div className="container-card__ContentsGrid__item delete">
-            <input type="checkbox" />
+            <input
+              onMouseUp={(e) => handlerProductDelete(e, sku)}
+              type="checkbox"
+            />
             <div className="container-card__ContentsGrid__img"></div>
           </div>
           <div className="container-card__ContentsGrid__item">
@@ -109,11 +123,17 @@ export const CardInventory = (props) => {
           <div className="container-card__ContentsGrid__item">
             <h4>{nombre}</h4>
           </div>
-          <div className="container-card__ContentsGrid__item">{categoria}</div>
-          <div className="container-card__ContentsGrid__item">{precio}</div>
-          <div className="container-card__ContentsGrid__item">{stock}</div>
           <div className="container-card__ContentsGrid__item">
-            <input onMouseUp={handleHidenEdit} type="checkbox" />
+            <p>{categoria}</p>
+          </div>
+          <div className="container-card__ContentsGrid__item">
+            <p>{precio}</p>
+          </div>
+          <div className="container-card__ContentsGrid__item">
+            <p>{stock}</p>
+          </div>
+          <div className="container-card__ContentsGrid__item">
+            <input onMouseUp={handlerHidenEdit} type="checkbox" />
           </div>
         </div>
         <div

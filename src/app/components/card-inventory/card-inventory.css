@@ -93,3 +93,11 @@
   border: transparent;
   cursor: pointer;
 }
+@media screen and (max-width: 900px) {
+  .container-card__ContentsGrid__item h4 {
+    font-size: 15px;
+  }
+  .container-card__ContentsGrid__item p {
+    font-size: 15px;
+  }
+}

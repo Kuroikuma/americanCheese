@@ -18,7 +18,7 @@ const MenuDrinkView = (props) => {
             {data.map((data) => (
               <div className="drink__card">
                 <div className="drink__image">
-                  <img className="drink_img" src={data.img} />
+                  <img src={data.img} alt="" />
                 </div>
                 <div className="drink__name"> {data.name}</div>
                 <Link to="/point-of-sale" className="drink__order">

@@ -12,7 +12,6 @@ const HeaderView = (props) => {
           <Link to="/home" className="logo">
             <img src={data.img} />
           </Link>
-
           <div className="top-nav">
             <div className="top-nav__component">
               <div className="button-nav">
@@ -31,7 +30,6 @@ const HeaderView = (props) => {
               </div>
             </div>
           </div>
-
           <div className="bottom-nav">
             <div className="nav-bootom__menu">
               <NavLink to="/menu" className="menu-item">

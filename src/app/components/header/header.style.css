@@ -88,19 +88,19 @@
 }
 @media screen and (max-width: 900px) {
   .HeaderContainer {
-    height: 12vh;
+    height: 8vh;
     font-size: 8px;
   }
   .top-nav__component {
     width: 100%;
   }
   .button-nav {
-    justify-content: flex-start;
+    justify-content: flex-end;
     width: 100%;
   }
   .logo {
-    left: 1%;
-    height: 60%;
+    left: 15%;
+    height: 80%;
     top: 1%;
   }
   .imgC {

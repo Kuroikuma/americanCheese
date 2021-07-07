@@ -43,7 +43,7 @@ const PointOfSaleView = (props) => {
                   >
                     <div className="product">
                       <div className="product__image">
-                        <img src={ImageUrl + data.imagen} />
+                        <img src={ImageUrl + data.imagen} alt="" />
                         <p>{data.producto}</p>
                       </div>
                     </div>

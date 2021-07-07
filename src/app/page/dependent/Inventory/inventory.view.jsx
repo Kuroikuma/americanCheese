@@ -7,7 +7,7 @@ import { CardSoldOut } from "../../../components/card-sold-out/card-sold-out";
 import "./inventory.style.css";
 
 const InventoryView = (props) => {
-  const { isOpen, openModal, closeModal } = props;
+  const { isOpen, openModal, closeModal, handlerProductDelete } = props;
   return (
     <>
       <div className="Container">
@@ -60,8 +60,8 @@ const InventoryView = (props) => {
                 <h4></h4>
               </div>
             </div>
-            <CardInventory />
-            <CardInventory />
+            <CardInventory handlerProductDelete={handlerProductDelete} />
+            <CardInventory handlerProductDelete={handlerProductDelete} />
             <div className="Spacing"></div>
 
             <div className="Container__Inventory__Contents__delete">

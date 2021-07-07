@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import "./form-add-product.style.css";
 import Texfield from "../textfield/texfield";
 import FormAddIngredientPrduct from "../form-add-ingredient_product/form-add-ingredient_product";
-
+import { fetchProduct } from "../../../services/services-product";
 const FormAddProduct = () => {
   const ingredients = [
     {
@@ -19,16 +19,6 @@ const FormAddProduct = () => {
   const [descripcion, setDescripcion] = useState();
   const [imagen, setImagen] = useState();
   const [ingredientsList, setIngredientsList] = useState(ingredients);
-  const product = {
-    nombre,
-    stok,
-    categoria,
-    precio,
-    costo,
-    descripcion,
-    imagen,
-    ingredientsList,
-  };
 
   const handlerProductChange = (e) => {
     const { name, value } = e.target;
@@ -60,9 +50,20 @@ const FormAddProduct = () => {
         break;
     }
   };
-  const handlerSaveProduct = () => {
-    console.log(product);
+  const product = {
+    IdCategoria: parseInt(categoria),
+    nombre,
+    precio: parseFloat(precio),
+    tamaño: parseFloat(stok),
+    imagen,
+    crearProducto: ingredientsList,
   };
+
+  const handlerSaveProduct = () => {
+    fetchProduct.postProduct(product);
+    console.log("delete");
+  };
+
   return (
     <>
       <div className="FormAddProduct__container">
