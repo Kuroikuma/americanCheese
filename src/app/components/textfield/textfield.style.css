@@ -1,0 +1,43 @@
+.texfield {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.label {
+  transform: scale(1);
+  transition-duration: 0.3s;
+  position: absolute;
+  top: 8px;
+
+  pointer-events: none;
+}
+.label.full {
+  display: none;
+  transition-property: display;
+  transition-duration: 0.3s;
+}
+.label.focu {
+  transform: scale(0.75);
+  transition-duration: 0.3s;
+  top: -11px;
+  background-color: white;
+}
+.input {
+  height: 100%;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid orange;
+  outline-color: transparent;
+  transition-property: outline-color;
+  transition-duration: 0.3s;
+  font-size: 1.2rem;
+}
+
+.input.focu {
+  box-shadow: none;
+  border: none;
+  outline-color: orange;
+}

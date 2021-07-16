@@ -1,0 +1,78 @@
+.Combos {
+  width: 100vw;
+  min-height: 100vh;
+  height: auto;
+  background-color: #f97801;
+}
+.cards-combo {
+  display: flex;
+  flex-wrap: wrap;
+}
+.combos-tittle {
+  text-align: center;
+  color: white;
+}
+
+.combos-card {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10%;
+  margin-top: 0px;
+  align-items: center;
+  justify-content: start;
+}
+.image {
+  max-height: 70%;
+  min-height: 50%;
+  display: flex;
+  justify-content: center;
+}
+.image img {
+  height: 100%;
+  object-fit: cover;
+  clip-path: circle(69%);
+}
+.combos-card p {
+  text-align: center;
+  color: white;
+}
+.BMore {
+  height: 30px;
+  color: white;
+  background-color: #05ba37;
+}
+.combos-description {
+  height: auto;
+  min-width: 10%;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  margin-top: 8%;
+  margin-left: 29%;
+  background: rgba(56, 150, 237, 1);
+  color: white;
+  border-radius: 10px;
+  z-index: 500;
+}
+.combos-description-hidden {
+  height: auto;
+  width: auto;
+  position: absolute;
+  opacity: 0;
+  margin-top: 8%;
+  margin-left: 50%;
+  background: #3b4348;
+  border-radius: 10px;
+}
+@media screen and (max-width: 900px) {
+  .combos-tittle {
+  }
+  .image > img {
+  }
+  .Combos {
+  }
+  .info {
+  }
+}

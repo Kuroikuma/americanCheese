@@ -1,0 +1,40 @@
+.menu-container {
+  height: 8vh;
+  width: 70vw;
+  display: flex;
+  align-items: center;
+  margin-right: auto;
+  margin-left: auto;
+}
+.menu-bar {
+  height: 70%;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 100%;
+  grid-template-columns: repeat(7, 11%);
+  justify-content: space-evenly;
+  align-items: center;
+}
+.menu__items {
+  height: 100%;
+  background: rgb(255, 255, 255);
+  border-radius: 10px;
+  border: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.menu__items:hover {
+  background: tomato;
+}
+.active {
+  background: tomato;
+}
+@media screen and (max-width: 800px) {
+  .menu-container {
+    width: 100vw;
+  }
+  .menu__items {
+    font-size: 11px;
+  }
+}

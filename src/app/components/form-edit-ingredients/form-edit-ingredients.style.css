@@ -1,0 +1,34 @@
+.FormEditIngredients__container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.FormEditIngredients__container__title{
+  margin: 0px;
+}
+.FormEditIngredients__container_item {
+  height: 10%;
+  width: 90%;
+  margin: 0px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+}
+.FormEditIngredients__container_item__name{
+  height: 60%;
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.FormEditIngredients__container_item__amout{
+  height: 60%;
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

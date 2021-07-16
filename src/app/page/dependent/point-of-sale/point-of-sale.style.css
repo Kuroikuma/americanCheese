@@ -1,0 +1,163 @@
+.container-sucursal {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+}
+.sucursal__bar {
+  height: 10%;
+  width: 100%;
+  background-color: chocolate;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.bar__sucursal {
+  height: 80%;
+  width: 20%;
+  background: deeppink;
+}
+.bar__date {
+  height: 80%;
+  width: 20%;
+  background: darkgrey;
+}
+.bar__search {
+  height: 80%;
+  width: 20%;
+  background: darkslategray;
+}
+.bar__dependent {
+  height: 80%;
+  width: 20%;
+  background: deepskyblue;
+}
+.sucursal__data {
+  height: 70%;
+  width: 100%;
+  background: cyan;
+  display: flex;
+}
+.data__textArea {
+  height: 100%;
+  width: 80%;
+  background: chartreuse;
+}
+.textArea__bar {
+  height: 10%;
+  width: 100%;
+  background-color: darkorange;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.vacio {
+  height: 80%;
+  width: 12%;
+  background-color: darkred;
+}
+.textArea__name {
+  height: 80%;
+  width: 12%;
+  background-color: darkred;
+}
+.textArea__price {
+  height: 80%;
+  width: 12%;
+  background-color: darkred;
+}
+.textArea__amount {
+  height: 80%;
+  width: 12%;
+  background-color: darkred;
+}
+.textArea__tax {
+  height: 80%;
+  width: 12%;
+  background-color: darkred;
+}
+.textArea__enter {
+  height: 80%;
+  width: 12%;
+  background-color: darkred;
+}
+.textArea__change {
+  height: 80%;
+  width: 12%;
+  background-color: darkred;
+}
+
+.data__buttom {
+  height: 100%;
+  width: 20%;
+  background: darkred;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.buttom__report {
+  height: 25%;
+  width: 70%;
+  background: deeppink;
+}
+.buttom__save {
+  height: 25%;
+  width: 70%;
+  background: deeppink;
+}
+.buttom__cancel {
+  height: 25%;
+  width: 70%;
+  background: deeppink;
+}
+.sucursal__footer {
+  height: 20%;
+  width: 100%;
+  background: cadetblue;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.footer__buttom {
+  height: 80%;
+  width: 50%;
+  background: darkblue;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.buttom__orders {
+  height: 80%;
+  width: 20%;
+  background: chartreuse;
+}
+.buttom__Inventory {
+  height: 80%;
+  width: 20%;
+  background: chartreuse;
+}
+.buttom__managet {
+  height: 80%;
+  width: 20%;
+  background: chartreuse;
+}
+.footer__pay {
+  height: 80%;
+  width: 30%;
+  background: darkgoldenrod;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.pay__summation {
+  height: 80%;
+  width: 60%;
+  background: darkblue;
+}
+.pay__total {
+  height: 80%;
+  width: 30%;
+  background: darkgreen;
+}
