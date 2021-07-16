@@ -1,8 +1,23 @@
 import axios from "axios";
 const apiUrl = "https://localhost:44323/api/producto";
 
+export const ServicesCategoryProduct=(id)=> {
+  const baseUrl = `${apiUrl}/Seleccionar/${id}`;
+  console.log(baseUrl);
+  return fetch(baseUrl)
+    .then((res) => res.json())
+    .then((response) => {
+      const data = ([] = [...response]);
+      console.log(data);
+      return data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
 export const getProduct = () => {
-  const baseUrl = `${apiUrl}/producto`;
+  const baseUrl = apiUrl;
   return fetch(baseUrl)
     .then((res) => res.json())
     .then((response) => {
@@ -50,7 +65,7 @@ export async function postProduct(product) {
   return response.json();*/
 }
 export async function putProduct(product = {}, ID) {
-  const baseUrl = `${apiUrl}/producto/${ID}`;
+  const baseUrl = `${apiUrl}/${ID}`;
   const response = await fetch(baseUrl, {
     method: "PUT",
     mode: "cors",
@@ -66,7 +81,7 @@ export async function putProduct(product = {}, ID) {
   return response.json();
 }
 export async function deleteProduct(ID) {
-  const baseUrl = `${apiUrl}/producto/${ID}`;
+  const baseUrl = `${apiUrl}/${ID}`;
   const response = await fetch(baseUrl, {
     method: "DELETE",
   });

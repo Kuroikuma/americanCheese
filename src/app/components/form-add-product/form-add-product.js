@@ -165,7 +165,6 @@ const FormAddProduct = () => {
               ingredientsList={ingredientsList}
               setIngredientsList={setIngredientsList}
             />
-          
           }
           
         </Suspense>

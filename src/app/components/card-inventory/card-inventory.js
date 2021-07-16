@@ -8,8 +8,8 @@ import FormEditIngredients from "../form-edit-ingredients/form-edit-ingredients"
 export const CardInventory = (props) => {
   const [isOpen, openModal, closeModal] = useModal(false);
   const {
-    Name,
-    Stok,
+    Nombre,
+    Stock,
     Category,
     Price,
     cost,
