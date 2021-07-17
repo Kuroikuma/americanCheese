@@ -1,34 +1,39 @@
-import { React, useState } from "react";
+import React, { useState, Suspense, lazy } from "react";
 import "./form-add-product.style.css";
 import Texfield from "../textfield/texfield";
-import FormAddIngredientPrduct from "../form-add-ingredient_product/form-add-ingredient_product";
 import { fetchProduct } from "../../../services/services-product";
+import { fetchIngredient } from "../../../services/services-ingredient";
+const FormAddIngredientPrduct = lazy(() =>
+  import("../form-add-ingredient_product/form-add-ingredient_product")
+);
 const FormAddProduct = () => {
   const ingredients = [
     {
-      Ingredient: "",
-      Amount: "",
+      IngredienteID: "",
+      CantidadIngrediente: "",
+      PrecioIngrediente: "",
     },
   ];
 
   const [nombre, setNombre] = useState();
-  const [stok, setStok] = useState();
+  const [isStock, setIsStock] = useState();
+  const [stock, setStok] = useState();
+  const [tamaño, setTamaño] = useState();
   const [categoria, setCategoria] = useState();
   const [precio, setPrecio] = useState();
-  const [costo, setCosto] = useState();
   const [descripcion, setDescripcion] = useState();
   const [imagen, setImagen] = useState();
-  const [ingredientsList, setIngredientsList] = useState({
-    IdIngrediente: "",
-    CantidadIngrediente: "",
-    PrecioIngrediente: "",
-  });
+  const [ingredientsList, setIngredientsList] = useState(ingredients);
 
   const handlerProductChange = (e) => {
     const { name, value } = e.target;
     switch (name) {
       case "Nombre":
         setNombre(value);
+        console.log(nombre);
+        break;
+      case "IsStock":
+        setIsStock(value);
         console.log(nombre);
         break;
       case "Stock":
@@ -41,31 +46,47 @@ const FormAddProduct = () => {
       case "Precio":
         setPrecio(value);
         break;
-      case "Costo":
-        setCosto(value);
-        break;
       case "Descripcion":
         setDescripcion(value);
         break;
       case "Imagen":
         setImagen(value);
         break;
+      case "Tamaño":
+        setTamaño(value);
+        break;
       default:
         break;
     }
   };
   const product = {
-    IdCategoria: parseInt(categoria),
+    CategoriaID: categoria,
     nombre,
     precio: parseFloat(precio),
-    tamaño: parseFloat(stok),
+    tamaño: parseInt(tamaño),
     imagen,
+    stock: parseFloat(stock),
     crearProducto: ingredientsList,
   };
 
   const handlerSaveProduct = () => {
+    product.crearProducto.IdIngrediente.forEach((Ingredient) => {
+      fetchIngredient
+        .getSelectIngredientName(Ingredient)
+        .then((response) => (Ingredient = response.IdIngrediente));
+    });
     fetchProduct.postProduct(product);
     console.log("delete");
+  };
+
+  const handlerIsStock = (e) => {
+    console.log(e.target.checked);
+    if (e.target.checked === true) {
+      setIsStock(false);
+    }
+    if (e.target.checked === false) {
+      setIsStock(true);
+    }
   };
 
   return (
@@ -75,6 +96,14 @@ const FormAddProduct = () => {
           <h1> Agregar Producto</h1>
         </div>
         <div className="FormAddProduct__container_item">
+          <input
+            onMouseUp={handlerIsStock}
+            name={"IsStock"}
+            placeHolder={"IsStock"}
+            type={"checkbox"}
+          />
+        </div>
+        <div className="FormAddProduct__container_item">
           <Texfield
             handlerChange={handlerProductChange}
             name={"Nombre"}
@@ -82,6 +111,7 @@ const FormAddProduct = () => {
             type={"text"}
           />
         </div>
+
         <div className="FormAddProduct__container_item">
           <Texfield
             handlerChange={handlerProductChange}
@@ -109,8 +139,8 @@ const FormAddProduct = () => {
         <div className="FormAddProduct__container_item">
           <Texfield
             handlerChange={handlerProductChange}
-            name={"Costo"}
-            placeHolder={"Costo"}
+            name={"Tamaño"}
+            placeHolder={"Tamaño"}
             type={"number"}
           />
         </div>
@@ -130,10 +160,15 @@ const FormAddProduct = () => {
             type={"text"}
           />
         </div>
-        <FormAddIngredientPrduct
-          ingredientsList={ingredientsList}
-          setIngredientsList={setIngredientsList}
-        />
+        <Suspense fallback={"Estoy cargando"}>
+          {isStock ? (
+            <FormAddIngredientPrduct
+              ingredientsList={ingredientsList}
+              setIngredientsList={setIngredientsList}
+            />
+          ) : null}
+        </Suspense>
+
         <button
           className="FormAddProduct__container--saveProduct"
           onClick={handlerSaveProduct}
