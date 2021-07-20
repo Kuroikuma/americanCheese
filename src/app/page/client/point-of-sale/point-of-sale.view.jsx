@@ -4,14 +4,22 @@ import "./point-of-sale.style.css";
 import { Link } from "react-router-dom";
 
 const PointOfSaleView = (props) => {
-  const { data, Sale, handleID, handleFdetail } = props;
+  const {
+    data,
+    Sale,
+    total,
+    handleID,
+    handleFdetail,
+    handlerOrder,
+    handlerClearCurrendOrder,
+  } = props;
   const ImageUrl = process.env.REACT_APP_URL_IMAGE || "https://localhost:44389";
   return (
     <>
       <div className="container-order">
         <div className="bar__order">
           <Link to="/home">
-            <img src={image} />
+            <img alt="" src={image} />
           </Link>
         </div>
         <div className="data__order">
@@ -68,7 +76,7 @@ const PointOfSaleView = (props) => {
             <div className="products__currentOrder">
               {Sale.map((sale) => (
                 <div className="saleItems__products">
-                  <img src={sale.image} />
+                  <img alt="" src={sale.image} />
                   <p>{sale.title}</p>
                   <p>x{sale.amount}</p>
                   <p>C${sale.price}</p>
@@ -78,11 +86,18 @@ const PointOfSaleView = (props) => {
             <div className="currentOrden__transaction">
               <div className="grantTotal__transaction">
                 <h4 className="title__grantTotal">Grant Total</h4>
-                <p className="detail__grantTotal">C$300</p>
+                <p className="detail__grantTotal">{`C$ ${total} `}</p>
               </div>
               <div className="transaction">
-                <button className="clear__transaction">Clear all</button>
-                <button className="check__transaction">Check out</button>
+                <button
+                  onClick={handlerClearCurrendOrder}
+                  className="clear__transaction"
+                >
+                  Clear all
+                </button>
+                <button onClick={handlerOrder} className="check__transaction">
+                  Ordenar
+                </button>
               </div>
             </div>
           </div>

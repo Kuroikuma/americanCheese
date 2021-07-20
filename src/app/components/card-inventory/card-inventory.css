@@ -21,6 +21,7 @@
 }
 .container-card {
   height: 10vh;
+  width: 100%;
   transition-property: height;
   transition-duration: 1s;
   overflow: hidden;
@@ -64,12 +65,21 @@
   display: grid;
   grid-template-columns: 1fr 1fr 2fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 10vh;
+
   gap: 10px;
 }
+
 .container-card__ContentsGrid__item {
   display: flex;
   justify-content: left;
   align-items: center;
+}
+.container-card__ContentsGrid__item.Sku {
+  height: 65px;
+  width: 104px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 .delete {
   display: flex;

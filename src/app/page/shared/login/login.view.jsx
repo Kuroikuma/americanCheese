@@ -12,10 +12,17 @@ import { loginStyles } from "./login.styles";
 const LoginView = (props) => {
   const classes = loginStyles();
   const {
-    contentLoginForm,
-    contentRegisterForm,
+    state,
     handleLoginViewOpen,
     handleRegisterViewOpen,
+    handleSubmitRegister,
+    handleChange,
+    validateLoginFields,
+  } = props;
+
+  const {
+    contentLoginForm,
+    contentRegisterForm,
     firstName,
     lastName,
     phone,
@@ -32,10 +39,7 @@ const LoginView = (props) => {
     passwordLoginPatient,
     emailLoginError,
     passwordLoginError,
-    handleSubmitRegister,
-    handleChange,
-  } = props;
-
+  } = state;
   return (
     <>
       <div className={classes.root}>
@@ -137,7 +141,22 @@ const LoginView = (props) => {
                   }}
                 />
                 <Grid className={classes.centerButton}>
+                  <select
+                    className={classes.buttonLogin}
+                    style={{
+                      backgroundColor: "#46A2FD",
+                      borderColor: "#fff",
+                      color: "#fff",
+                      outline: "none",
+                    }}
+                    name=""
+                    id=""
+                  >
+                    <option value="Cliente">Cliente</option>
+                    <option value="Empleado">Empleado</option>
+                  </select>
                   <Button
+                    onClick={validateLoginFields}
                     variant="outlined"
                     className={classes.buttonLogin}
                     style={{
@@ -287,6 +306,20 @@ const LoginView = (props) => {
                     />
                   </Grid>
                   <div className={classes.centerButton}>
+                    <select
+                      className={classes.buttonLogin}
+                      style={{
+                        backgroundColor: "#46A2FD",
+                        borderColor: "#fff",
+                        color: "#fff",
+                        outline: "none",
+                      }}
+                      name=""
+                      id=""
+                    >
+                      <option value="Cliente">Cliente</option>
+                      <option value="Empleado">Empleado</option>
+                    </select>
                     <Button
                       variant="outlined"
                       color="Default"

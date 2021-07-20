@@ -13,13 +13,16 @@ const OrderControl = lazy(() =>
 const SalesReport = lazy(() =>
   import("../page/dependent/sales-report/sales-report")
 );
-
+const divStyle = {
+  height: "100vh",
+  width: "100vw",
+};
 function DependentRoutes() {
   return (
     <BrowserRouter>
       <Suspense
         fallback={
-          <div className="logo">
+          <div style={divStyle} className="logo">
             <img src={image} alt="" />
           </div>
         }

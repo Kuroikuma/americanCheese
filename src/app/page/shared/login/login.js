@@ -1,197 +1,118 @@
-import React from "react";
-import LoginView from './login.view';
+import React, { useState, useContext } from "react";
+import LoginView from "./login.view";
+import UserContext from "../../../context/UserContext";
 
-
-const initialState = {
-  contentLoginForm: true,
-  contentRegisterForm: false,
-  firstName: "",
-  lastName: "",
-  phone:"",
-  gender:"",
-  email: "",
-  password: "",
-  firstNameError: false,
-  lastNameError: false,
-  phoneError: false,
-  genderError:false,
-  emailError: 0,
-  passwordError: 0,
-  emailLoginPatient: "",
-  passwordLoginPatient: "",
-  emailLoginError: 0,
-  passwordLoginError: 0,
-  loginError: false,
-  isLogging: false
-};
-
-class login extends React.Component{
-  constructor(props) {
-    super(props);
-    this.state=initialState;
-  }
-
-  handleChange = (e) => {
+const Login = () => {
+  const userContext = useContext(UserContext);
+  console.log(userContext);
+  const [state, setState] = useState({
+    contentLoginForm: true,
+    contentRegisterForm: false,
+    firstName: "",
+    lastName: "",
+    phone: "",
+    gender: "",
+    email: "",
+    password: "",
+    firstNameError: false,
+    lastNameError: false,
+    phoneError: false,
+    genderError: false,
+    emailError: 0,
+    passwordError: 0,
+    emailLoginPatient: "",
+    passwordLoginPatient: "",
+    emailLoginError: 0,
+    passwordLoginError: 0,
+    loginError: false,
+    isLogging: false,
+  });
+  const handleChange = (e) => {
     const { name, value } = e.target;
-    this.setState({ [name]: value });
+    setState({ ...state, [name]: value });
+    console.log(name, value);
   };
 
-  handleLoginViewOpen = () => {
-    this.setState({
-      contentLoginForm: true,
-      contentRegisterForm: false,
-    });
-  }
+  const handleLoginViewOpen = () => {
+    setState({ ...state, contentLoginForm: true, contentRegisterForm: false });
+  };
 
-  handleRegisterViewOpen = () => {
-    this.setState({
-      contentLoginForm: false,
-      contentRegisterForm: true,
-    });
-  }
+  const handleRegisterViewOpen = () => {
+    setState({ ...state, contentLoginForm: false, contentRegisterForm: true });
+  };
 
-  validateLoginFields = () => {
-    const {
-      emailLoginPatient,
-      passwordLoginPatient
-    } = this.state;
+  const validateLoginFields = () => {
+    let { emailLoginPatient, passwordLoginPatient } = state;
+    console.log(emailLoginPatient, passwordLoginPatient);
+    if (emailLoginPatient === "") setState({ ...state, emailLoginError: 1 });
+    else if (
+      !emailLoginPatient.includes("@") ||
+      !emailLoginPatient.includes(".")
+    )
+      setState({ ...state, emailLoginError: 2 });
+    else setState({ ...state, emailLoginError: 0 });
 
-    let emailLoginError = 0;
-    let passwordLoginError = 0;
+    if (passwordLoginPatient === "")
+      setState({ ...state, passwordLoginError: 1 });
+    else if (passwordLoginPatient.length < 6)
+      setState({ ...state, passwordLoginError: 2 });
+    else setState({ ...state, passwordLoginError: 0 });
+  };
 
-    if (emailLoginPatient === '') emailLoginError = 1;
-    else if (!emailLoginPatient.includes('@') || !emailLoginPatient.includes('.')) emailLoginError = 2;
-    else emailLoginError = 0;
+  const validateRegisterFields = () => {
+    const { firstName, lastName, phone, gender, email, password } = state;
 
-    if (passwordLoginPatient === '') passwordLoginError = 1;
-    else if (passwordLoginPatient.length < 6) passwordLoginError = 2;
-    else passwordLoginError = 0;
+    let band = true;
+    if (firstName === "") setState({ ...state, firstNameError: true });
+    else setState({ ...state, firstNameError: false });
+    band = false;
 
-    if (emailLoginError === 0 && passwordLoginError === 0) {
-      this.setState({emailLoginError, passwordLoginError});
+    if (lastName === "") setState({ ...state, lastNameError: true });
+    else {
+      setState({ ...state, lastNameError: false });
+      band = false;
+    }
+
+    if (phone === "") setState({ ...state, phoneError: true });
+    else setState({ ...state, phoneError: false });
+    band = false;
+
+    if (gender === "") setState({ ...state, genderError: true });
+    else setState({ ...state, genderError: false });
+    band = false;
+
+    if (email === "") setState({ ...state, emailError: 1 });
+    else if (!email.includes("@") || !email.includes("."))
+      setState({ ...state, emailError: 2 });
+    else setState({ ...state, emailError: 0 });
+    band = false;
+
+    if (password === "") setState({ ...state, passwordError: 1 });
+    else if (password.length < 6) setState({ ...state, passwordError: 2 });
+    else setState({ ...state, passwordError: 0 });
+    band = false;
+
+    if (band) {
+      return true;
+    } else {
       return false;
     }
-    else {
-      this.setState({emailLoginError, passwordLoginError});
-      return true;
-    }
-  }
+  };
 
-  validateRegisterFields = () => {
-    const {
-      firstName,
-      lastName,
-      phone,
-      gender,
-      email,
-      password,
-    } = this.state;
+  const handleSubmitRegister = () => {
+    console.log(validateRegisterFields());
+  };
 
-    let firstNameError = false;
-    let lastNameError = false;
-    let phoneError = false;
-    let genderError = false;
-    let emailError = 0;
-    let passwordError = 0;
+  return (
+    <LoginView
+      handleLoginViewOpen={handleLoginViewOpen}
+      handleRegisterViewOpen={handleRegisterViewOpen}
+      handleChange={handleChange}
+      state={state}
+      handleSubmitRegister={handleSubmitRegister}
+      validateLoginFields={validateLoginFields}
+    />
+  );
+};
 
-    if (firstName === '') firstNameError = true;
-    else firstNameError = false;
-
-    if (lastName === '') lastNameError = true;
-    else lastNameError = false;
-
-    if (phone === '') phoneError = true;
-    else phoneError = false;
-
-    if (gender === '') genderError = true;
-    else genderError = false;
-
-    if (email === '') emailError = 1;
-    else if (!email.includes('@') || !email.includes('.')) emailError = 2;
-    else emailError = 0;
-
-    if (password === '') passwordError = 1;
-    else if (password.length < 6) passwordError = 2;
-    else passwordError = 0;
-
-    if (firstNameError && lastNameError && phoneError &&
-      emailError === 0 && passwordError === 0 ) {
-      this.setState({
-        firstNameError,
-        lastNameError,
-        phoneError,
-        genderError,
-        emailError,
-        passwordError
-      });
-      return false;
-    }
-    else {
-      this.setState({
-        firstNameError,
-        lastNameError,
-        phoneError,
-        emailError,
-        genderError,
-        passwordError
-      });
-      return true;
-    }
-  }
-
-  handleSubmitRegister = () => {
-    this.validateRegisterFields();
-  }
-
-  render(){
-    const {
-      contentLoginForm,
-      contentRegisterForm,
-      firstName,
-      lastName,
-      phone,
-      gender,
-      email,
-      password,
-      firstNameError,
-      lastNameError,
-      phoneError,
-      genderError,
-      emailError,
-      passwordError,
-      emailLoginPatient,
-      passwordLoginPatient,
-      emailLoginError,
-      passwordLoginError
-    }= this.state;
-
-    return(
-      <LoginView
-        contentLoginForm={contentLoginForm}
-        contentRegisterForm={contentRegisterForm}
-        handleLoginViewOpen={this.handleLoginViewOpen}
-        handleRegisterViewOpen={this.handleRegisterViewOpen}
-        handleChange={this.handleChange}
-        firstName={firstName}
-        lastName={lastName}
-        phone={phone}
-        email={email}
-        gender={gender}
-        password={password}
-        firstNameError={firstNameError}
-        lastNameError={lastNameError}
-        phoneError={phoneError}
-        genderError={genderError}
-        emailError={emailError}
-        passwordError={passwordError}
-        handleSubmitRegister={this.handleSubmitRegister}
-        emailLoginError={emailLoginError}
-        passwordLoginError={passwordLoginError}
-        emailLoginPatient={emailLoginPatient}
-        passwordLoginPatient={passwordLoginPatient}   
-      />
-    );
-  }
-}
-
-export default login;
+export default Login;

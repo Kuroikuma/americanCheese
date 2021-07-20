@@ -1,11 +1,14 @@
-import React, { useState, Suspense, lazy } from "react";
+import React, { useState, Suspense, lazy, useContext } from "react";
 import image from "../../assets/image/logo.png";
+import UserContext from "../context/UserContext";
 
 const ClientRoutes = lazy(() => import("./client.routes"));
 const DependentRoutes = lazy(() => import("./dependent.routes"));
-
+const Login = lazy(() => import("../page/shared/login/login"));
 function IndexRoutes() {
-  const [Current, SetCurrent] = useState(1);
+  const { Current, SetCurrent } = useContext(UserContext);
+  console.log(Current, SetCurrent);
+
   const [Details, SetDetails] = useState("ClientRoutes");
 
   const HandleCurrent = () => {
@@ -17,11 +20,15 @@ function IndexRoutes() {
       SetDetails("ClientRoutes");
     }
   };
+  const divStyle = {
+    height: "100vh",
+    width: "100vw",
+  };
   return (
     <Suspense
       fallback={
         <div className="logo">
-          <img src={image} />
+          <img style={divStyle} alt="" src={image} />
         </div>
       }
     >
@@ -31,7 +38,7 @@ function IndexRoutes() {
       ) : Current === 2 ? (
         <DependentRoutes />
       ) : (
-        <div></div>
+        <Login />
       )}
     </Suspense>
   );

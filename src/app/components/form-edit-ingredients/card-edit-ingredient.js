@@ -6,10 +6,10 @@ const CardEditIngredient = (props) => {
   const handlerInputIngredient = (e) => {
     const { name, value } = e.target;
     if (name === "Ingrediente") {
-      ingredient.name = value;
+      ingredient.ingrediente = value;
     }
     if (name === "Cantidad") {
-      ingredient.Amount = value;
+      ingredient.cantidad = value;
       console.log(value);
     }
   };
@@ -19,7 +19,7 @@ const CardEditIngredient = (props) => {
         <Texfield
           handlerChange={handlerInputIngredient}
           name={"Ingrediente"}
-          placeHolder={ingredient.name}
+          placeHolder={"Ingrediente"}
           type={"text"}
         />
       </div>

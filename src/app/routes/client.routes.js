@@ -1,6 +1,7 @@
 import React, { Suspense, lazy } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import image from "../../assets/image/logo.png";
+import { Spinner } from "../components/spinner/spinner";
 //import Home from "../page/client/home/home";
 const Customization = lazy(() =>
   import("../page/client/customization/customization")
@@ -25,13 +26,17 @@ const Menu = lazy(() => import("../page/client/menu/menu"));
 const PointOfSale = lazy(() =>
   import("../page/client/point-of-sale/point-of-sale")
 );
+const divStyle = {
+  height: "100vh",
+  width: "100vw",
+};
 function ClientRoutes() {
   return (
     <BrowserRouter>
       <Suspense
         fallback={
           <div className="logo">
-            <img src={image} alt="" />
+            <img style={divStyle} src={image} alt="" />
           </div>
         }
       >
@@ -45,6 +50,7 @@ function ClientRoutes() {
           <Route exact path="/menu-pizza" component={MenuPizza} />
           <Route exact path="/menu-smoothie" component={MenuSmoothie} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/spinner" component={Spinner} />
           <Route exact path="/textfield" component={Textfield} />
 
           <Route component={Home} />

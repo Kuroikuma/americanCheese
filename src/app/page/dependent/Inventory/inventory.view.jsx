@@ -9,6 +9,7 @@ import "./inventory.style.css";
 const InventoryView = (props) => {
   const { isOpen, openModal, closeModal, handlerProductDelete, Producto } =
     props;
+  console.log(Producto);
   return (
     <>
       <div className="Container">
@@ -64,11 +65,14 @@ const InventoryView = (props) => {
             {Producto.map((producto) => (
               <CardInventory
                 Nombre={producto.producto}
-                Stock={producto.Stock}
-                Category={producto.Categoria}
-                Price={producto.Precio}
-                cost={producto.Costo}
-                Image={producto.Imagen}
+                Stock={producto.stock}
+                Category={producto.categoria}
+                categoriaID={producto.categoriaID}
+                Price={producto.precio}
+                Tamaño={producto.tamaño}
+                Image={producto.imagen}
+                Sku={producto.productoID}
+                Ingredients={producto.ingrediente}
                 handlerProductDelete={handlerProductDelete}
               />
             ))}
