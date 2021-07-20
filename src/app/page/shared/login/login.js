@@ -1,6 +1,8 @@
 import React, { useState, useContext } from "react";
 import LoginView from "./login.view";
 import UserContext from "../../../context/UserContext";
+import { fetchCliente } from "../../../../services/services.cliente";
+import { fetchEmpleado } from "../../../../services/services.empleado";
 
 const Login = () => {
   const userContext = useContext(UserContext);
@@ -27,10 +29,16 @@ const Login = () => {
     loginError: false,
     isLogging: false,
   });
+  const userType = ["Empleado", "Cliente"];
+  const [currentUser, setCurrentUser] = useState(userType[0]);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setState({ ...state, [name]: value });
     console.log(name, value);
+  };
+  const handleCurrent = (e) => {
+    setCurrentUser(e.target.value);
+    console.log(currentUser);
   };
 
   const handleLoginViewOpen = () => {
@@ -57,6 +65,31 @@ const Login = () => {
     else if (passwordLoginPatient.length < 6)
       setState({ ...state, passwordLoginError: 2 });
     else setState({ ...state, passwordLoginError: 0 });
+    if (currentUser === "Cliente") {
+      let correo = emailLoginPatient;
+      fetchCliente.getClienteByID(correo).then((response) => {
+        userContext.setUser(response);
+      });
+
+      if (userContext.user === undefined || userContext.user === null) {
+        userContext.SetCurrent(0);
+      } else {
+        userContext.SetCurrent(1);
+      }
+    }
+    if (currentUser === "Empleado") {
+      let correo = emailLoginPatient;
+      fetchEmpleado
+        .getEmpleadoByID(correo)
+        .then((response) => userContext.setUser(response));
+      if (userContext.user === undefined || userContext.user === null) {
+        userContext.SetCurrent(0);
+      } else {
+        userContext.SetCurrent(2);
+      }
+    }
+    console.log("user");
+    console.log(userContext.user);
   };
 
   const validateRegisterFields = () => {
@@ -111,6 +144,8 @@ const Login = () => {
       state={state}
       handleSubmitRegister={handleSubmitRegister}
       validateLoginFields={validateLoginFields}
+      handleCurrent={handleCurrent}
+      userType={userType}
     />
   );
 };

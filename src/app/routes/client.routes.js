@@ -20,7 +20,6 @@ const MenuPizza = lazy(() =>
 const MenuSmoothie = lazy(() =>
   import("../page/client/menu/menu-smoothie/menu-smoothie")
 );
-const Login = lazy(() => import("../page/shared/login/login"));
 const Home = lazy(() => import("../page/client/home/home"));
 const Menu = lazy(() => import("../page/client/menu/menu"));
 const PointOfSale = lazy(() =>
@@ -49,7 +48,6 @@ function ClientRoutes() {
           <Route exact path="/menu-drink" component={MenuDrink} />
           <Route exact path="/menu-pizza" component={MenuPizza} />
           <Route exact path="/menu-smoothie" component={MenuSmoothie} />
-          <Route exact path="/login" component={Login} />
           <Route exact path="/spinner" component={Spinner} />
           <Route exact path="/textfield" component={Textfield} />
 

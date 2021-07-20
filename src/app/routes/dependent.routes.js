@@ -28,12 +28,13 @@ function DependentRoutes() {
         }
       >
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" component={Inventory} />
+          <Route exact path="/home" component={Home} />
           <Route exact path="/point-of-sale" component={PointOfSale} />
           <Route exact path="/inventory" component={Inventory} />
           <Route exact path="/order-control" component={OrderControl} />
           <Route exact path="/sales-report" component={SalesReport} />
-          <Route component={Home} />
+          <Route component={Inventory} />
         </Switch>
       </Suspense>
     </BrowserRouter>

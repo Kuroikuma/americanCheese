@@ -18,6 +18,8 @@ const LoginView = (props) => {
     handleSubmitRegister,
     handleChange,
     validateLoginFields,
+    handleCurrent,
+    userType,
   } = props;
 
   const {
@@ -143,6 +145,7 @@ const LoginView = (props) => {
                 <Grid className={classes.centerButton}>
                   <select
                     className={classes.buttonLogin}
+                    onChange={handleCurrent}
                     style={{
                       backgroundColor: "#46A2FD",
                       borderColor: "#fff",
@@ -152,8 +155,9 @@ const LoginView = (props) => {
                     name=""
                     id=""
                   >
-                    <option value="Cliente">Cliente</option>
-                    <option value="Empleado">Empleado</option>
+                    {userType.map((item) => (
+                      <option>{item}</option>
+                    ))}
                   </select>
                   <Button
                     onClick={validateLoginFields}

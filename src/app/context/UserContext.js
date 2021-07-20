@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 const Context = React.createContext({});
 export const UserContextProvider = ({ children }) => {
-  const [user, setUser] = useState("Cliente");
-  const [Current, SetCurrent] = useState(1);
+  const [user, setUser] = useState();
+
+  const [Current, SetCurrent] = useState(0);
   return (
     <Context.Provider value={{ user, setUser, Current, SetCurrent }}>
       {children}

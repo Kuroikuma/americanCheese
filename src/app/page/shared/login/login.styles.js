@@ -13,7 +13,7 @@ const loginStyles = makeStyles((theme) => ({
 
   backBox: {
     width: "100%",
-    height: "100vh",
+    height: "89vh",
     padding: "30px 20px",
     display: "flex",
     justifyContent: "space-evenly",
