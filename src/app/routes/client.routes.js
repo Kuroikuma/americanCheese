@@ -1,6 +1,10 @@
 import React, { Suspense, lazy } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import image from "../../assets/image/logo.png";
+import { createRequire } from 'module';
+
+const require = createRequire(import.meta.url);
+
 //import Home from "../page/client/home/home";
 const Customization = lazy(() =>
   import("../page/client/customization/customization")
