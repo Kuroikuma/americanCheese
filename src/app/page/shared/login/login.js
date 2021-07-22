@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import LoginView from "./login.view";
 import UserContext from "../../../context/UserContext";
 import { fetchCliente } from "../../../../services/services.cliente";
@@ -6,6 +6,37 @@ import { fetchEmpleado } from "../../../../services/services.empleado";
 
 const Login = () => {
   const userContext = useContext(UserContext);
+  useEffect(() => {
+    function Cambio() {
+      if (currentUser === "SinLogin") {
+        userContext.SetCurrent(0);
+      }
+      if (currentUser === "Cliente") {
+        if (userContext.user === undefined || userContext.user === null) {
+          userContext.SetCurrent(0);
+        } else {
+          userContext.SetCurrent(1);
+        }
+      }
+      if (currentUser === "Empleado") {
+        if (userContext.user === undefined || userContext.user === null) {
+          userContext.SetCurrent(0);
+        } else {
+          userContext.SetCurrent(2);
+        }
+      }
+    }
+    Cambio();
+  }, [userContext.user]);
+
+  useEffect(() => {
+    userContext.setUser(JSON.stringify(localStorage.getItem("user")));
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("user", userContext.user);
+  }, [userContext.user]);
+
   console.log(userContext);
   const [state, setState] = useState({
     contentLoginForm: true,
@@ -29,7 +60,7 @@ const Login = () => {
     loginError: false,
     isLogging: false,
   });
-  const userType = ["Empleado", "Cliente"];
+  const userType = ["SinLogin", "Empleado", "Cliente"];
   const [currentUser, setCurrentUser] = useState(userType[0]);
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -37,8 +68,9 @@ const Login = () => {
     console.log(name, value);
   };
   const handleCurrent = (e) => {
-    setCurrentUser(e.target.value);
-    console.log(currentUser);
+    setCurrentUser(e.target.value, function () {
+      console.log(currentUser);
+    });
   };
 
   const handleLoginViewOpen = () => {
@@ -49,7 +81,7 @@ const Login = () => {
     setState({ ...state, contentLoginForm: false, contentRegisterForm: true });
   };
 
-  const validateLoginFields = () => {
+  const validateLoginFields = async () => {
     let { emailLoginPatient, passwordLoginPatient } = state;
     console.log(emailLoginPatient, passwordLoginPatient);
     if (emailLoginPatient === "") setState({ ...state, emailLoginError: 1 });
@@ -70,24 +102,14 @@ const Login = () => {
       fetchCliente.getClienteByID(correo).then((response) => {
         userContext.setUser(response);
       });
-
-      if (userContext.user === undefined || userContext.user === null) {
-        userContext.SetCurrent(0);
-      } else {
-        userContext.SetCurrent(1);
-      }
     }
     if (currentUser === "Empleado") {
       let correo = emailLoginPatient;
-      fetchEmpleado
-        .getEmpleadoByID(correo)
-        .then((response) => userContext.setUser(response));
-      if (userContext.user === undefined || userContext.user === null) {
-        userContext.SetCurrent(0);
-      } else {
-        userContext.SetCurrent(2);
-      }
+      fetchEmpleado.getEmpleadoByID(correo).then((response) => {
+        userContext.setUser(response);
+      });
     }
+
     console.log("user");
     console.log(userContext.user);
   };
