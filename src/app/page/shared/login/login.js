@@ -3,7 +3,8 @@ import LoginView from "./login.view";
 import UserContext from "../../../context/UserContext";
 import { fetchCliente } from "../../../../services/services.cliente";
 import { fetchEmpleado } from "../../../../services/services.empleado";
-
+import { fetchAdministrador } from "../../../../services/services.administrador";
+import { fetchRoot } from "../../../../services/services-root";
 const Login = () => {
   const userContext = useContext(UserContext);
   useEffect(() => {
@@ -125,10 +126,19 @@ const Login = () => {
         userContext.setUser(response);
       });
     }
+    if (currentUser === "Administrador") {
+      let correo = emailLoginPatient;
+      let contraseña = passwordLoginPatient;
+      fetchAdministrador
+        .getAdministradorByID(correo, contraseña)
+        .then((response) => {
+          userContext.setUser(response);
+        });
+    }
     if (currentUser === "Root") {
       let correo = emailLoginPatient;
       let contraseña = passwordLoginPatient;
-      fetchEmpleado.getEmpleadoByID(correo, contraseña).then((response) => {
+      fetchRoot.getRootByID(correo, contraseña).then((response) => {
         userContext.setUser(response);
       });
     }
