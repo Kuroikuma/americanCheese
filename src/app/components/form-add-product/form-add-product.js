@@ -1,7 +1,8 @@
-import { React, useState,Suspense, lazy } from "react";
+import { React, useState, Suspense, lazy } from "react";
 import "./form-add-product.style.css";
 import Texfield from "../textfield/texfield";
 import { fetchIngredient } from "../../../services/services-ingredient";
+import { ServicesGetNameCategory } from "../../../services/services-categoria";
 import { fetchProduct } from "../../../services/services-product";
 const FormAddIngredientPrduct = lazy(() =>
   import("../form-add-ingredient_product/form-add-ingredient_product")
@@ -9,8 +10,8 @@ const FormAddIngredientPrduct = lazy(() =>
 const FormAddProduct = () => {
   const ingredients = [
     {
-      IngredienteID: "",
-      CantidadIngrediente: "",
+      IngredienteID: null,
+      CantidadIngrediente: null,
     },
   ];
 
@@ -19,7 +20,7 @@ const FormAddProduct = () => {
   const [stok, setStok] = useState();
   const [categoria, setCategoria] = useState();
   const [precio, setPrecio] = useState();
-  const [isStock ,setIsStock]= useState(true);
+  const [isStock, setIsStock] = useState(true);
   const [descripcion, setDescripcion] = useState();
   const [imagen, setImagen] = useState();
   const [ingredientsList, setIngredientsList] = useState(ingredients);
@@ -31,7 +32,7 @@ const FormAddProduct = () => {
         setNombre(value);
         console.log(nombre);
         break;
-        case "isStock":
+      case "isStock":
         setIsStock(value);
         console.log(nombre);
         break;
@@ -39,7 +40,12 @@ const FormAddProduct = () => {
         setStok(value);
         break;
       case "Categoria":
-        setCategoria(value);
+        if (value === "Pizza") {
+          setCategoria("48C8C50D-5B40-45A0-9E85-77255F559ADE");
+        }
+        if (value === "Bebida") {
+          setCategoria("5860ac3e-2af3-40ef-b5be-c3ad92abbf75");
+        }
         console.log(categoria);
         break;
       case "Precio":
@@ -47,18 +53,19 @@ const FormAddProduct = () => {
         break;
       case "Descripcion":
         setDescripcion(value);
+
         break;
       case "Imagen":
         setImagen(value);
         break;
-        case "Tamaño":
-          setTamaño(value);
-          break;
+      case "Tamaño":
+        setTamaño(value);
+        break;
       default:
         break;
     }
   };
-  const product = {
+  /* const product = {
     CategoriaID: categoria,
     nombre,
     precio: parseFloat(precio),
@@ -66,17 +73,34 @@ const FormAddProduct = () => {
     stock: parseFloat(stok),
     imagen,
     isStock,
-    crearProductosNav: ingredientsList,
-  };
-
+    crearProductosNav: ingredientsList ? ingredientsList : undefined,
+  };*/
   const handlerSaveProduct = () => {
-   
-  /*  product.crearProductosNav.map((item)=>{
-      console.log("holamundo")
-      console.log(item)
-      fetchIngredient.getSelectIngredientName(item.IngredienteID).then((response)=>item.IngredienteID = response.IngredienteID)
-    })*/
-    fetchProduct.postProduct(product);
+    if (isStock === false) {
+      const product = {
+        CategoriaID: categoria,
+        nombre,
+        precio: parseFloat(precio),
+        tamaño: parseInt(tamaño),
+        stock: parseFloat(stok),
+        imagen,
+        isStock,
+        crearProductosNav: ingredientsList,
+      };
+      ServicesGetNameCategory("Pizza").then((response) => console.log("bdnb"));
+      fetchProduct.postProduct(product);
+    } else {
+      const product = {
+        CategoriaID: categoria,
+        nombre,
+        precio: parseFloat(precio),
+        tamaño: parseInt(tamaño),
+        stock: parseFloat(stok),
+        imagen,
+        isStock,
+      };
+      fetchProduct.postProduct(product);
+    }
   };
   const handleIsStock = (e) => {
     console.log(e.target.checked);
@@ -95,12 +119,9 @@ const FormAddProduct = () => {
           <h1> Agregar Producto</h1>
         </div>
         <div className="container-card__ContentsGrid__item delete">
-            <input
-              onMouseUp={handleIsStock}
-              type="checkbox"
-            />
-            <div className="container-card__ContentsGrid__img"></div>
-          </div>
+          <input onMouseUp={handleIsStock} type="checkbox" />
+          <div className="container-card__ContentsGrid__img"></div>
+        </div>
         <div className="FormAddProduct__container_item">
           <Texfield
             handlerChange={handlerProductChange}
@@ -118,12 +139,30 @@ const FormAddProduct = () => {
           />
         </div>
         <div className="FormAddProduct__container_item">
-          <Texfield
+          {/* <Texfield
             handlerChange={handlerProductChange}
             name={"Categoria"}
             placeHolder={"Categoria"}
             type={"text"}
-          />
+          />*/}
+          <label for="">
+            <input
+              onClick={handlerProductChange}
+              type="checkbox"
+              name="Categoria"
+              value="Pizza"
+            />
+            Pizza
+          </label>
+          <label for="">
+            <input
+              onClick={handlerProductChange}
+              type="checkbox"
+              name="Categoria"
+              value="Bebida"
+            />
+            Bebida
+          </label>
         </div>
         <div className="FormAddProduct__container_item">
           <Texfield
@@ -158,15 +197,12 @@ const FormAddProduct = () => {
           />
         </div>
         <Suspense fallback={"Cargando...."}>
-          {isStock
-           ?null
-           :
+          {isStock ? null : (
             <FormAddIngredientPrduct
               ingredientsList={ingredientsList}
               setIngredientsList={setIngredientsList}
             />
-          }
-          
+          )}
         </Suspense>
         <button
           className="FormAddProduct__container--saveProduct"
