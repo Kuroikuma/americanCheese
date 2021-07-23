@@ -1,13 +1,13 @@
 import { React } from "react";
 import { CardInventoryIngredient } from "../../../components/card-inventory-ingredient/card-inventory-ingredient";
-import FormAddIngredient from "../../../components/form-add-ingrediente/form-add-ingredients";
+import IntegrationNotistack from "../../../components/form-add-ingrediente/form-add-ingredients";
 import { Modal } from "../../../components/modal/modal";
 import { CardSoldOut } from "../../../components/card-sold-out/card-sold-out";
 
 import "./inventory-ingredents.style.css";
 
 const InventoryIngredentsView = (props) => {
-  const { isOpen, openModal, closeModal, Ingrediente, setID } = props;
+  const { isOpen, openModal, closeModal, Ingrediente, setID, ID } = props;
   console.log(Ingrediente);
   return (
     <>
@@ -29,7 +29,7 @@ const InventoryIngredentsView = (props) => {
                 Agregar Ingrediente
               </button>
               <Modal isOpen={isOpen} closeModal={closeModal}>
-                <FormAddIngredient setID={setID} />
+                <IntegrationNotistack />
               </Modal>
             </div>
           </div>

@@ -38,8 +38,12 @@ export async function postIngredient(ingredient) {
   console.log(ingredient);
   await axios
     .post(baseUrl, ingredient)
-    .then((response) => console.log("success full"))
-    .catch((error) => console.log(error));
+    .then((response) => {
+      return response;
+    })
+    .catch((error) => {
+      return error;
+    });
   /* console.log(product);
   return await fetch(baseUrl, request(product, "POST"))
     .then((res) => res.json())

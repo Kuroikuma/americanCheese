@@ -20,6 +20,7 @@ export default function InventoryIngredents(params) {
         closeModal={closeModal}
         Ingrediente={Ingrediente}
         setID={setID}
+        ID={ID}
       />
     </>
   );

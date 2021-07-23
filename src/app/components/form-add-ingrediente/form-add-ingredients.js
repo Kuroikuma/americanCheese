@@ -1,5 +1,4 @@
 import { React, useState } from "react";
-import { Redirect } from "react-router-dom";
 import "./form-add-ingredients.style.css";
 import Texfield from "../textfield/texfield";
 import { fetchIngredient } from "../../../services/services-ingredient";
@@ -7,7 +6,7 @@ import Button from "@material-ui/core/Button";
 import { SnackbarProvider, useSnackbar } from "notistack";
 
 export const FormAddIngredient = (props) => {
-  const { setID } = props;
+  //  const { setID, ID } = props;
   const { enqueueSnackbar } = useSnackbar();
   const [nombre, setNombre] = useState();
   const [tamaño, setTamaño] = useState();
@@ -15,10 +14,6 @@ export const FormAddIngredient = (props) => {
   const [precio, setPrecio] = useState();
   const [imagen, setImagen] = useState();
 
-  const handleClickVariant = (variant) => () => {
-    // variant could be success, error, warning, info, or default
-    enqueueSnackbar("This is a success message!", { variant });
-  };
   const handlerIngredientChange = (e) => {
     const { name, value } = e.target;
     switch (name) {
@@ -42,6 +37,21 @@ export const FormAddIngredient = (props) => {
         break;
     }
   };
+  const handleClickVariant = (variant) => () => {
+    variant = "info";
+    // variant could be success, error, warning, info, or default
+    const ingredient = {
+      nombre,
+      precio: parseFloat(precio),
+      tamaño: parseInt(tamaño),
+      stock: parseFloat(stok),
+      imagen,
+    };
+    fetchIngredient
+      .postIngredient(ingredient)
+      .then((response) => console.log("jkhgfjkfuhjkf"));
+    enqueueSnackbar("This is a success message!", { variant });
+  };
   const handlerSaveIngredient = () => {
     const ingredient = {
       nombre,
@@ -50,9 +60,10 @@ export const FormAddIngredient = (props) => {
       stock: parseFloat(stok),
       imagen,
     };
-    fetchIngredient.postIngredient(ingredient).then(setID(false));
-    handleClickVariant("success");
-    <Redirect to="/inventory-ingredents" />;
+    fetchIngredient.postIngredient(ingredient);
+
+    //   setID(!ID);
+    //handleClickVariant("success");
   };
 
   return (
@@ -103,7 +114,7 @@ export const FormAddIngredient = (props) => {
         </div>
         <button
           className="FormAddProduct__container--saveProduct"
-          onClick={handlerSaveIngredient}
+          onClick={handleClickVariant("error")}
         >
           Guardar Ingrediente
         </button>

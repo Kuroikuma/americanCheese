@@ -27,13 +27,12 @@ function AdminRoutes() {
           <Route exact path="/" component={Inventory} />
           <Route exact path="/inventory" component={Inventory} />
           <Route exact path="/sales-report" component={SalesReport} />
- 		<Route
+          <Route
             exact
             path="/inventory-ingredents"
             component={InventoryIngredents}
           />
           <Route component={Inventory} />
-
         </Switch>
       </Suspense>
     </BrowserRouter>

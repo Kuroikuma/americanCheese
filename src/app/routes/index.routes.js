@@ -14,12 +14,29 @@ function IndexRoutes() {
   const [Details, SetDetails] = useState("ClientRoutes");
 
   const HandleCurrent = () => {
-    if (Current === 1) {
-      SetCurrent(2);
-      SetDetails("DependentRoutes");
-    } else {
-      SetCurrent(1);
-      SetDetails("ClientRoutes");
+    switch (Current) {
+      case 0:
+        SetCurrent(1);
+        SetDetails("ClientRoutes");
+        break;
+      case 1:
+        SetCurrent(2);
+        SetDetails("DependentRoutes");
+        break;
+      case 2:
+        SetCurrent(3);
+        SetDetails("AdminRoutes");
+        break;
+      case 3:
+        SetCurrent(4);
+        SetDetails("RootRoutes");
+        break;
+      case 4:
+        SetCurrent(0);
+        SetDetails("LoginRoutes");
+        break;
+      default:
+        break;
     }
   };
   const divStyle = {
