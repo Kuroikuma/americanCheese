@@ -11,8 +11,8 @@ export const getCliente = () => {
     })
     .catch((error) => {});
 };
-export async function getClienteByID(ID) {
-  const baseUrl = `${apiUrl}/Seleccionar/${ID}`;
+export async function getClienteByID(correo, contraseña) {
+  const baseUrl = `${apiUrl}/Seleccionar/${correo}/${contraseña}`;
   return await fetch(baseUrl)
     .then((res) => res.json())
     .then((response) => {

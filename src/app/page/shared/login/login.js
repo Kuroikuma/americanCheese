@@ -25,6 +25,20 @@ const Login = () => {
           userContext.SetCurrent(2);
         }
       }
+      if (currentUser === "Administrador") {
+        if (userContext.user === undefined || userContext.user === null) {
+          userContext.SetCurrent(0);
+        } else {
+          userContext.SetCurrent(3);
+        }
+      }
+      if (currentUser === "Root") {
+        if (userContext.user === undefined || userContext.user === null) {
+          userContext.SetCurrent(0);
+        } else {
+          userContext.SetCurrent(4);
+        }
+      }
     }
     Cambio();
   }, [userContext.user]);
@@ -60,7 +74,7 @@ const Login = () => {
     loginError: false,
     isLogging: false,
   });
-  const userType = ["SinLogin", "Empleado", "Cliente"];
+  const userType = ["SinLogin", "Empleado", "Cliente", "Administrador", "Root"];
   const [currentUser, setCurrentUser] = useState(userType[0]);
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -99,13 +113,22 @@ const Login = () => {
     else setState({ ...state, passwordLoginError: 0 });
     if (currentUser === "Cliente") {
       let correo = emailLoginPatient;
-      fetchCliente.getClienteByID(correo).then((response) => {
+      let contraseña = passwordLoginPatient;
+      fetchCliente.getClienteByID(correo, contraseña).then((response) => {
         userContext.setUser(response);
       });
     }
     if (currentUser === "Empleado") {
       let correo = emailLoginPatient;
-      fetchEmpleado.getEmpleadoByID(correo).then((response) => {
+      let contraseña = passwordLoginPatient;
+      fetchEmpleado.getEmpleadoByID(correo, contraseña).then((response) => {
+        userContext.setUser(response);
+      });
+    }
+    if (currentUser === "Root") {
+      let correo = emailLoginPatient;
+      let contraseña = passwordLoginPatient;
+      fetchEmpleado.getEmpleadoByID(correo, contraseña).then((response) => {
         userContext.setUser(response);
       });
     }

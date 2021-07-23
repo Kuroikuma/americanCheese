@@ -14,8 +14,8 @@ export const getEmpleado = () => {
       console.log(error);
     });
 };
-export const getEmpleadoByID = (ID) => {
-  const baseUrl = `${apiUrl}/Seleccionar/${ID}`;
+export const getEmpleadoByID = (correo, contraseña) => {
+  const baseUrl = `${apiUrl}/Seleccionar/${correo}/${contraseña}`;
   return fetch(baseUrl)
     .then((res) => res.json())
     .then((response) => {

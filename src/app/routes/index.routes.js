@@ -4,6 +4,8 @@ import UserContext from "../context/UserContext";
 
 const ClientRoutes = lazy(() => import("./client.routes"));
 const DependentRoutes = lazy(() => import("./dependent.routes"));
+const AdminRoutes = lazy(() => import("./administrador.routes"));
+const RootRoutes = lazy(() => import("./root.routes"));
 const Login = lazy(() => import("../page/shared/login/login"));
 function IndexRoutes() {
   const { Current, SetCurrent } = useContext(UserContext);
@@ -37,6 +39,10 @@ function IndexRoutes() {
         <ClientRoutes />
       ) : Current === 2 ? (
         <DependentRoutes />
+      ) : Current === 3 ? (
+        <AdminRoutes />
+      ) : Current === 4 ? (
+        <RootRoutes />
       ) : (
         <Login />
       )}

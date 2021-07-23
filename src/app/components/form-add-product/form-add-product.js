@@ -14,7 +14,9 @@ const FormAddProduct = () => {
       CantidadIngrediente: null,
     },
   ];
-
+  const Bebidas = ["1 Litro", "1.15 Litro", "2 Litro", "3 Litro"];
+  const Pizza = ["6 Piezas", "8 Piezas", "12 Piezas", "16 Piezas", "32 Piezas"];
+  const [tamañoArray, setTamañoArray] = useState([]);
   const [nombre, setNombre] = useState();
   const [tamaño, setTamaño] = useState();
   const [stok, setStok] = useState();
@@ -25,8 +27,12 @@ const FormAddProduct = () => {
   const [imagen, setImagen] = useState();
   const [ingredientsList, setIngredientsList] = useState(ingredients);
 
+  const handleTamaño = (e) => {
+    setTamaño(e.target.value);
+  };
+
   const handlerProductChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value, checked } = e.target;
     switch (name) {
       case "Nombre":
         setNombre(value);
@@ -40,11 +46,17 @@ const FormAddProduct = () => {
         setStok(value);
         break;
       case "Categoria":
-        if (value === "Pizza") {
-          setCategoria("48C8C50D-5B40-45A0-9E85-77255F559ADE");
-        }
-        if (value === "Bebida") {
-          setCategoria("5860ac3e-2af3-40ef-b5be-c3ad92abbf75");
+        if (checked === true) {
+          if (value === "Pizza") {
+            setCategoria("48C8C50D-5B40-45A0-9E85-77255F559ADE");
+            setTamañoArray(Pizza);
+          }
+          if (value === "Bebida") {
+            setCategoria("5860ac3e-2af3-40ef-b5be-c3ad92abbf75");
+            setTamañoArray(Bebidas);
+          }
+        } else {
+          setTamañoArray([]);
         }
         console.log(categoria);
         break;
@@ -81,7 +93,7 @@ const FormAddProduct = () => {
         CategoriaID: categoria,
         nombre,
         precio: parseFloat(precio),
-        tamaño: parseInt(tamaño),
+        tamaño: tamaño,
         stock: parseFloat(stok),
         imagen,
         isStock,
@@ -94,7 +106,7 @@ const FormAddProduct = () => {
         CategoriaID: categoria,
         nombre,
         precio: parseFloat(precio),
-        tamaño: parseInt(tamaño),
+        tamaño: tamaño,
         stock: parseFloat(stok),
         imagen,
         isStock,
@@ -145,10 +157,11 @@ const FormAddProduct = () => {
             placeHolder={"Categoria"}
             type={"text"}
           />*/}
+          <label>Categoria</label>
           <label for="">
             <input
               onClick={handlerProductChange}
-              type="checkbox"
+              type="radio"
               name="Categoria"
               value="Pizza"
             />
@@ -157,7 +170,7 @@ const FormAddProduct = () => {
           <label for="">
             <input
               onClick={handlerProductChange}
-              type="checkbox"
+              type="radio"
               name="Categoria"
               value="Bebida"
             />
@@ -172,14 +185,15 @@ const FormAddProduct = () => {
             type={"number"}
           />
         </div>
-        <div className="FormAddProduct__container_item">
-          <Texfield
-            handlerChange={handlerProductChange}
-            name={"Tamaño"}
-            placeHolder={"Tamaño"}
-            type={"number"}
-          />
-        </div>
+        {categoria ? (
+          <div className="FormAddProduct__container_item">
+            <select onChange={handleTamaño}>
+              {tamañoArray.map((item) => (
+                <option>{item}</option>
+              ))}
+            </select>
+          </div>
+        ) : null}
         <div className="FormAddProduct__container_item">
           <Texfield
             handlerChange={handlerProductChange}
