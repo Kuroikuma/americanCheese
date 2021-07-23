@@ -1,0 +1,159 @@
+.Spacing {
+  height: 0px;
+  width: 96%;
+  border-bottom: rgb(155, 151, 151) solid 1px;
+  margin: 0px 0px;
+  margin-top: -1px;
+}
+.Container {
+  height: auto;
+  min-height: 100vh;
+  width: 90vw;
+  display: flex;
+  flex-wrap: nowrap;
+  margin: auto;
+}
+.Container__Inventory {
+  height: auto;
+  min-height: 100vh;
+  width: 80%;
+}
+.Container__Inventory__Header {
+  height: 10vh;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+.Container__Inventory__Header__Title {
+  height: 100%;
+  width: 20%;
+}
+.Container__Inventory__Header__Filter {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.Container__Inventory__Header__Filter button {
+  width: 30%;
+  height: 45%;
+  border-radius: 10px;
+  border: 1px solid grey;
+}
+.Container__Inventory__Header__Filter input {
+  height: 45%;
+  width: 35%;
+  border-radius: 10px;
+  border: 1px solid grey;
+}
+.Container__Inventory__Header__AddProduct {
+  height: 100%;
+  width: 30%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.Container__Inventory__Header__AddProduct-open {
+  width: 50%;
+  height: 45%;
+  border-radius: 10px;
+  border: 1px solid grey;
+}
+.Container__Inventory__FilterStockQuantity {
+  height: auto;
+  min-height: 5vh;
+  width: 100%;
+}
+.Container__Inventory__FilterStockQuantity h3 {
+  margin: 0px;
+}
+.Container__Inventory__Contents {
+  height: auto;
+  min-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  width: 100%;
+}
+.Container__Inventory__Contents__title {
+  height: 6vh;
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 7vh;
+  gap: 10px;
+}
+.Container__Inventory__ContentsGrid__item {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+.Container__Inventory__Contents__delete {
+  height: 7vh;
+  align-items: center;
+  width: 100%;
+  display: flex;
+}
+.eli {
+  height: 50%;
+  width: 2%;
+}
+.Container__Inventory__Contents__delete button {
+  height: 50%;
+  width: 10%;
+  text-align: left;
+  margin: 0px;
+}
+.Container__AlmostExhausted {
+  height: 100vh;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.Container__AlmostExhausted__Urgent {
+  height: 46vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.Container__AlmostExhausted__Urgent__Title {
+  height: 6vh;
+  width: 100%;
+}
+.Container__AlmostExhausted__Urgent__Title h3 {
+  margin: 0px;
+  text-align: center;
+}
+.Container__AlmostExhausted__LittleUrgent {
+  height: 46vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.Container__AlmostExhausted__LittleUrgent__Title {
+  height: 6vh;
+  width: 100%;
+}
+.Container__AlmostExhausted__LittleUrgent__Title h3 {
+  margin: 0px;
+  text-align: center;
+}
+@media screen and (max-width: 900px) {
+  .Container__Inventory {
+    width: 100%;
+  }
+  .Container__AlmostExhausted {
+    display: none;
+  }
+  .Container__Inventory__ContentsGrid__item h3 {
+    font-size: 15px;
+  }
+}

@@ -1,8 +1,8 @@
 import axios from "axios";
-const apiUrl = process.env.REACT_APP_API_URL || "https://localhost:44323/api";
+const apiUrl = "https://localhost:44323/api";
 
 export const getIngredient = () => {
-  const baseUrl = `${apiUrl}/ingredientes`;
+  const baseUrl = `${apiUrl}/ingrediente`;
   return fetch(baseUrl)
     .then((res) => res.json())
     .then((response) => {
@@ -34,7 +34,7 @@ function request(ingredient, method) {
   return requestOptions;
 }
 export async function postIngredient(ingredient) {
-  const baseUrl = `${apiUrl}/ingredientes`;
+  const baseUrl = `${apiUrl}/ingrediente`;
   console.log(ingredient);
   await axios
     .post(baseUrl, ingredient)
@@ -62,7 +62,7 @@ export async function postIngredient(ingredient) {
   return response.json();*/
 }
 export async function putIngredient(ingredient = {}, ID) {
-  const baseUrl = `${apiUrl}/ingredientes/${ID}`;
+  const baseUrl = `${apiUrl}/ingrediente/${ID}`;
   const response = await fetch(baseUrl, {
     method: "PUT",
     mode: "cors",
@@ -78,7 +78,7 @@ export async function putIngredient(ingredient = {}, ID) {
   return response.json();
 }
 export async function deleteIngredient(ID) {
-  const baseUrl = `${apiUrl}/ingredientes/${ID}`;
+  const baseUrl = `${apiUrl}/ingrediente/${ID}`;
   const response = await fetch(baseUrl, {
     method: "DELETE",
   });
