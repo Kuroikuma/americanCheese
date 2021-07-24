@@ -14,8 +14,8 @@ function PointOfSale() {
   const [total, setTotal] = useState(0);
 
   const factura = {
-    ClienteID: "6F7C4827-D1BE-44AC-9D95-EDB893FC2E68",
-    EmpleadoID: "4D12EE20-EEA2-4C17-8F66-2BB1A3272B96",
+    ClienteID: "ca7af854-0538-4188-8845-0b84e497b1ca",
+    EmpleadoID: "D82874A1-4476-4919-917D-C6EEC25A0217",
     Fecha: `${fechaD.getFullYear()}-0${
       parseInt(fechaD.getMonth()) + 1
     }-${fechaD.getDate()}`,

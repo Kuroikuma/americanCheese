@@ -9,7 +9,7 @@ import MenuPizzaView from "./menupizza.view";
 function MenuPizza() {
   const [data, setData] = useState([]);
   useEffect(() => {
-    ServicesCategoryProduct(1).then((response) => setData(response));
+    ServicesCategoryProduct("Pizza").then((response) => setData(response));
   }, []);
   console.log(data);
   return <MenuPizzaView data={data} />;
