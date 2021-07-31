@@ -5,33 +5,25 @@ import { fetchIngredient } from "../../../services/services-ingredient";
 const EditIngredient = lazy(() => import("./edit-ingredient"));
 
 export const CardInventoryIngredient = (props) => {
-  const { Nombre, Stock, Price, Image, Sku, tamaño } = props;
-  console.log(props);
-  const {
-    NombreR,
-    StockR,
-    PriceR,
-    ImageR,
-    SkuR,
-    tamañoR,
-    updateIngredientField,
-  } = useIngredient({
-    Nombre,
-    Stock,
-    Price,
-    Image,
-    Sku,
-    tamaño,
-  });
+  const { Nombre, Stock, Price, Image, Sku, unidadMedida} = props;
+  const { NombreR, StockR, PriceR, ImageR, SkuR, unidadMedidaR, updateIngredientField } =
+    useIngredient({
+      Nombre,
+      Stock,
+      Price,
+      Image,
+      Sku,
+      unidadMedida,
+    });
 
   const [increase, setIncrease] = useState(false);
   const ingredient = {
     Nombre: NombreR,
     Stock: parseInt(StockR),
-    Tamaño: parseInt(tamañoR),
     precio: parseInt(PriceR),
     Imagen: ImageR,
     IngredienteID: SkuR,
+    unidadMedida: unidadMedidaR
   };
   console.log(ingredient);
   const handlerEditIngredientChange = (e) => {

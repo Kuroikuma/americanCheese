@@ -11,7 +11,7 @@ const SalesReport = lazy(() =>
 );
 const divStyle = {
   height: "100vh",
-  width: "100vw",
+  width: "90vw",
 };
 function AdminRoutes() {
   return (

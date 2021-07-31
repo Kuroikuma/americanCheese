@@ -19,24 +19,31 @@ const REDUCER = (state, action) => {
   return actionReducer ? actionReducer(state, action) : state;
 };
 
-export const useIngredient = ({ Nombre, Stock, Price, Image, Sku, tamaño }) => {
+export const useIngredient = ({
+  Nombre,
+  Stock,
+  Price,
+  Image,
+  Sku,
+  unidadMedida,
+}) => {
   const initialIngredientState = {
     NombreR: Nombre,
     StockR: Stock,
     PriceR: Price,
     ImageR: Image,
     SkuR: Sku,
-    TamañoR: tamaño,
+    unidadMedidaR: unidadMedida,
   };
   const [state, dispatch] = useReducer(REDUCER, initialIngredientState);
-  const { NombreR, StockR, PriceR, ImageR, SkuR, TamañoR } = state;
+  const { NombreR, StockR, PriceR, ImageR, SkuR, unidadMedidaR } = state;
   return {
     NombreR,
     StockR,
     PriceR,
     ImageR,
     SkuR,
-    TamañoR,
+    unidadMedidaR,
     updateIngredientField: (name, value) => {
       dispatch({
         type: ACTION.Update_Field_Ingredient,

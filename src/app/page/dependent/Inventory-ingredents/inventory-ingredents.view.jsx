@@ -62,6 +62,7 @@ const InventoryIngredentsView = (props) => {
                 Tamaño={ingredientes.tamaño}
                 Image={ingredientes.imagen}
                 Sku={ingredientes.ingredienteID}
+                unidadMedida={ingredientes.unidadMedida}
               />
             ))}
             <div className="Spacing"></div>

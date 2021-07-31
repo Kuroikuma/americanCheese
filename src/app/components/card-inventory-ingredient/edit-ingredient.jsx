@@ -23,27 +23,11 @@ const EditIngredient = (props) => {
             type={"number"}
           />
         </div>
-        <div className="container-card-modal-item container-card-modal-inputs-sku">
-          <Texfield
-            handlerChange={handlerEditIngredientChange}
-            name={"Sku"}
-            placeHolder={"Sku"}
-            type={"number"}
-          />
-        </div>
-        <div className="container-card-modal-item container-card-modal-inputs-cost">
-          <Texfield
-            handlerChange={handlerEditIngredientChange}
-            name={"Tamaño"}
-            placeHolder={"Tamaño"}
-            type={"number"}
-          />
-        </div>
         <div className="container-card-modal-item container-card-modal-inputs-stock">
           <Texfield
             handlerChange={handlerEditIngredientChange}
             name={"Stock"}
-            placeHolder={"Stock"}
+            placeHolder={"Cantidad"}
             type={"number"}
           />
         </div>

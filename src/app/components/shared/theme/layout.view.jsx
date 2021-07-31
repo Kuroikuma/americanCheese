@@ -1,10 +1,11 @@
 import "./layout.style.css";
 import Header from "../../header/header";
 
-const LayoutView = (props) => {
+const LayoutView = ({ children }) => {
   return (
     <>
       <Header />
+      {children}
     </>
   );
 };

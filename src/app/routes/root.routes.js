@@ -2,13 +2,9 @@ import React, { Suspense, lazy } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import image from "../../assets/image/logo.png";
 
-const PointOfSale = lazy(() =>
-  import("../page/dependent/point-of-sale/point-of-sale")
-);
 const Inventory = lazy(() => import("../page/dependent/Inventory/inventory"));
-const Home = lazy(() => import("../page/client/home/home"));
-const OrderControl = lazy(() =>
-  import("../page/dependent/order-control/order-control")
+const InventoryIngredents = lazy(() =>
+  import("../page/dependent/Inventory-ingredents/inventory-ingredents")
 );
 const SalesReport = lazy(() =>
   import("../page/dependent/sales-report/sales-report")
@@ -31,6 +27,11 @@ function RootRoutes() {
           <Route exact path="/" component={SalesReport} />
           <Route exact path="/inventory" component={Inventory} />
           <Route exact path="/sales-report" component={SalesReport} />
+          <Route
+            exact
+            path="/inventory-ingredents"
+            component={InventoryIngredents}
+          />
           <Route component={Inventory} />
         </Switch>
       </Suspense>

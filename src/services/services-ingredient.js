@@ -36,14 +36,14 @@ function request(ingredient, method) {
 export async function postIngredient(ingredient) {
   const baseUrl = `${apiUrl}/ingrediente`;
   console.log(ingredient);
-  await axios
-    .post(baseUrl, ingredient)
-    .then((response) => {
-      return response;
-    })
-    .catch((error) => {
-      return error;
-    });
+  try {
+    const result = await axios.post(baseUrl, ingredient);
+    console.log(result.data);
+    return result.data;
+  } catch (error) {
+    return "error";
+  }
+
   /* console.log(product);
   return await fetch(baseUrl, request(product, "POST"))
     .then((res) => res.json())
