@@ -2,6 +2,7 @@ import { React, useState, useEffect } from "react";
 import { useModal } from "../../../hooks/useModal";
 import InventoryIngredentsView from "./inventory-ingredents.view";
 import { getIngredient } from "../../../../services/services-ingredient";
+import FormAddIngredient from "../../../components/form-add-ingrediente/form-add-ingredients";
 
 export default function InventoryIngredents(params) {
   const [isOpen, openModal, closeModal] = useModal(false);
@@ -21,7 +22,9 @@ export default function InventoryIngredents(params) {
         Ingrediente={Ingrediente}
         setID={setID}
         ID={ID}
+        setIngrediente={setIngrediente}
       />
+      <FormAddIngredient setID={setID} ID={ID} />
     </>
   );
 }

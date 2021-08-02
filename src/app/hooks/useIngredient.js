@@ -12,27 +12,24 @@ const ACTION_REDUCERD = {
 };
 
 const REDUCER = (state, action) => {
-  console.log("estado");
-  console.log(state);
-  console.log(action);
   const actionReducer = ACTION_REDUCERD[action.type];
   return actionReducer ? actionReducer(state, action) : state;
 };
 
 export const useIngredient = ({
-  Nombre,
-  Stock,
-  Price,
-  Image,
-  Sku,
+  nombre,
+  stock,
+  precio,
+  imagen,
+  sku,
   unidadMedida,
 }) => {
   const initialIngredientState = {
-    NombreR: Nombre,
-    StockR: Stock,
-    PriceR: Price,
-    ImageR: Image,
-    SkuR: Sku,
+    NombreR: nombre,
+    StockR: stock,
+    PriceR: precio,
+    ImageR: imagen,
+    SkuR: sku,
     unidadMedidaR: unidadMedida,
   };
   const [state, dispatch] = useReducer(REDUCER, initialIngredientState);

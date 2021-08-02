@@ -1,14 +1,21 @@
 import { React } from "react";
-import { CardInventoryIngredient } from "../../../components/card-inventory-ingredient/card-inventory-ingredient";
+import IntegrationNotistac from "../../../components/card-inventory-ingredient/card-inventory-ingredient";
 import IntegrationNotistack from "../../../components/form-add-ingrediente/form-add-ingredients";
 import { Modal } from "../../../components/modal/modal";
 import { CardSoldOut } from "../../../components/card-sold-out/card-sold-out";
-
 import "./inventory-ingredents.style.css";
 
 const InventoryIngredentsView = (props) => {
-  const { isOpen, openModal, closeModal, Ingrediente, setID, ID } = props;
-  console.log(Ingrediente);
+  const {
+    isOpen,
+    openModal,
+    closeModal,
+    Ingrediente,
+    setID,
+    ID,
+    setIngrediente,
+  } = props;
+
   return (
     <>
       <div className="Container">
@@ -48,21 +55,23 @@ const InventoryIngredentsView = (props) => {
                 <h3>Precio</h3>
               </div>
               <div className="Container__Inventory__ContentsGrid__item">
-                <h3>Stock</h3>
+                <h3>Cantidad</h3>
               </div>
               <div className="Container__Inventory__ContentsGrid__item">
-                <h3>Editar</h3>
+                <h3></h3>
               </div>
             </div>
             {Ingrediente.map((ingredientes) => (
-              <CardInventoryIngredient
-                Nombre={ingredientes.nombre}
-                Stock={ingredientes.stock}
-                Price={ingredientes.precio}
-                Tamaño={ingredientes.tamaño}
-                Image={ingredientes.imagen}
-                Sku={ingredientes.ingredienteID}
+              <IntegrationNotistac
+                nombre={ingredientes.nombre}
+                stock={ingredientes.stock}
+                precio={ingredientes.precio}
+                imagen={ingredientes.imagen}
+                sku={ingredientes.ingredienteID}
                 unidadMedida={ingredientes.unidadMedida}
+                setIngrediente={setIngrediente}
+                ID={ID}
+                setID={setID}
               />
             ))}
             <div className="Spacing"></div>

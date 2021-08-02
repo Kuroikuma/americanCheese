@@ -2,17 +2,32 @@ import { React, useState } from "react";
 import "./form-add-ingredients.style.css";
 import Texfield from "../textfield/texfield";
 import { fetchIngredient } from "../../../services/services-ingredient";
+import { makeStyles } from "@material-ui/core/styles";
 import { SnackbarProvider, useSnackbar } from "notistack";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import ListSubheader from "@material-ui/core/ListSubheader";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+
+const useStyles = makeStyles((theme) => ({
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 135,
+  },
+}));
 
 export const FormAddIngredient = (props) => {
-  //  const { setID, ID } = props;
+  const { setID, ID } = props;
+
   const { enqueueSnackbar } = useSnackbar();
-  const { respuesta, setRespuesta } = useState();
   const [nombre, setNombre] = useState();
   const [stok, setStok] = useState();
   const [precio, setPrecio] = useState();
   const [imagen, setImagen] = useState();
   const [unidadMedida, setUnidadMedida] = useState();
+
+  const classes = useStyles();
 
   const handlerIngredientChange = (e) => {
     const { name, value, checked } = e.target;
@@ -30,14 +45,7 @@ export const FormAddIngredient = (props) => {
         setImagen(value);
         break;
       case "unidadMedida":
-        if (checked === true) {
-          if (value === "oz") {
-            setUnidadMedida(value);
-          }
-          if (value === "ml") {
-            setUnidadMedida(value);
-          }
-        }
+        setUnidadMedida(value);
         break;
       default:
         break;
@@ -46,15 +54,37 @@ export const FormAddIngredient = (props) => {
 
   function convertUnitMeasure(amount, measure) {
     switch (measure) {
-      case "ml":
+      case "lt":
         return parseFloat(amount * 1000);
         break;
-      case "oz":
+      case "gal":
+        return parseFloat(amount * 4000);
+        break;
+      case "lb":
         return parseFloat(amount * 16);
+        break;
+      case "kg":
+        return parseFloat(amount * 35.274);
+        break;
+      case "q":
+        return parseFloat(amount * 1600);
+        break;
+      case "ud":
+        return parseFloat(amount * 1);
         break;
       default:
         return parseFloat(amount);
         break;
+    }
+  }
+
+  function convertUnit(unidad) {
+    if (unidad === "lt" || unidad === "gal") {
+      return "ml";
+    } else if (unidad === "kg" || unidad === "lb" || unidad === "q") {
+      return "oz";
+    } else if (unidad === "ud") {
+      return "ud";
     }
   }
 
@@ -66,7 +96,7 @@ export const FormAddIngredient = (props) => {
       precio: parseFloat(precio),
       stock: convertUnitMeasure(stok, unidadMedida),
       imagen,
-      unidadMedida,
+      unidadMedida: convertUnit(unidadMedida),
     };
     fetchIngredient
       .postIngredient(ingredient)
@@ -78,6 +108,7 @@ export const FormAddIngredient = (props) => {
           { variant: response }
         )
       );
+    ID === true ? setID(false) : setID(true);
   };
   return (
     <>
@@ -102,24 +133,28 @@ export const FormAddIngredient = (props) => {
           />
         </div>
         <div className="FormAddIngredient__container_item">
-          <label for="">
-            <input
-              onClick={handlerIngredientChange}
-              type="radio"
+          <FormControl className={classes.formControl}>
+            <InputLabel htmlFor="grouped-select">Unidad Medida</InputLabel>
+            <Select
+              onChange={handlerIngredientChange}
+              defaultValue=""
+              id="grouped-select"
               name={"unidadMedida"}
-              value="oz"
-            />
-            Libra (lb)
-          </label>
-          <label for="">
-            <input
-              onClick={handlerIngredientChange}
-              type="radio"
-              name={"unidadMedida"}
-              value="ml"
-            />
-            Litro (lt)
-          </label>
+            >
+              <ListSubheader>
+                <strong>Sólida</strong>
+              </ListSubheader>
+              <MenuItem value="ud">Unidad</MenuItem>
+              <MenuItem value="lb">Libra</MenuItem>
+              <MenuItem value="kg">Kilogramo</MenuItem>
+              <MenuItem value="q">Quintal</MenuItem>
+              <ListSubheader>
+                <strong>Líquida</strong>
+              </ListSubheader>
+              <MenuItem value="lt">Litro</MenuItem>
+              <MenuItem value="gal">Galón</MenuItem>
+            </Select>
+          </FormControl>
         </div>
         <div className="FormAddIngredient__container_item">
           <Texfield

@@ -67,20 +67,13 @@ export async function postIngredient(ingredient) {
 }
 export async function putIngredient(ingredient = {}, ID) {
   const baseUrl = `${apiUrl}/ingrediente/${ID}`;
-  const response = await fetch(baseUrl, {
-    method: "PUT",
-    mode: "cors",
-    cache: "no-cache",
-    credentials: "same-origin",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    redirect: "follow",
-    referrerPolicy: "no-referrer",
-    body: JSON.stringify(ingredient),
-  });
-  return response.json();
-}
+  try {
+    const result = await axios.put(baseUrl, ingredient);
+    console.log(result.data);
+    return result.data;
+  } catch (error) {
+    return "error";
+  }
 export async function deleteIngredient(ID) {
   const baseUrl = `${apiUrl}/ingrediente/${ID}`;
   const response = await fetch(baseUrl, {
