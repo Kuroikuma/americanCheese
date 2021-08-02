@@ -1,10 +1,12 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useContext } from "react";
 import pizza1 from "../../../../assets/image/MenuPizzas/menupizza1.jpg";
+import UserContext from "../../../context/UserContext";
 import PointOfSaleView from "./point-of-sale.view";
 import { ServicesCategoryProduct } from "../../../../services/services-product";
 import { postFactura } from "../../../../services/services-factura";
 
 function PointOfSale() {
+  const userContext = useContext(UserContext);
   const ImageUrl = process.env.REACT_APP_URL_IMAGE || "https://localhost:44389";
   const [Sale, setSale] = useState([]);
   const [detalle, setDetalle] = useState([]);
@@ -14,7 +16,7 @@ function PointOfSale() {
   const [total, setTotal] = useState(0);
 
   const factura = {
-    ClienteID: "ca7af854-0538-4188-8845-0b84e497b1ca",
+    ClienteID: userContext.user.clienteID,
     EmpleadoID: "d82874a1-4476-4919-917d-c6eec25a0217",
     Fecha: `${fechaD.getFullYear()}-0${
       parseInt(fechaD.getMonth()) + 1

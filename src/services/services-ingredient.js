@@ -74,6 +74,7 @@ export async function putIngredient(ingredient = {}, ID) {
   } catch (error) {
     return "error";
   }
+}
 export async function deleteIngredient(ID) {
   const baseUrl = `${apiUrl}/ingrediente/${ID}`;
   const response = await fetch(baseUrl, {
