@@ -47,7 +47,7 @@ function ClientRoutes() {
           <Route exact path="/menu-combo" component={MenuCombo} />
           <Route exact path="/menu-drink" component={MenuDrink} />
           <Route exact path="/menu-pizza" component={MenuPizza} />
-          <Route exact path="/menu-smoothie" component={MenuSmoothie} />
+          <Route exact path="/menu-batido" component={MenuSmoothie} />
           <Route exact path="/spinner" component={Spinner} />
           <Route exact path="/textfield" component={Textfield} />
 

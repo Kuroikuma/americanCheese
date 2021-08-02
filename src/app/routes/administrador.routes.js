@@ -6,6 +6,9 @@ const Inventory = lazy(() => import("../page/dependent/Inventory/inventory"));
 const InventoryIngredents = lazy(() =>
   import("../page/dependent/Inventory-ingredents/inventory-ingredents")
 );
+const Sidebar = lazy(() =>
+  import("../../app/components/sidebar-lateral/sidebar")
+);
 const SalesReport = lazy(() =>
   import("../page/dependent/sales-report/sales-report")
 );
@@ -27,6 +30,7 @@ function AdminRoutes() {
           <Route exact path="/" component={Inventory} />
           <Route exact path="/inventory" component={Inventory} />
           <Route exact path="/sales-report" component={SalesReport} />
+          <Route exact path="/sidebar" component={Sidebar} />
           <Route
             exact
             path="/inventory-ingredents"

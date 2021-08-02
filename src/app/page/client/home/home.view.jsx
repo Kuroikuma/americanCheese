@@ -1,6 +1,7 @@
-import { React } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./home.style.css";
+import UserContext from "../../../context/UserContext";
 import logoUrl from "../../../../assets/image/AmericanCheeseLogopng.png";
 import facebookUrl from "../../../../assets/image/Facebook_Logo.png";
 import instagramUrl from "../../../../assets/image/Instagran_Logo.png";
@@ -12,6 +13,7 @@ import PizzaRandom from "../../../../assets/image/PizzaRandom.jpg";
 import Menu from "../../../../assets/image/menu.png";
 
 const HomeView = (props) => {
+  const userContext = useContext(UserContext);
   const { open, setOpen, data, data2, ProductPopular, ProductPopular2 } = props;
   return (
     <>
@@ -22,6 +24,7 @@ const HomeView = (props) => {
               open ? "homeContainer__sideBar Open" : "homeContainer__sideBar"
             }
           >
+            <button onClick={() => userContext.SetCurrent(0)}>Logout</button>
             <div className="homeContainer__sideBar__logo">
               <img src={logoUrl} alt="" />
             </div>
@@ -77,7 +80,8 @@ const HomeView = (props) => {
             <div className="homeContainer__dashboard__category">
               {open
                 ? data2.map((item, index) => (
-                    <div
+                    <Link
+                      to={`/menu-${item.name}`}
                       className={
                         open
                           ? "homeContainer__dashboard__category__content__img"
@@ -86,10 +90,11 @@ const HomeView = (props) => {
                     >
                       <p>{item.name}</p>
                       <img src={item.img} alt="" />
-                    </div>
+                    </Link>
                   ))
                 : data.map((item, index) => (
-                    <div
+                    <Link
+                      to={`/menu-${item.name}`}
                       className={
                         open
                           ? "homeContainer__dashboard__category__content__img"
@@ -98,7 +103,7 @@ const HomeView = (props) => {
                     >
                       <p>{item.name}</p>
                       <img src={item.img} alt="" />
-                    </div>
+                    </Link>
                   ))}
             </div>
             <div className="homeContainer__dashboard__branch">

@@ -17,7 +17,7 @@ const ProductPopular2 = [];
 
 data.push({
   img: Pizza,
-  name: "Pizaa",
+  name: "pizza",
 });
 data.push({
   img: Calzone,
@@ -42,7 +42,7 @@ data.push({
 
 data2.push({
   img: Pizza,
-  name: "Pizaa",
+  name: "pizza",
 });
 data2.push({
   img: Calzone,
