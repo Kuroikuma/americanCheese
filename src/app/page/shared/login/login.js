@@ -44,14 +44,6 @@ const Login = () => {
     Cambio();
   }, [userContext.user]);
 
-  useEffect(() => {
-    userContext.setUser(JSON.stringify(localStorage.getItem("user")));
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("user", userContext.user);
-  }, [userContext.user]);
-
   console.log(userContext);
   const [state, setState] = useState({
     contentLoginForm: true,

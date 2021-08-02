@@ -1,4 +1,5 @@
-import { React, useEffect, useState } from "react";
+import { React, useEffect, useState, useContext } from "react";
+import UserContext from "../../../context/UserContext";
 import HomeView from "./home.view";
 import Pizza from "../../../../assets/image/pizzaIcon.png";
 import Calzone from "../../../../assets/image/calzonepng.png";
@@ -6,6 +7,7 @@ import Batido from "../../../../assets/image/batidopng.png";
 import Frappe from "../../../../assets/image/frappepng.png";
 import Hamburguesa from "../../../../assets/image/hamburguesapng.png";
 import PizzaIcon from "../../../../assets/pizzaIcon.png";
+
 const logoUrl = "https://localhost:44389/Content/images/logo.png";
 const facebookUrl = "https://localhost:44389/Content/images/Facebook_Logo";
 const instagramUrl = "https://localhost:44389/Content/images/Instagran_Logo";
@@ -99,6 +101,12 @@ ProductPopular.push({
 });
 
 function Home() {
+  const userContext = useContext(UserContext);
+  const logout = () => {
+    userContext.SetCurrent(0);
+
+    userContext.setUser(null);
+  };
   const [open, setOpen] = useState(false);
   return (
     <HomeView
@@ -108,6 +116,7 @@ function Home() {
       data={data}
       open={open}
       setOpen={setOpen}
+      logout={logout}
     />
   );
 }

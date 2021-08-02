@@ -17,6 +17,18 @@ export const UserContextProvider = ({ children }) => {
     localStorage.setItem("Current", JSON.stringify(Current));
   }, [Current]);
 
+  useEffect(() => {
+    const userData = JSON.parse(localStorage.getItem("user"));
+
+    if (userData) {
+      setUser(userData);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("user", JSON.stringify(user));
+  }, [user]);
+
   return (
     <Context.Provider value={{ user, setUser, Current, SetCurrent }}>
       {children}
