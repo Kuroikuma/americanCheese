@@ -2,6 +2,9 @@ import { React, useState, Suspense, lazy } from "react";
 import "./card-inventory.css";
 import { useProduct } from "../../hooks/useProducto";
 import { fetchProduct } from "../../../services/services-product";
+import IconButton from "@material-ui/core/IconButton";
+import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
+import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 const EditProduct = lazy(() => import("./edit-product"));
 
 export const CardInventory = (props) => {
@@ -91,14 +94,22 @@ export const CardInventory = (props) => {
             />
             <div className="container-card__ContentsGrid__img"></div>
           </div>
-          <div className="container-card__ContentsGrid__item Sku">
+          <div title={Sku} className="container-card__ContentsGrid__item Sku">
             <h4>{Sku}</h4>
           </div>
-          <div className="container-card__ContentsGrid__item">
+          <div
+            title={Nombre}
+            className="container-card__ContentsGrid__item Nombre"
+          >
             <h4>{Nombre}</h4>
           </div>
           <div className="container-card__ContentsGrid__item">
-            <p>{Category}</p>
+            <p>
+              {Category ||
+              categoriaID === "48c8c50d-5b40-45a0-9e85-77255f559ade"
+                ? "Pizza"
+                : "Bebida"}
+            </p>
           </div>
           <div className="container-card__ContentsGrid__item">
             <p>{Price}</p>
@@ -107,7 +118,13 @@ export const CardInventory = (props) => {
             <p>{Stock}</p>
           </div>
           <div className="container-card__ContentsGrid__item">
-            <input onMouseUp={handlerHidenEdit} type="checkbox" />
+            <IconButton
+              aria-label="expand row"
+              size="small"
+              onClick={() => setIncrease(!increase)}
+            >
+              {increase ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+            </IconButton>
           </div>
         </div>
         <div

@@ -1,7 +1,20 @@
 import axios from "axios";
 const apiUrl = "https://localhost:44323/api/producto";
 
-export const ServicesCategoryProduct=(id)=> {
+export const selecProductoPorNombre = (id) => {
+  const baseUrl = `${apiUrl}/Seleccionar/PorNombre/${id}`;
+  return fetch(baseUrl)
+    .then((res) => res.json())
+    .then((response) => {
+      const data = response;
+      console.log(data);
+      return data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+export const ServicesCategoryProduct = (id) => {
   const baseUrl = `${apiUrl}/Seleccionar/${id}`;
   console.log(baseUrl);
   return fetch(baseUrl)
@@ -14,7 +27,21 @@ export const ServicesCategoryProduct=(id)=> {
     .catch((error) => {
       console.log(error);
     });
-}
+};
+
+export const searchproducto = (id) => {
+  const baseUrl = `${apiUrl}/Selecionar/Producto/${id}`;
+  return fetch(baseUrl)
+    .then((res) => res.json())
+    .then((response) => {
+      const data = ([] = [...response]);
+      console.log(data);
+      return data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
 
 export const getProduct = () => {
   const baseUrl = apiUrl;
@@ -36,13 +63,16 @@ function request(product, method) {
   };
   return requestOptions;
 }
+
 export async function postProduct(product) {
   const baseUrl = apiUrl;
-  console.log(product);
-  await axios
-    .post(baseUrl, product)
-    .then((response) => console.log("success full"))
-    .catch((error) => console.log(error));
+  try {
+    const result = await axios.post(baseUrl, product);
+    console.log(result.data);
+    return result.data;
+  } catch (error) {
+    return "error";
+  }
   /* console.log(product);
   return await fetch(baseUrl, request(product, "POST"))
     .then((res) => res.json())
@@ -93,4 +123,6 @@ export const fetchProduct = {
   postProduct,
   putProduct,
   deleteProduct,
+  searchproducto,
+  selecProductoPorNombre,
 };

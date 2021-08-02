@@ -74,6 +74,7 @@ const Login = () => {
     passwordLoginError: 0,
     loginError: false,
     isLogging: false,
+    showPassword: false,
   });
   const userType = ["SinLogin", "Empleado", "Cliente", "Administrador", "Root"];
   const [currentUser, setCurrentUser] = useState(userType[0]);
@@ -81,6 +82,13 @@ const Login = () => {
     const { name, value } = e.target;
     setState({ ...state, [name]: value });
     console.log(name, value);
+  };
+  const handleClickShowPassword = () => {
+    setState({ ...state, showPassword: !state.showPassword });
+  };
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
   };
   const handleCurrent = (e) => {
     setCurrentUser(e.target.value, function () {
@@ -200,6 +208,8 @@ const Login = () => {
       handleSubmitRegister={handleSubmitRegister}
       validateLoginFields={validateLoginFields}
       handleCurrent={handleCurrent}
+      handleClickShowPassword={handleClickShowPassword}
+      handleMouseDownPassword={handleMouseDownPassword}
       userType={userType}
     />
   );

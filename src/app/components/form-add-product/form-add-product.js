@@ -1,28 +1,71 @@
-import { React, useState, Suspense, lazy } from "react";
+import { React, useState, Suspense, lazy, useEffect } from "react";
 import "./form-add-product.style.css";
-import Texfield from "../textfield/texfield";
-import { fetchIngredient } from "../../../services/services-ingredient";
+import { withStyles } from "@material-ui/core/styles";
+import { green } from "@material-ui/core/colors";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
+import TextField from "@material-ui/core/TextField";
+import { SnackbarProvider, useSnackbar } from "notistack";
 import { ServicesGetNameCategory } from "../../../services/services-categoria";
 import { fetchProduct } from "../../../services/services-product";
+import { makeStyles } from "@material-ui/core/styles";
+import IconButton from "@material-ui/core/IconButton";
+import PhotoCamera from "@material-ui/icons/PhotoCamera";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    "& > *": {
+      margin: theme.spacing(1),
+    },
+  },
+  input: {
+    display: "none",
+  },
+  TextField: {
+    marginTop: "3vh",
+  },
+}));
+
 const FormAddIngredientPrduct = lazy(() =>
   import("../form-add-ingredient_product/form-add-ingredient_product")
 );
+
+const GreenCheckbox = withStyles({
+  root: {
+    color: green[400],
+    "&$checked": {
+      color: green[600],
+    },
+  },
+  checked: {},
+})((props) => <Checkbox color="default" {...props} />);
+
 const FormAddProduct = () => {
+  const { enqueueSnackbar } = useSnackbar();
+  const classes = useStyles();
+  const [tamañoArray, setTamañoArray] = useState([]);
   const ingredients = [
     {
       IngredienteID: null,
       CantidadIngrediente: null,
     },
   ];
+
+  useEffect(() => {
+    ServicesGetNameCategory(categoria).then((response) =>
+      response ? setCategoria(response.categoriaID) : null
+    );
+  }, [tamañoArray]);
+
   const Bebidas = ["1 Litro", "1.15 Litro", "2 Litro", "3 Litro"];
   const Pizza = ["6 Piezas", "8 Piezas", "12 Piezas", "16 Piezas", "32 Piezas"];
-  const [tamañoArray, setTamañoArray] = useState([]);
-  const [nombre, setNombre] = useState();
+
+  const [Nombre, setNombre] = useState();
   const [tamaño, setTamaño] = useState();
   const [stok, setStok] = useState();
   const [categoria, setCategoria] = useState();
   const [precio, setPrecio] = useState();
-  const [isStock, setIsStock] = useState(true);
+  const [isCompound, setIsCompound] = useState(false);
   const [descripcion, setDescripcion] = useState();
   const [imagen, setImagen] = useState();
   const [ingredientsList, setIngredientsList] = useState(ingredients);
@@ -32,33 +75,17 @@ const FormAddProduct = () => {
   };
 
   const handlerProductChange = (e) => {
-    const { name, value, checked } = e.target;
+    const { name, value } = e.target;
     switch (name) {
       case "Nombre":
         setNombre(value);
-        console.log(nombre);
         break;
-      case "isStock":
-        setIsStock(value);
-        console.log(nombre);
+      case "isCompound":
+        setIsCompound(value);
+        console.log(Nombre);
         break;
       case "Stock":
         setStok(value);
-        break;
-      case "Categoria":
-        if (checked === true) {
-          if (value === "Pizza") {
-            setCategoria("48C8C50D-5B40-45A0-9E85-77255F559ADE");
-            setTamañoArray(Pizza);
-          }
-          if (value === "Bebida") {
-            setCategoria("5860ac3e-2af3-40ef-b5be-c3ad92abbf75");
-            setTamañoArray(Bebidas);
-          }
-        } else {
-          setTamañoArray([]);
-        }
-        console.log(categoria);
         break;
       case "Precio":
         setPrecio(value);
@@ -68,6 +95,7 @@ const FormAddProduct = () => {
 
         break;
       case "Imagen":
+        console.log(name, value);
         setImagen(value);
         break;
       case "Tamaño":
@@ -77,6 +105,18 @@ const FormAddProduct = () => {
         break;
     }
   };
+  const hadleChangeCategoria = (e) => {
+    const { value } = e.target;
+    console.log(value);
+    if (value === "Pizza") {
+      setCategoria(value);
+      setTamañoArray(Pizza);
+    }
+    if (value === "bebidas") {
+      setCategoria(value);
+      setTamañoArray(Bebidas);
+    }
+  };
   /* const product = {
     CategoriaID: categoria,
     nombre,
@@ -84,107 +124,110 @@ const FormAddProduct = () => {
     tamaño: parseInt(tamaño),
     stock: parseFloat(stok),
     imagen,
-    isStock,
+    isCompound,
     crearProductosNav: ingredientsList ? ingredientsList : undefined,
   };*/
   const handlerSaveProduct = () => {
-    if (isStock === false) {
+    if (isCompound === true) {
       const product = {
         CategoriaID: categoria,
-        nombre,
+        Nombre,
         precio: parseFloat(precio),
         tamaño: tamaño,
-        stock: parseFloat(stok),
+        stock: parseFloat(stok) || 0,
         imagen,
-        isStock,
+        isCompound,
         crearProductosNav: ingredientsList,
       };
-      ServicesGetNameCategory("Pizza").then((response) => console.log("bdnb"));
-      fetchProduct.postProduct(product);
+      fetchProduct
+        .postProduct(product)
+        .then((response) =>
+          enqueueSnackbar(
+            response === "success"
+              ? "Ingrediente Agregado!"
+              : "Ingrediente no agregado!",
+            { variant: response }
+          )
+        );
     } else {
       const product = {
         CategoriaID: categoria,
-        nombre,
+        Nombre,
         precio: parseFloat(precio),
         tamaño: tamaño,
         stock: parseFloat(stok),
         imagen,
-        isStock,
+        isCompound,
       };
-      fetchProduct.postProduct(product);
+      fetchProduct
+        .postProduct(product)
+        .then((response) =>
+          enqueueSnackbar(
+            response === "success"
+              ? "Ingrediente Agregado!"
+              : "Ingrediente no agregado!",
+            { variant: response }
+          )
+        );
     }
   };
-  const handleIsStock = (e) => {
+  const handleIsCompound = (e) => {
     console.log(e.target.checked);
     if (e.target.checked === true) {
-      setIsStock(true);
+      setIsCompound(true);
     }
     if (e.target.checked === false) {
-      setIsStock(false);
+      setIsCompound(false);
     }
   };
 
   return (
     <>
       <div className="FormAddProduct__container">
-        <div className="FormAddProduct__container__title">
-          <h1> Agregar Producto</h1>
-        </div>
-        <div className="container-card__ContentsGrid__item delete">
-          <input onMouseUp={handleIsStock} type="checkbox" />
-          <div className="container-card__ContentsGrid__img"></div>
-        </div>
-        <div className="FormAddProduct__container_item">
-          <Texfield
-            handlerChange={handlerProductChange}
-            name={"Nombre"}
-            placeHolder={"Nombre"}
-            type={"text"}
-          />
-        </div>
-        <div className="FormAddProduct__container_item">
-          <Texfield
-            handlerChange={handlerProductChange}
-            name={"Stock"}
-            placeHolder={"Stock"}
-            type={"number"}
-          />
-        </div>
-        <div className="FormAddProduct__container_item">
-          {/* <Texfield
-            handlerChange={handlerProductChange}
-            name={"Categoria"}
-            placeHolder={"Categoria"}
-            type={"text"}
-          />*/}
-          <label>Categoria</label>
-          <label for="">
-            <input
-              onClick={handlerProductChange}
-              type="radio"
-              name="Categoria"
-              value="Pizza"
-            />
-            Pizza
-          </label>
-          <label for="">
-            <input
-              onClick={handlerProductChange}
-              type="radio"
-              name="Categoria"
-              value="Bebida"
-            />
-            Bebida
-          </label>
-        </div>
-        <div className="FormAddProduct__container_item">
-          <Texfield
-            handlerChange={handlerProductChange}
-            name={"Precio"}
-            placeHolder={"Precio"}
-            type={"number"}
-          />
-        </div>
+        <TextField
+          required
+          id="outlined-required"
+          size="small"
+          name={"Nombre"}
+          onChange={handlerProductChange}
+          label="Nombre"
+          defaultValue="Hello World"
+          variant="outlined"
+        />
+        <TextField
+          required
+          className={classes.TextField}
+          id="outlined-required"
+          size="small"
+          name={"Stock"}
+          type="number"
+          onChange={handlerProductChange}
+          label="Stock"
+          defaultValue="Hello World"
+          variant="outlined"
+        />
+        <TextField
+          required
+          className={classes.TextField}
+          id="outlined-required"
+          size="small"
+          onBlur={hadleChangeCategoria}
+          label="Categoria"
+          defaultValue="Hello World"
+          variant="outlined"
+        />
+        <TextField
+          required
+          className={classes.TextField}
+          id="outlined-required"
+          size="small"
+          name={"Precio"}
+          type="number"
+          onChange={handlerProductChange}
+          label="Precio"
+          defaultValue="Hello World"
+          variant="outlined"
+        />
         {categoria ? (
           <div className="FormAddProduct__container_item">
             <select onChange={handleTamaño}>
@@ -194,30 +237,52 @@ const FormAddProduct = () => {
             </select>
           </div>
         ) : null}
-        <div className="FormAddProduct__container_item">
-          <Texfield
-            handlerChange={handlerProductChange}
-            name={"Descripcion"}
-            placeHolder={"Descripcion"}
-            type={"text"}
-          />
-        </div>
-        <div className="FormAddProduct__container_item">
-          <Texfield
-            handlerChange={handlerProductChange}
-            name={"Imagen"}
-            placeHolder={"Imagen"}
-            type={"text"}
-          />
-        </div>
+        <TextField
+          required
+          className={classes.TextField}
+          id="outlined-required"
+          size="small"
+          name={"Descripcion"}
+          onChange={handlerProductChange}
+          label="Descripcion"
+          defaultValue="Hello World"
+          variant="outlined"
+        />
+        <input
+          name={"Imagen"}
+          onChange={handlerProductChange}
+          accept="image/*"
+          className={classes.input}
+          id="icon-button-file"
+          type="file"
+        />
+        <label htmlFor="icon-button-file">
+          <IconButton
+            color="primary"
+            aria-label="upload picture"
+            component="span"
+          >
+            <PhotoCamera />
+          </IconButton>
+        </label>
         <Suspense fallback={"Cargando...."}>
-          {isStock ? null : (
+          {isCompound ? (
             <FormAddIngredientPrduct
               ingredientsList={ingredientsList}
               setIngredientsList={setIngredientsList}
             />
-          )}
+          ) : null}
         </Suspense>
+        <FormControlLabel
+          control={
+            <GreenCheckbox
+              checked={isCompound}
+              onChange={handleIsCompound}
+              name="checkedG"
+            />
+          }
+          label="Es Un Producto Compuesto!"
+        />
         <button
           className="FormAddProduct__container--saveProduct"
           onClick={handlerSaveProduct}
@@ -228,4 +293,10 @@ const FormAddProduct = () => {
     </>
   );
 };
-export default FormAddProduct;
+export default function IntegrationNotistack() {
+  return (
+    <SnackbarProvider maxSnack={3}>
+      <FormAddProduct />
+    </SnackbarProvider>
+  );
+}

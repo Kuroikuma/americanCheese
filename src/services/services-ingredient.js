@@ -18,7 +18,7 @@ export const getSelectIngredientName = (name) => {
   return fetch(baseUrl)
     .then((res) => res.json())
     .then((response) => {
-      const data = ([] = [...response]);
+      const data = response;
       return data;
     })
     .catch((error) => {

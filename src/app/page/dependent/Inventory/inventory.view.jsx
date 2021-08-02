@@ -1,14 +1,46 @@
-import { React } from "react";
+import React, { useState } from "react";
 import { CardInventory } from "../../../components/card-inventory/card-inventory";
-import FormAddProduct from "../../../components/form-add-product/form-add-product";
-import { Modal } from "../../../components/modal/modal";
+import IntegrationNotistack from "../../../components/form-add-product/form-add-product";
+import { Modal } from "../../../components/modal-material/modal/modal";
 import { CardSoldOut } from "../../../components/card-sold-out/card-sold-out";
-
+import { makeStyles } from "@material-ui/core/styles";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormHelperText from "@material-ui/core/FormHelperText";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
 import "./inventory.style.css";
 
+const useStyles = makeStyles((theme) => ({
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2),
+  },
+}));
+
 const InventoryView = (props) => {
-  const { isOpen, openModal, closeModal, handlerProductDelete, Producto } =
-    props;
+  const {
+    open,
+    handleClose,
+    handleClickOpen,
+    handlerProductDelete,
+    Producto,
+    ID,
+    setID,
+    setProducto,
+    handleSearch,
+  } = props;
+  const classes = useStyles();
+
+  const handleChangeCategoria = (event) => {
+    console.log(event.target.value);
+
+    setID(event.target.value);
+    console.log(ID);
+  };
+
   console.log(Producto);
   return (
     <>
@@ -19,19 +51,42 @@ const InventoryView = (props) => {
               <h2>INVENTARIO</h2>
             </div>
             <div className="Container__Inventory__Header__Filter">
-              <button>Categoria:Pizza</button>
+              <FormControl className={classes.formControl}>
+                <Select
+                  value={ID}
+                  onChange={handleChangeCategoria}
+                  displayEmpty
+                  className={classes.selectEmpty}
+                  inputProps={{ "aria-label": "Without label" }}
+                >
+                  <MenuItem value="" disabled>
+                    Categoria
+                  </MenuItem>
+                  <MenuItem value="Pizza">Pizza</MenuItem>
+                  <MenuItem value="bebidas">bebidas</MenuItem>
+                </Select>
+                <FormHelperText>Seleccionar</FormHelperText>
+              </FormControl>
               <button>Sucursal:Juigalpa</button>
-              <input placeholder="buscar producto" type="text" />
+              <input
+                onChange={handleSearch}
+                placeholder="buscar producto"
+                type="text"
+              />
             </div>
             <div className="Container__Inventory__Header__AddProduct">
               <button
                 className="Container__Inventory__Header__AddProduct-open"
-                onClick={openModal}
+                onClick={handleClickOpen}
               >
                 Agregar Producto
               </button>
-              <Modal isOpen={isOpen} closeModal={closeModal}>
-                <FormAddProduct />
+              <Modal
+                titulo="Agregar Producto"
+                open={open}
+                handleClose={handleClose}
+              >
+                <IntegrationNotistack />
               </Modal>
             </div>
           </div>
@@ -64,7 +119,7 @@ const InventoryView = (props) => {
             </div>
             {Producto.map((producto) => (
               <CardInventory
-                Nombre={producto.producto}
+                Nombre={producto.nombre}
                 Stock={producto.stock}
                 Category={producto.categoria}
                 categoriaID={producto.categoriaID}

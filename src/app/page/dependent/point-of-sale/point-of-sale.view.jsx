@@ -1,46 +1,129 @@
 import React from "react";
 import "./point-of-sale.style.css";
-import notificacion from "../../../../assets/image/notificacion.png";
-import tab from "../../../../assets/image/multiple.png";
-import user from "../../../../assets/image/usuario.png";
+import Button from "@material-ui/core/Button";
 
 const PointOfSaleView = (props) => {
+  const {
+    data,
+    Sale,
+    total,
+    handleProducto,
+    handleFdetail,
+    handleCantidad,
+    handlerOrder,
+    handlerClearCurrendOrder,
+    menu,
+    perfil,
+  } = props;
   return (
     <>
-      <div className="container-sucursal">
-        <div className="sucursal__bar">
-          <div className="bar__sucursal"></div>
-          <div className="bar__date"></div>
-          <div className="bar__search"></div>
-          <div className="bar__dependent"></div>
+      <div className="PointOfSaleContainer">
+        <div className="PointOfSale__Header">
+          <div className="Header__PMenu">
+            <img src={menu} alt="" />
+          </div>
+          <div className="Header__PPerfil">
+            <img src={perfil} alt="" />
+          </div>
         </div>
-        <div className="sucursal__data">
-          <div className="data__textArea">
-            <div className="textArea__bar">
-              <div className="vacio"></div>
-              <div className="textArea__name"></div>
-              <div className="textArea__price"></div>
-              <div className="textArea__amount"></div>
-              <div className="textArea__tax"></div>
-              <div className="textArea__enter"></div>
-              <div className="textArea__change"></div>
+        <div className="PointOfSale__Spacing"></div>
+        <div className="PointOfSale__Search">
+          <input
+            onBlur={handleProducto}
+            className="Search__Producto"
+            type="text"
+          />
+          <input
+            onBlur={handleCantidad}
+            className="Search__Cantidad"
+            type="number"
+          />
+          <Button onClick={handleFdetail} variant="contained" color="primary">
+            Buscar
+          </Button>
+        </div>
+        <div className="PointOfSale__DashBoard">
+          <div className="DashBoard__Title">
+            <div className="Title__Producto">
+              <p>Producto</p>
+            </div>
+            <div className="Title__Code">
+              <p>Code</p>
+            </div>
+            <div className="Title__Unidad">
+              <p>Unidad</p>
+            </div>
+            <div className="Title__Precio">
+              <p>Precio</p>
+            </div>
+            <div className="Title__Monto">
+              <p>Monto</p>
             </div>
           </div>
-          <div className="data__buttom">
-            <button className="buttom__report"></button>
-            <button className="buttom__save"></button>
-            <button className="buttom__cancel"></button>
+          <div className="DashBoard__Order">
+            {Sale &&
+              Sale.map((item) => (
+                <div className="Order__itemP">
+                  <div className="itemP__Producto">
+                    <p> {item.Producto} </p>
+                  </div>
+                  <div className="itemP__Code">
+                    <p> {item.code} </p>
+                  </div>
+                  <div className="itemP__Unidad">
+                    <p> {item.cantidad} </p>
+                  </div>
+                  <div className="itemP__Precio">
+                    <p>{` C$${item.price}`}</p>
+                  </div>
+                  <div className="itemP__Monto">
+                    <p>{` C$${item.total}`}</p>
+                  </div>
+                </div>
+              ))}
+          </div>
+          <div className="DashBoard__Info">
+            <div className="Info__Item">
+              <div className="ItemTitle">
+                <p>Cantidad Producto:</p>
+              </div>
+              <div className="ItemNumber">
+                <p>5</p>
+              </div>
+            </div>
+            <div className="Info__Item">
+              <div className="ItemTitle">
+                <p>Descuento:</p>
+              </div>
+              <div className="ItemNumber">
+                <p>10%</p>
+              </div>
+            </div>
+            <div className="Info__Item">
+              <div className="ItemTitle">
+                <p>SubTotal:</p>
+              </div>
+              <div className="ItemNumber">
+                <p>C$250</p>
+              </div>
+            </div>
+            <div className="Info__Item">
+              <div className="ItemTitle">
+                <p>Total:</p>
+              </div>
+              <div className="ItemNumber">
+                <p>{` C$${total}`}</p>
+              </div>
+            </div>
           </div>
         </div>
-        <div className="sucursal__footer">
-          <div className="footer__buttom">
-            <div className="buttom__orders"></div>
-            <div className="buttom__Inventory"></div>
-            <div className="buttom__managet"></div>
-          </div>
-          <div className="footer__pay">
-            <div className="pay__summation"></div>
-            <div className="pay__total"></div>
+
+        <div className="PointOfSale__Button">
+          <div className="ButtonsP">
+            <button className="ButtonP__PItems">Dismiss</button>
+            <button onClick={handlerOrder} className="ButtonP__PItems">
+              Check in
+            </button>
           </div>
         </div>
       </div>

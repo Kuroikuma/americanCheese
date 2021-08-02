@@ -1,163 +1,197 @@
-.container-sucursal {
-  display: flex;
-  flex-direction: column;
+.PointOfSaleContainer {
   height: 100vh;
-  width: 100vw;
-}
-.sucursal__bar {
-  height: 10%;
-  width: 100%;
-  background-color: chocolate;
+  width: 98.7.9vw;
+  background-color: #e5e5e5;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.PointOfSale__Header {
+  height: 8%;
+  width: 100%;
+  background: #c4c4c4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.Header__PMenu {
+  height: 90%;
+  width: 2.6%;
+  margin-left: 5px;
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
-.bar__sucursal {
-  height: 80%;
-  width: 20%;
-  background: deeppink;
-}
-.bar__date {
-  height: 80%;
-  width: 20%;
-  background: darkgrey;
-}
-.bar__search {
-  height: 80%;
-  width: 20%;
-  background: darkslategray;
-}
-.bar__dependent {
-  height: 80%;
-  width: 20%;
-  background: deepskyblue;
-}
-.sucursal__data {
+.Header__PMenu img {
+  object-fit: contain;
   height: 70%;
-  width: 100%;
-  background: cyan;
-  display: flex;
+  width: 90%;
 }
-.data__textArea {
+.Header__PPerfil {
+  height: 90%;
+  width: 3.3%;
+  margin-right: 15px;
+}
+.Header__PPerfil img {
+  border-radius: 50px;
+  object-fit: cover;
   height: 100%;
-  width: 80%;
-  background: chartreuse;
-}
-.textArea__bar {
-  height: 10%;
   width: 100%;
-  background-color: darkorange;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
 }
-
-.vacio {
-  height: 80%;
-  width: 12%;
-  background-color: darkred;
+.PointOfSale__Spacing {
+  height: 4%;
+  width: 100%;
 }
-.textArea__name {
-  height: 80%;
-  width: 12%;
-  background-color: darkred;
-}
-.textArea__price {
-  height: 80%;
-  width: 12%;
-  background-color: darkred;
-}
-.textArea__amount {
-  height: 80%;
-  width: 12%;
-  background-color: darkred;
-}
-.textArea__tax {
-  height: 80%;
-  width: 12%;
-  background-color: darkred;
-}
-.textArea__enter {
-  height: 80%;
-  width: 12%;
-  background-color: darkred;
-}
-.textArea__change {
-  height: 80%;
-  width: 12%;
-  background-color: darkred;
-}
-
-.data__buttom {
-  height: 100%;
-  width: 20%;
-  background: darkred;
+.PointOfSale__DashBoard {
+  height: 72%;
+  width: 91%;
+  margin-top: 2vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
+
+  border-radius: 10px;
 }
-.buttom__report {
-  height: 25%;
-  width: 70%;
-  background: deeppink;
+.PointOfSale__Search {
+  height: 8%;
+  width: 91%;
+  background: #c4c4c4;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-.buttom__save {
-  height: 25%;
-  width: 70%;
-  background: deeppink;
+.Search__Producto {
+  height: 60%;
+  width: 30%;
+  margin-left: 10px;
+  border: none;
+  outline: none;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: inset 0px 4px 5px 2px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
 }
-.buttom__cancel {
-  height: 25%;
-  width: 70%;
-  background: deeppink;
+.Search__Cantidad {
+  height: 60%;
+  margin-left: 5px;
+  border: none;
+  outline: none;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: inset 0px 4px 5px 2px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
 }
-.sucursal__footer {
-  height: 20%;
+.DashBoard__Title {
+  height: 10%;
   width: 100%;
-  background: cadetblue;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  background: rgba(208, 212, 226, 0.8);
+  position: relative;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-.footer__buttom {
+.DashBoard__Order {
   height: 80%;
-  width: 50%;
-  background: darkblue;
+  width: 99%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background: #c4c4c4;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.Order__itemP {
+  height: 13%;
+  width: 97%;
+  display: flex;
+  align-items: center;
+  background-color: rgba(28, 132, 191, 1);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  margin-bottom: 0.8%;
+}
+.Order__itemP:first-of-type {
+  margin-top: 0.8%;
+}
+.itemP__Producto {
+  display: flex;
+  justify-content: center;
+  width: 20vw;
+}
+.itemP__Code {
+  display: flex;
+  justify-content: center;
+  width: 16vw;
+}
+.itemP__Code p {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.itemP__Unidad {
+  display: flex;
+  justify-content: center;
+  width: 15vw;
+}
+.itemP__Precio {
+  display: flex;
+  justify-content: center;
+  width: 16vw;
+}
+.itemP__Monto {
+  display: flex;
+  justify-content: center;
+  width: 15vw;
+}
+.DashBoard__Info {
+  height: 10%;
+  width: 100%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  background: #c4c4c4;
+  box-shadow: 0px -6px 4px rgba(0, 0, 0, 0.25);
 }
-.buttom__orders {
-  height: 80%;
-  width: 20%;
-  background: chartreuse;
-}
-.buttom__Inventory {
-  height: 80%;
-  width: 20%;
-  background: chartreuse;
-}
-.buttom__managet {
-  height: 80%;
-  width: 20%;
-  background: chartreuse;
-}
-.footer__pay {
-  height: 80%;
-  width: 30%;
-  background: darkgoldenrod;
+.Info__Item {
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
-.pay__summation {
-  height: 80%;
-  width: 60%;
-  background: darkblue;
+.ItemTitle p {
+  margin: 0px;
+  font-weight: bold;
 }
-.pay__total {
-  height: 80%;
-  width: 30%;
-  background: darkgreen;
+.ItemNumber p {
+  margin: 0px;
+  font-weight: bold;
+}
+.PointOfSale__Button {
+  height: 6%;
+  width: 91%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.ButtonsP {
+  height: 70%;
+  width: 25%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.ButtonP__PItems {
+  height: 100%;
+  width: 45%;
+  cursor: pointer;
+  border: none;
+  font-weight: bold;
+  background: #c4c4c4;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
 }

@@ -74,9 +74,16 @@
   justify-content: left;
   align-items: center;
 }
-.container-card__ContentsGrid__item.Sku {
-  height: 65px;
+.container-card__ContentsGrid__item.Sku h4 {
   width: 104px;
+  text-align: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.container-card__ContentsGrid__item.Nombre h4 {
+  width: 104px;
+  text-align: center;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;

@@ -15,10 +15,10 @@ function PointOfSale() {
 
   const factura = {
     ClienteID: "ca7af854-0538-4188-8845-0b84e497b1ca",
-    EmpleadoID: "D82874A1-4476-4919-917D-C6EEC25A0217",
+    EmpleadoID: "d82874a1-4476-4919-917d-c6eec25a0217",
     Fecha: `${fechaD.getFullYear()}-0${
       parseInt(fechaD.getMonth()) + 1
-    }-${fechaD.getDate()}`,
+    }-0${fechaD.getDate()}`,
     facturaDetallesNav: detalle,
   };
   const handleID = (e) => {
@@ -48,7 +48,7 @@ function PointOfSale() {
       CatidadProductosVendido: 2,
     };
     setDetalle((prevDetalle) => [...prevDetalle, Detalle]);
-    setTotal((prevTotal) => [parseInt(prevTotal) + parseInt(data.precio) * 2]);
+    setTotal((prevTotal) => parseInt(prevTotal) + parseInt(data.precio) * 2);
   };
   const handlerOrder = () => {
     postFactura(factura);

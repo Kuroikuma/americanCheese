@@ -6,10 +6,36 @@ import {
   TextField,
   MenuItem,
 } from "@material-ui/core";
-
+import { makeStyles } from "@material-ui/core/styles";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import AccountCircle from "@material-ui/icons/AccountCircle";
+import clsx from "clsx";
+import IconButton from "@material-ui/core/IconButton";
+import Visibility from "@material-ui/icons/Visibility";
+import VisibilityOff from "@material-ui/icons/VisibilityOff";
+import FilledInput from "@material-ui/core/FilledInput";
+import InputLabel from "@material-ui/core/InputLabel";
+import FormControl from "@material-ui/core/FormControl";
 import { loginStyles } from "./login.styles";
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+    flexWrap: "wrap",
+  },
+  margin: {
+    margin: theme.spacing(1),
+  },
+  withoutLabel: {
+    marginTop: theme.spacing(3),
+  },
+  textField: {
+    width: "25ch",
+  },
+}));
+
 const LoginView = (props) => {
+  const classes2 = useStyles();
   const classes = loginStyles();
   const {
     state,
@@ -19,6 +45,8 @@ const LoginView = (props) => {
     handleChange,
     validateLoginFields,
     handleCurrent,
+    handleClickShowPassword,
+    handleMouseDownPassword,
     userType,
   } = props;
 
@@ -35,6 +63,7 @@ const LoginView = (props) => {
     lastNameError,
     phoneError,
     genderError,
+    showPassword,
     emailError,
     passwordError,
     emailLoginPatient,
@@ -97,51 +126,80 @@ const LoginView = (props) => {
                 <Typography className={classes.title}>
                   Inicio de sesión
                 </Typography>
-                <TextField
-                  className={classes.inputLogin}
-                  variant="outlined"
-                  label="Correo Electronico"
-                  name="emailLoginPatient"
-                  error={emailLoginError === 0 ? false : true}
-                  helperText={
-                    emailLoginError === 1
-                      ? "Campo obligatorio"
-                      : emailLoginError === 2
-                      ? "Introduzca una dirección de correo válida"
-                      : null
-                  }
-                  value={emailLoginPatient}
-                  onChange={handleChange}
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                  SelectProps={{
-                    native: true,
-                  }}
-                />
-                <TextField
-                  className={classes.inputLogin}
-                  variant="outlined"
-                  label="Contraseña"
-                  type="password"
-                  name="passwordLoginPatient"
-                  error={passwordLoginError === 0 ? false : true}
-                  helperText={
-                    passwordLoginError === 1
-                      ? "Campo obligatorio"
-                      : passwordLoginError === 2
-                      ? "La contraseña debe contener al menos 6 caracteres"
-                      : null
-                  }
-                  value={passwordLoginPatient}
-                  onChange={handleChange}
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                  SelectProps={{
-                    native: true,
-                  }}
-                />
+                <FormControl
+                  className={clsx(classes2.margin, classes.inputLogin)}
+                  variant="filled"
+                >
+                  <InputLabel htmlFor="filled-adornment-password">
+                    Correo Electronico
+                  </InputLabel>
+                  <FilledInput
+                    name="emailLoginPatient"
+                    error={emailLoginError === 0 ? false : true}
+                    helperText={
+                      emailLoginError === 1
+                        ? "Campo obligatorio"
+                        : emailLoginError === 2
+                        ? "Introduzca una dirección de correo válida"
+                        : null
+                    }
+                    value={emailLoginPatient}
+                    onChange={handleChange}
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                    SelectProps={{
+                      native: true,
+                    }}
+                    id="input-with-icon-textfield"
+                    startAdornment={
+                      <InputAdornment position="start">
+                        <AccountCircle />
+                      </InputAdornment>
+                    }
+                  />
+                </FormControl>
+                <FormControl
+                  className={clsx(classes.margin, classes.inputLogin)}
+                  variant="filled"
+                >
+                  <InputLabel htmlFor="filled-adornment-password">
+                    Password
+                  </InputLabel>
+                  <FilledInput
+                    id="filled-adornment-password"
+                    type={showPassword ? "text" : "password"}
+                    value={passwordLoginPatient}
+                    name="passwordLoginPatient"
+                    error={passwordLoginError === 0 ? false : true}
+                    helperText={
+                      passwordLoginError === 1
+                        ? "Campo obligatorio"
+                        : passwordLoginError === 2
+                        ? "La contraseña debe contener al menos 6 caracteres"
+                        : null
+                    }
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                    SelectProps={{
+                      native: true,
+                    }}
+                    onChange={handleChange}
+                    endAdornment={
+                      <InputAdornment position="end">
+                        <IconButton
+                          aria-label="toggle password visibility"
+                          onClick={handleClickShowPassword}
+                          onMouseDown={handleMouseDownPassword}
+                          edge="end"
+                        >
+                          {showPassword ? <Visibility /> : <VisibilityOff />}
+                        </IconButton>
+                      </InputAdornment>
+                    }
+                  />
+                </FormControl>
                 <Grid className={classes.centerButton}>
                   <select
                     className={classes.buttonLogin}
