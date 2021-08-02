@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from "react";
-import ServicesCategoryProduct from "../../../../../services/services-pizza";
+import { ServicesCategoryProduct } from "../../../../../services/services-product";
 import Menu from "../componentes/Menu";
 
 function MenuDrink() {

@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
+import Header from "../../../../components/header/header";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
@@ -54,6 +55,7 @@ const Menu = (props) => {
 
   return (
     <>
+      <Header />
       <div className={classes.bar}>
         <h1 className={classes.tittle}>{tittle}</h1>
         <Button size="small">
@@ -69,16 +71,16 @@ const Menu = (props) => {
               <CardMedia
                 component="img"
                 className={classes.media}
-                alt={info.Producto}
-                image={info.Image}
+                alt={info.nombre}
+                image={info.imagen}
               />
               <CardContent>
                 <Typography gutterBottom variant="h5" component="h2">
                   {info.Producto}
                 </Typography>
-                <Typography>{`C$ ${info.Precio}`}</Typography>
+                <Typography>{`C$ ${info.precio}`}</Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
-                  {info.Descripcion}
+                  {info.descripcion}
                 </Typography>
               </CardContent>
             </CardActionArea>

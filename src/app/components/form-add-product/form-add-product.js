@@ -139,8 +139,10 @@ const FormAddProduct = () => {
         stock: parseFloat(stok) || 0,
         imagen,
         isCompound,
+        descripcion,
         crearProductosNav: ingredientsList,
       };
+
       fetchProduct
         .postProduct(product)
         .then((response) =>
@@ -160,6 +162,7 @@ const FormAddProduct = () => {
         stock: parseFloat(stok),
         imagen,
         isCompound,
+        descripcion,
       };
       fetchProduct
         .postProduct(product)
@@ -171,6 +174,7 @@ const FormAddProduct = () => {
             { variant: response }
           )
         );
+      console.log(product);
     }
   };
   const handleIsCompound = (e) => {
