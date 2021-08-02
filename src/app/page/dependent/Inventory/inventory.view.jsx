@@ -128,6 +128,7 @@ const InventoryView = (props) => {
                 Image={producto.imagen}
                 Sku={producto.productoID}
                 Ingredients={producto.ingrediente}
+                isCompound={producto.isCompound}
                 handlerProductDelete={handlerProductDelete}
               />
             ))}

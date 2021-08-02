@@ -43,9 +43,17 @@ const CardIngredient = (props) => {
       ingredient.CantidadIngrediente = parseInt(value);
       console.log(value);
     }
-  };
-  const handleBlur = (e) => {
     setBlur(!blur);
+  };
+  const handleCantidad = (e) => {
+    const { name, value } = e.target;
+    if (name === "Ingrediente") {
+      ingredient.IngredienteID = value;
+    }
+    if (name === "Cantidad") {
+      ingredient.CantidadIngrediente = parseInt(value);
+      console.log(value);
+    }
   };
   return (
     <>
@@ -53,8 +61,7 @@ const CardIngredient = (props) => {
         required
         className={classes.TextField}
         id="outlined-required"
-        onChange={handlerInputIngredient}
-        onBlur={handleBlur}
+        onBlur={handlerInputIngredient}
         name={"Ingrediente"}
         size="small"
         label="Ingrediente"
@@ -65,7 +72,7 @@ const CardIngredient = (props) => {
         required
         className={classes.TextFields}
         id="outlined-required"
-        onChange={handlerInputIngredient}
+        onChange={handleCantidad}
         name={"Cantidad"}
         size="small"
         type={"number"}

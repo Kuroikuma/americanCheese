@@ -96,19 +96,13 @@ export async function postProduct(product) {
 }
 export async function putProduct(product = {}, ID) {
   const baseUrl = `${apiUrl}/${ID}`;
-  const response = await fetch(baseUrl, {
-    method: "PUT",
-    mode: "cors",
-    cache: "no-cache",
-    credentials: "same-origin",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    redirect: "follow",
-    referrerPolicy: "no-referrer",
-    body: JSON.stringify(product),
-  });
-  return response.json();
+  try {
+    const result = await axios.put(baseUrl, product);
+    console.log(result.data);
+    return result.data;
+  } catch (error) {
+    return "error";
+  }
 }
 export async function deleteProduct(ID) {
   const baseUrl = `${apiUrl}/${ID}`;

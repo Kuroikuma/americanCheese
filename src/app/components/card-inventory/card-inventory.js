@@ -19,6 +19,7 @@ export const CardInventory = (props) => {
     Description,
     Image,
     Sku,
+    isCompound,
     Ingredients,
     handlerProductDelete,
   } = props;
@@ -53,10 +54,11 @@ export const CardInventory = (props) => {
     Nombre: NombreR,
     Stock: parseInt(StockR),
     categoriaID,
-    Tamaño: parseInt(TamañoR),
+    Tamaño: TamañoR,
     precio: parseInt(PriceR),
     Imagen: ImageR,
     costo: 0,
+    isCompound,
     ProductoID: SkuR,
     crearProductosNav: IngredientsR,
   };
