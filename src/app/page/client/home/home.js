@@ -104,7 +104,6 @@ function Home() {
   const userContext = useContext(UserContext);
   const logout = () => {
     userContext.SetCurrent(0);
-
     userContext.setUser(null);
   };
   const [open, setOpen] = useState(false);

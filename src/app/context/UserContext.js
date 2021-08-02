@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 const Context = React.createContext({});
 export const UserContextProvider = ({ children }) => {
-  const [user, setUser] = useState();
+  const [user, setUser] = useState({});
 
   const [Current, SetCurrent] = useState(0);
 

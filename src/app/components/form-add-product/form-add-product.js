@@ -97,6 +97,8 @@ const FormAddProduct = () => {
       case "Imagen":
         console.log(name, value);
         setImagen(value);
+
+        console.log(value);
         break;
       case "Tamaño":
         setTamaño(value);

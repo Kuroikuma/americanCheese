@@ -60,9 +60,9 @@ function IndexRoutes() {
         <AdminRoutes />
       ) : Current === 4 ? (
         <RootRoutes />
-      ) : (
+      ) : Current === 0 ? (
         <Login />
-      )}
+      ) : null}
     </Suspense>
   );
 }
