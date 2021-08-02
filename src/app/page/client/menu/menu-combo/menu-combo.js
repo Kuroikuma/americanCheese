@@ -1,43 +1,14 @@
-import { React, useState } from "react";
-import MenuComboView from "./menu-combo.view";
-import image from "../../../../../assets/image/pizza1.jpg";
-import image2 from "../../../../../assets/image/pizza2.jpg";
+import { React, useState, useEffect } from "react";
+import ServicesCategoryProduct from "../../../../../services/services-pizza";
+import Menu from "../componentes/Menu";
 
-const data = [];
-
-data.push({
-  img: image,
-  name: "Combo f",
-  description: ["pizza familiar", "pizza personal", "pichel de te"],
-});
-data.push({
-  img: image,
-  name: "Combo f",
-  description: ["pizza familiar", "pizza personal", "pichel de te"],
-});
-data.push({
-  img: image,
-  name: "Combo f",
-  description: ["pizza familiar", "pizza personal", "pichel de te"],
-});
-data.push({
-  img: image,
-  name: "Combo f",
-  description: ["pizza familiar", "pizza personal", "pichel de te"],
-});
-data.push({
-  img: image,
-  name: "Combo f",
-  description: ["pizza familiar", "pizza personal", "pichel de te"],
-});
-data.push({
-  img: image,
-  name: "Combo f",
-  description: ["pizza familiar", "pizza personal", "pichel de te"],
-});
-
-console.log(data);
 function MenuCombo() {
-  return <MenuComboView data={data} />;
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    ServicesCategoryProduct("combo").then((response) => setData(response));
+  }, []);
+  console.log(data);
+
+  return <Menu data={data} tittle="LISTADO DE COMBOS " />;
 }
 export default MenuCombo;

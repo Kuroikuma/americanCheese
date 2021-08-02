@@ -1,55 +1,15 @@
-import { React } from "react";
-import image from "../../../../../assets/image/MenuBebidas/te.jfif";
-import image2 from "../../../../../assets/image/MenuBebidas/jugo.jpg";
-import image3 from "../../../../../assets/image/MenuBebidas/cocaCola.jpg";
-import image4 from "../../../../../assets/image/MenuBebidas/agua.jfif";
-import MenuSmoothieView from "./menu-smoothie.view";
-
-const data = [];
-
-data.push({
-  img: image,
-  name: "Te Natural",
-});
-data.push({
-  img: image2,
-  name: "Jugos",
-});
-data.push({
-  img: image3,
-  name: "Coca-Cola",
-});
-data.push({
-  img: image4,
-  name: "Agua En Botella",
-});
-data.push({
-  img: image4,
-  name: "Agua En Botella",
-});
-data.push({
-  img: image,
-  name: "Te Natural",
-});
-data.push({
-  img: image2,
-  name: "Jugos",
-});
-data.push({
-  img: image3,
-  name: "Coca-Cola",
-});
-data.push({
-  img: image4,
-  name: "Agua En Botella",
-});
-data.push({
-  img: image4,
-  name: "Agua En Botella",
-});
+import { React, useState, useEffect } from "react";
+import ServicesCategoryProduct from "../../../../../services/services-pizza";
+import Menu from "../componentes/Menu";
 
 function MenuSmoothie() {
-  return <MenuSmoothieView data={data} />;
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    ServicesCategoryProduct("frappe").then((response) => setData(response));
+  }, []);
+  console.log(data);
+
+  return <Menu data={data} tittle="FRAPPÉ'S" />;
 }
 
 export default MenuSmoothie;

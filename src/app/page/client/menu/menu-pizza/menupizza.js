@@ -1,10 +1,6 @@
 import { React, useEffect, useState } from "react";
-import pizza1 from "../../../../../assets/image/MenuPizzas/menupizza1.jpg";
-import pizza2 from "../../../../../assets/image/MenuPizzas/menupizza2.jpeg";
-import pizza3 from "../../../../../assets/image/MenuPizzas/menupizza3.jpg";
-import pizza4 from "../../../../../assets/image/MenuPizzas/menupizza4.jpg";
 import ServicesCategoryProduct from "../../../../../services/services-pizza";
-import MenuPizzaView from "./menupizza.view";
+import Menu from "../componentes/Menu";
 
 function MenuPizza() {
   const [data, setData] = useState([]);
@@ -12,7 +8,7 @@ function MenuPizza() {
     ServicesCategoryProduct("Pizza").then((response) => setData(response));
   }, []);
   console.log(data);
-  return <MenuPizzaView data={data} />;
+  return <Menu data={data} tittle="PIZZAS" />;
 }
 
 export default MenuPizza;
