@@ -183,10 +183,11 @@ export const FormAddIngredient = (props) => {
   );
 };
 
-export default function IntegrationNotistack() {
+export default function IntegrationNotistack(props) {
+  const { setID, ID } = props;
   return (
     <SnackbarProvider maxSnack={3}>
-      <FormAddIngredient />
+      <FormAddIngredient setID={setID} ID={ID} />
     </SnackbarProvider>
   );
 }

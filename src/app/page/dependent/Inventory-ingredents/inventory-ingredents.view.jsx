@@ -36,7 +36,7 @@ const InventoryIngredentsView = (props) => {
                 Agregar Ingrediente
               </button>
               <Modal isOpen={isOpen} closeModal={closeModal}>
-                <IntegrationNotistack />
+                <IntegrationNotistack setID={setID} ID={ID} />
               </Modal>
             </div>
           </div>
