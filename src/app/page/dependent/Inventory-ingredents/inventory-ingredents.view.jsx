@@ -65,19 +65,21 @@ const InventoryIngredentsView = (props) => {
                 <h3></h3>
               </div>
             </div>
-            {Ingrediente.map((ingredientes) => (
-              <IntegrationNotistac
-                nombre={ingredientes.nombre}
-                stock={ingredientes.stock}
-                precio={ingredientes.precio}
-                imagen={ingredientes.imagen}
-                sku={ingredientes.ingredienteID}
-                unidadMedida={ingredientes.unidadMedida}
-                setIngrediente={setIngrediente}
-                ID={ID}
-                setID={setID}
-              />
-            ))}
+            {Ingrediente
+              ? Ingrediente.map((ingredientes) => (
+                  <IntegrationNotistac
+                    nombre={ingredientes.nombre}
+                    stock={ingredientes.stock}
+                    precio={ingredientes.precio}
+                    imagen={ingredientes.imagen}
+                    sku={ingredientes.ingredienteID}
+                    unidadMedida={ingredientes.unidadMedida}
+                    setIngrediente={setIngrediente}
+                    ID={ID}
+                    setID={setID}
+                  />
+                ))
+              : null}
             <div className="Spacing"></div>
             <div className="Spacing"></div>
           </div>

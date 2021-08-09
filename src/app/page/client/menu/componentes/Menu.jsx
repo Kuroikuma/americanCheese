@@ -65,35 +65,41 @@ const Menu = (props) => {
         </Button>
       </div>
       <div className={classes.center}>
-        {data.map((info) => (
-          <Card className={classes.root}>
-            <CardActionArea>
-              <CardMedia
-                component="img"
-                className={classes.media}
-                alt={info.nombre}
-                image={info.imagen}
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                  {info.Producto}
-                </Typography>
-                <Typography>{`C$ ${info.precio}`}</Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  {info.descripcion}
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-            <CardActions>
-              <Button size="small" color="primary">
-                <AddShoppingCartIcon />
-              </Button>
-              <Button size="small" color="primary">
-                <strong>Leer más</strong>
-              </Button>
-            </CardActions>
-          </Card>
-        ))}
+        {data
+          ? data.map((info) => (
+              <Card className={classes.root}>
+                <CardActionArea>
+                  <CardMedia
+                    component="img"
+                    className={classes.media}
+                    alt={info.nombre}
+                    image={info.imagen}
+                  />
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="h2">
+                      {info.Producto}
+                    </Typography>
+                    <Typography>{`C$ ${info.precio}`}</Typography>
+                    <Typography
+                      variant="body2"
+                      color="textSecondary"
+                      component="p"
+                    >
+                      {info.descripcion}
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+                <CardActions>
+                  <Button size="small" color="primary">
+                    <AddShoppingCartIcon />
+                  </Button>
+                  <Button size="small" color="primary">
+                    <strong>Leer más</strong>
+                  </Button>
+                </CardActions>
+              </Card>
+            ))
+          : null}
       </div>
     </>
   );

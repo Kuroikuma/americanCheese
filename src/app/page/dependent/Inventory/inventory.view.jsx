@@ -90,7 +90,7 @@ const InventoryView = (props) => {
                 open={open}
                 handleClose={handleClose}
               >
-                <IntegrationNotistack />
+                <IntegrationNotistack setID={setID} ID={ID} />
               </Modal>
             </div>
           </div>
@@ -121,21 +121,23 @@ const InventoryView = (props) => {
                 <h4></h4>
               </div>
             </div>
-            {Producto.map((producto) => (
-              <CardInventory
-                Nombre={producto.nombre}
-                Stock={producto.stock}
-                Category={producto.categoria}
-                categoriaID={producto.categoriaID}
-                Price={producto.precio}
-                Tamaño={producto.tamaño}
-                Image={producto.imagen}
-                Sku={producto.productoID}
-                Ingredients={producto.ingrediente}
-                isCompound={producto.isCompound}
-                handlerProductDelete={handlerProductDelete}
-              />
-            ))}
+            {Producto
+              ? Producto.map((producto) => (
+                  <CardInventory
+                    Nombre={producto.nombre}
+                    Stock={producto.stock}
+                    Category={producto.categoria}
+                    categoriaID={producto.categoriaID}
+                    Price={producto.precio}
+                    Tamaño={producto.tamaño}
+                    Image={producto.imagen}
+                    Sku={producto.productoID}
+                    Ingredients={producto.ingrediente}
+                    isCompound={producto.isCompound}
+                    handlerProductDelete={handlerProductDelete}
+                  />
+                ))
+              : null}
             <div className="Spacing"></div>
 
             <div className="Container__Inventory__Contents__delete">

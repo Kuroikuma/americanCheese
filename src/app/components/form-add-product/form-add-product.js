@@ -40,7 +40,8 @@ const GreenCheckbox = withStyles({
   checked: {},
 })((props) => <Checkbox color="default" {...props} />);
 
-const FormAddProduct = () => {
+const FormAddProduct = (props) => {
+  const { setID, ID } = props;
   const { enqueueSnackbar } = useSnackbar();
   const classes = useStyles();
   const [tamañoArray, setTamañoArray] = useState([]);
@@ -92,13 +93,6 @@ const FormAddProduct = () => {
         break;
       case "Descripcion":
         setDescripcion(value);
-
-        break;
-      case "Imagen":
-        console.log(name, value);
-        setImagen(value);
-
-        console.log(value);
         break;
       case "Tamaño":
         setTamaño(value);
@@ -119,16 +113,24 @@ const FormAddProduct = () => {
       setTamañoArray(Bebidas);
     }
   };
-  /* const product = {
-    CategoriaID: categoria,
-    nombre,
-    precio: parseFloat(precio),
-    tamaño: parseInt(tamaño),
-    stock: parseFloat(stok),
-    imagen,
-    isCompound,
-    crearProductosNav: ingredientsList ? ingredientsList : undefined,
-  };*/
+
+  const covertirabase64 = (archivos) => {
+    Array.from(archivos).forEach((archivo) => {
+      var reader = new FileReader();
+      reader.readAsDataURL(archivo);
+      reader.onload = function () {
+        var arrayAuxiliar = [];
+        var base64 = reader.result;
+        arrayAuxiliar = base64.split(",");
+        setImagen(arrayAuxiliar[1]);
+      };
+    });
+  };
+
+  const handlefile = (e) => {
+    covertirabase64(e.target.files);
+  };
+
   const handlerSaveProduct = () => {
     if (isCompound === true) {
       const product = {
@@ -174,8 +176,8 @@ const FormAddProduct = () => {
             { variant: response }
           )
         );
-      console.log(product);
     }
+    setID("Pizza");
   };
   const handleIsCompound = (e) => {
     console.log(e.target.checked);
@@ -245,9 +247,9 @@ const FormAddProduct = () => {
         ) : null}
         <TextField
           required
-          className={classes.TextField}
           id="outlined-required"
           size="small"
+          className={classes.TextField}
           name={"Descripcion"}
           onChange={handlerProductChange}
           label="Descripcion"
@@ -255,22 +257,10 @@ const FormAddProduct = () => {
           variant="outlined"
         />
         <input
-          name={"Imagen"}
-          onChange={handlerProductChange}
-          accept="image/*"
-          className={classes.input}
-          id="icon-button-file"
+          className={classes.TextField}
+          onChange={handlefile}
           type="file"
         />
-        <label htmlFor="icon-button-file">
-          <IconButton
-            color="primary"
-            aria-label="upload picture"
-            component="span"
-          >
-            <PhotoCamera />
-          </IconButton>
-        </label>
         <Suspense fallback={"Cargando...."}>
           {isCompound ? (
             <FormAddIngredientPrduct
@@ -299,10 +289,11 @@ const FormAddProduct = () => {
     </>
   );
 };
-export default function IntegrationNotistack() {
+export default function IntegrationNotistack(props) {
+  const { setID, ID } = props;
   return (
     <SnackbarProvider maxSnack={3}>
-      <FormAddProduct />
+      <FormAddProduct setID={setID} ID={ID} />
     </SnackbarProvider>
   );
 }
