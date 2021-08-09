@@ -8,6 +8,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
+import { Helmet } from "react-helmet";
 import "./inventory.style.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -44,6 +45,9 @@ const InventoryView = (props) => {
   console.log(Producto);
   return (
     <>
+      <Helmet>
+        <title> Inventario</title>
+      </Helmet>
       <div className="Container">
         <div className="Container__Inventory">
           <div className="Container__Inventory__Header">

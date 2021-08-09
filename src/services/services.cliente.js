@@ -31,10 +31,10 @@ function request(product, method) {
   };
   return requestOptions;
 }
-export async function postCliente(Cliente) {
+export async function postCliente(cliente) {
   const baseUrl = apiUrl;
   await axios
-    .post(baseUrl, Cliente)
+    .post(baseUrl, cliente)
     .then((response) => console.log("success full"))
     .catch((error) => console.log(error));
 }

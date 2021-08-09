@@ -11,12 +11,15 @@ function PointOfSale() {
   const [Sale, setSale] = useState([]);
   const [detalle, setDetalle] = useState([]);
   const [data, setData] = useState([]);
+  const [openAlert, setOpenAlert] = useState(false);
   const [ID, setID] = useState("Pizza");
   const fechaD = new Date();
   const [total, setTotal] = useState(0);
 
   const factura = {
-    ClienteID: userContext.user.clienteID,
+    ClienteID: userContext.user.clienteID
+      ? userContext.user.clienteID
+      : "invitado",
     EmpleadoID: "d82874a1-4476-4919-917d-c6eec25a0217",
     Fecha: `${fechaD.getFullYear()}-0${
       parseInt(fechaD.getMonth()) + 1
@@ -53,7 +56,12 @@ function PointOfSale() {
     setTotal((prevTotal) => parseInt(prevTotal) + parseInt(data.precio) * 2);
   };
   const handlerOrder = () => {
-    postFactura(factura);
+    if (factura.ClienteID !== "invitado") {
+      postFactura(factura);
+    } else {
+      setOpenAlert(true);
+      console.log("Logueese amigo");
+    }
   };
   const handlerClearCurrendOrder = () => {
     setSale([]);
@@ -76,6 +84,8 @@ function PointOfSale() {
       handleFdetail={handleFdetail}
       handlerOrder={handlerOrder}
       handlerClearCurrendOrder={handlerClearCurrendOrder}
+      openAlert={openAlert}
+      setOpenAlert={setOpenAlert}
     />
   );
 }

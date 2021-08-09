@@ -3,6 +3,18 @@
   width: 100vw;
   margin: 0px;
 }
+.alert-bar {
+  display: none;
+}
+.alert-bar.open {
+  display: block;
+  height: 8%;
+  width: 100%;
+}
+
+.container-order_alert {
+  width: 100%;
+}
 .bar__order {
   background: #000aff;
   height: 10%;

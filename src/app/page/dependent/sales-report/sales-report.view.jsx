@@ -1,6 +1,7 @@
 import React from "react";
 import "./sales-report.styles.css";
 import html2pdf from "html2pdf.js";
+import { Helmet } from "react-helmet";
 import imagepdf from "../../../../assets/image/pdf.png";
 import imagesearch from "../../../../assets/image/lupa.png";
 
@@ -34,6 +35,9 @@ const SalesReportView = (props) => {
   const { total } = props;
   return (
     <>
+      <Helmet>
+        <title> Reporte de venta</title>
+      </Helmet>
       <div className="report-table">
         <div className="report-tittle">Informe General de Ventas</div>
         <div className="search">

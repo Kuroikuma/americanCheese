@@ -1,12 +1,11 @@
 import React, { useState, Suspense, lazy, useContext } from "react";
 import image from "../../assets/image/logo.png";
 import UserContext from "../context/UserContext";
-
 const ClientRoutes = lazy(() => import("./client.routes"));
 const DependentRoutes = lazy(() => import("./dependent.routes"));
 const AdminRoutes = lazy(() => import("./administrador.routes"));
 const RootRoutes = lazy(() => import("./root.routes"));
-const Login = lazy(() => import("../page/shared/login/login"));
+const InvitadoRoutes = lazy(() => import("./invitado.routes"));
 function IndexRoutes() {
   const { Current, SetCurrent } = useContext(UserContext);
   console.log(Current, SetCurrent);
@@ -33,7 +32,7 @@ function IndexRoutes() {
         break;
       case 4:
         SetCurrent(0);
-        SetDetails("LoginRoutes");
+        SetDetails("InvitadosRoutes");
         break;
       default:
         break;
@@ -61,7 +60,7 @@ function IndexRoutes() {
       ) : Current === 4 ? (
         <RootRoutes />
       ) : Current === 0 ? (
-        <Login />
+        <InvitadoRoutes />
       ) : null}
     </Suspense>
   );

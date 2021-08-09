@@ -1,18 +1,23 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./home.style.css";
-
+import { Helmet } from "react-helmet";
 import logoUrl from "../../../../assets/image/AmericanCheeseLogopng.png";
 import facebookUrl from "../../../../assets/image/Facebook_Logo.png";
 import instagramUrl from "../../../../assets/image/Instagran_Logo.png";
 import Perfil from "../../../../assets/image/Perfil.jpg";
+import user from "../../../../assets/image/user.png";
 import Campanita from "../../../../assets/image/activo.png";
 import Carrito from "../../../../assets/image/anadir-al-carrito.png";
 import PizzaRandom from "../../../../assets/image/PizzaRandom.jpg";
 
-import Menu from "../../../../assets/image/menu.png";
+import MenuItem from "@material-ui/core/MenuItem";
+import Menu from "@material-ui/core/Menu";
+
+import MenuImg from "../../../../assets/image/menu.png";
 
 const HomeView = (props) => {
+  const apiUrl = "https://localhost:44323/";
   const {
     open,
     setOpen,
@@ -21,9 +26,43 @@ const HomeView = (props) => {
     ProductPopular,
     ProductPopular2,
     logout,
+    isMenuOpen,
+    handleLogin,
+    handleMenuClose,
+    handleProfileMenuOpen,
+    anchorEl,
+    User,
   } = props;
+
+  const menuId = "primary-search-account-menu";
+  const renderMenu = (
+    <Menu
+      anchorEl={anchorEl}
+      anchorOrigin={{ vertical: "top", horizontal: "right" }}
+      id={menuId}
+      keepMounted
+      onClick={handleLogin}
+      transformOrigin={{ vertical: "top", horizontal: "right" }}
+      open={isMenuOpen}
+      onClose={handleMenuClose}
+    >
+      <MenuItem
+        value={Object.keys(User).length ? "Logout" : "Login"}
+        onClick={handleMenuClose}
+      >
+        {Object.keys(User).length ? "Logout" : "Login"}
+      </MenuItem>
+      <MenuItem value="My account" onClick={handleMenuClose}>
+        My account
+      </MenuItem>
+    </Menu>
+  );
+
   return (
     <>
+      <Helmet>
+        <title>Home</title>
+      </Helmet>
       <div className="home">
         <div className="homeContainer">
           <div
@@ -31,7 +70,6 @@ const HomeView = (props) => {
               open ? "homeContainer__sideBar Open" : "homeContainer__sideBar"
             }
           >
-            <button>Logout</button>
             <div className="homeContainer__sideBar__logo">
               <img src={logoUrl} alt="" />
             </div>
@@ -75,7 +113,7 @@ const HomeView = (props) => {
                 }
                 onClick={() => setOpen(true)}
               >
-                <img src={Menu} alt="" />
+                <img src={MenuImg} alt="" />
               </button>
               <div className="homeContainer__dashboard__header__title">
                 <h1>American Cheese</h1>
@@ -199,7 +237,13 @@ const HomeView = (props) => {
               <div className="homeContainer__productRandom__notification__space"></div>
               <img src={Carrito} alt="" />
               <img src={Campanita} alt="" />
-              <img onClick={logout} src={Perfil} alt="" />
+              <img
+                onClick={handleProfileMenuOpen}
+                src={
+                  Object.keys(User).length ? `${apiUrl}${User.imagen}` : user
+                }
+                alt=""
+              />
             </div>
             <div className="homeContainer__productRandom__content">
               <div className="homeContainer__productRandom__content__header">
@@ -298,6 +342,7 @@ const HomeView = (props) => {
           </div>
         </div>
       </div>
+      {renderMenu}
     </>
   );
 };

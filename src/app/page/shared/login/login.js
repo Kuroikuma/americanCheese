@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import LoginView from "./login.view";
+import { useRegister } from "../../../hooks/useRegister";
 import UserContext from "../../../context/UserContext";
 import { fetchCliente } from "../../../../services/services.cliente";
 import { fetchEmpleado } from "../../../../services/services.empleado";
@@ -45,21 +46,42 @@ const Login = () => {
   }, [userContext.user]);
 
   console.log(userContext);
+  const [nombre, setNombre] = useState("");
+  const [apellido, setApellido] = useState("");
+  const [telefono, setTelefono] = useState(0);
+  const [genero, setGenero] = useState("");
+  const [correo, setCorreo] = useState("");
+  const [contraseña, setContraseña] = useState("");
+  const [tipo, setTipo] = useState(0);
+  const [file, setFile] = useState();
+  const [firstNameError, setFirstNameError] = useState(false);
+  const [lastNameError, setLastNameError] = useState(false);
+  const [phoneError, setPhoneError] = useState(false);
+  const [genderError, setGenderError] = useState(false);
+  const [emailError, setEmailError] = useState(0);
+  const [passwordError, setPasswordError] = useState(0);
+  const {
+    nombreR,
+    apellidoR,
+    correoR,
+    tipoR,
+    telefonoR,
+    contraseñaR,
+    generoR,
+    AddRegisterField,
+  } = useRegister({
+    nombre,
+    apellido,
+    telefono,
+    genero,
+    correo,
+    tipo,
+    contraseña,
+  });
+
   const [state, setState] = useState({
     contentLoginForm: true,
     contentRegisterForm: false,
-    firstName: "",
-    lastName: "",
-    phone: "",
-    gender: "",
-    email: "",
-    password: "",
-    firstNameError: false,
-    lastNameError: false,
-    phoneError: false,
-    genderError: false,
-    emailError: 0,
-    passwordError: 0,
     emailLoginPatient: "",
     passwordLoginPatient: "",
     emailLoginError: 0,
@@ -73,8 +95,31 @@ const Login = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setState({ ...state, [name]: value });
-    console.log(name, value);
   };
+
+  const covertirabase64 = (archivos) => {
+    Array.from(archivos).forEach((archivo) => {
+      var reader = new FileReader();
+      reader.readAsDataURL(archivo);
+      reader.onload = function () {
+        var arrayAuxiliar = [];
+        var base64 = reader.result;
+        arrayAuxiliar = base64.split(",");
+        setFile(arrayAuxiliar[1]);
+      };
+    });
+  };
+
+  const handlefile = (e) => {
+    covertirabase64(e.target.files);
+  };
+
+  const handleChangeRegister = (e) => {
+    const { name, value } = e.target;
+    console.log(value);
+    AddRegisterField(`${name}R`, value);
+  };
+
   const handleClickShowPassword = () => {
     setState({ ...state, showPassword: !state.showPassword });
   };
@@ -116,14 +161,14 @@ const Login = () => {
       let correo = emailLoginPatient;
       let contraseña = passwordLoginPatient;
       fetchCliente.getClienteByID(correo, contraseña).then((response) => {
-        userContext.setUser(response);
+        response ? userContext.setUser(response) : userContext.setUser(null);
       });
     }
     if (currentUser === "Empleado") {
       let correo = emailLoginPatient;
       let contraseña = passwordLoginPatient;
       fetchEmpleado.getEmpleadoByID(correo, contraseña).then((response) => {
-        userContext.setUser(response);
+        response ? userContext.setUser(response) : userContext.setUser(null);
       });
     }
     if (currentUser === "Administrador") {
@@ -132,7 +177,7 @@ const Login = () => {
       fetchAdministrador
         .getAdministradorByID(correo, contraseña)
         .then((response) => {
-          userContext.setUser(response);
+          response ? userContext.setUser(response) : userContext.setUser(null);
         });
     }
     if (currentUser === "Root") {
@@ -148,36 +193,36 @@ const Login = () => {
   };
 
   const validateRegisterFields = () => {
-    const { firstName, lastName, phone, gender, email, password } = state;
-
     let band = true;
-    if (firstName === "") setState({ ...state, firstNameError: true });
-    else setState({ ...state, firstNameError: false });
-    band = false;
-
-    if (lastName === "") setState({ ...state, lastNameError: true });
-    else {
-      setState({ ...state, lastNameError: false });
+    if (nombreR === "") {
+      setFirstNameError(true);
+      console.log("bdvj");
+    } else {
+      setFirstNameError(false);
       band = false;
     }
 
-    if (phone === "") setState({ ...state, phoneError: true });
-    else setState({ ...state, phoneError: false });
+    if (apellidoR === "") setLastNameError(true);
+    else {
+      setLastNameError(false);
+      band = false;
+    }
+    if (telefonoR === 0) setPhoneError(true);
+    else setPhoneError(false);
     band = false;
 
-    if (gender === "") setState({ ...state, genderError: true });
-    else setState({ ...state, genderError: false });
+    if (generoR === "") setGenderError(true);
+    else setGenderError(false);
     band = false;
 
-    if (email === "") setState({ ...state, emailError: 1 });
-    else if (!email.includes("@") || !email.includes("."))
-      setState({ ...state, emailError: 2 });
-    else setState({ ...state, emailError: 0 });
+    if (correoR === "") setEmailError(1);
+    else if (!correoR.includes("@") || !correoR.includes(".")) setEmailError(2);
+    else setEmailError(0);
     band = false;
 
-    if (password === "") setState({ ...state, passwordError: 1 });
-    else if (password.length < 6) setState({ ...state, passwordError: 2 });
-    else setState({ ...state, passwordError: 0 });
+    if (contraseñaR === "") setPasswordError(1);
+    else if (contraseñaR.length < 6) setPasswordError(2);
+    else setPasswordError(0);
     band = false;
 
     if (band) {
@@ -188,7 +233,45 @@ const Login = () => {
   };
 
   const handleSubmitRegister = () => {
-    console.log(validateRegisterFields());
+    const userLogin = {
+      nombre: nombreR,
+      apellido: apellidoR,
+      correo: correoR,
+      imagen: file,
+      tipo:
+        tipoR === "Cliente"
+          ? 1
+          : tipoR === "Empleado"
+          ? 2
+          : tipoR === "Adminitrador"
+          ? 3
+          : tipoR === "Root"
+          ? 4
+          : null,
+      telefono: parseInt(telefonoR),
+      contraseña: contraseñaR,
+      genero: generoR,
+    };
+    switch (userLogin.tipo) {
+      case 1:
+        fetchCliente.postCliente(userLogin);
+        break;
+      case 2:
+        fetchEmpleado.postEmpleado(userLogin);
+        break;
+      case 3:
+        fetchAdministrador.postAdministrador(userLogin);
+        break;
+      case 4:
+        fetchRoot.postRoot(userLogin);
+        break;
+
+      default:
+        console.log("Error");
+        break;
+    }
+
+    validateRegisterFields();
   };
 
   return (
@@ -202,7 +285,15 @@ const Login = () => {
       handleCurrent={handleCurrent}
       handleClickShowPassword={handleClickShowPassword}
       handleMouseDownPassword={handleMouseDownPassword}
+      handleChangeRegister={handleChangeRegister}
       userType={userType}
+      firstNameError={firstNameError}
+      lastNameError={lastNameError}
+      emailError={emailError}
+      phoneError={phoneError}
+      genderError={genderError}
+      passwordError={passwordError}
+      handlefile={handlefile}
     />
   );
 };

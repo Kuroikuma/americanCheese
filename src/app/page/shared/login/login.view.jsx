@@ -6,6 +6,7 @@ import {
   TextField,
   MenuItem,
 } from "@material-ui/core";
+import { Helmet } from "react-helmet";
 import { makeStyles } from "@material-ui/core/styles";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import AccountCircle from "@material-ui/icons/AccountCircle";
@@ -48,24 +49,20 @@ const LoginView = (props) => {
     handleClickShowPassword,
     handleMouseDownPassword,
     userType,
+    handleChangeRegister,
+    firstNameError,
+    lastNameError,
+    phoneError,
+    genderError,
+    emailError,
+    passwordError,
+    handlefile,
   } = props;
 
   const {
     contentLoginForm,
     contentRegisterForm,
-    firstName,
-    lastName,
-    phone,
-    gender,
-    email,
-    password,
-    firstNameError,
-    lastNameError,
-    phoneError,
-    genderError,
     showPassword,
-    emailError,
-    passwordError,
     emailLoginPatient,
     passwordLoginPatient,
     emailLoginError,
@@ -73,6 +70,9 @@ const LoginView = (props) => {
   } = state;
   return (
     <>
+      <Helmet>
+        <title> Login</title>
+      </Helmet>
       <div className={classes.root}>
         <section className={classes.contentAll}>
           <Grid xs={12} className={classes.backBox}>
@@ -245,11 +245,10 @@ const LoginView = (props) => {
                       className={classes.inputStyle}
                       label="Nombre"
                       variant="outlined"
-                      name="firstName"
+                      name="nombre"
                       error={firstNameError}
                       helperText={firstNameError ? "Campo obligatorio" : null}
-                      value={firstName}
-                      onChange={handleChange}
+                      onChange={handleChangeRegister}
                       InputLabelProps={{
                         shrink: true,
                       }}
@@ -263,11 +262,10 @@ const LoginView = (props) => {
                       className={classes.inputStyle}
                       label="Apellido"
                       variant="outlined"
-                      name="lastName"
+                      name="apellido"
                       error={lastNameError}
                       helperText={lastNameError ? "Campo obligatorio" : null}
-                      value={lastName}
-                      onChange={handleChange}
+                      onChange={handleChangeRegister}
                       InputLabelProps={{
                         shrink: true,
                       }}
@@ -281,12 +279,11 @@ const LoginView = (props) => {
                       className={classes.inputStyle}
                       label="Teléfono"
                       variant="outlined"
-                      name="phone"
+                      name="telefono"
                       type="number"
                       error={phoneError}
                       helperText={phoneError ? "Campo obligatorio" : null}
-                      value={phone}
-                      onChange={handleChange}
+                      onChange={handleChangeRegister}
                       InputLabelProps={{
                         shrink: true,
                       }}
@@ -296,25 +293,33 @@ const LoginView = (props) => {
                     />
                   </Grid>
                   <Grid item lg={6}>
+                    <input
+                      className={classes.inputStyle}
+                      onChange={handlefile}
+                      name="file"
+                      type="file"
+                      accept=".jpg, .jpeg, .png"
+                    />
+                  </Grid>
+                  <Grid item lg={6}>
                     <TextField
                       className={classes.inputStyle}
                       select
                       label="Sexo"
                       variant="outlined"
-                      name="gender"
+                      name="genero"
                       error={genderError}
                       helperText={genderError ? "Campo obligatorio" : null}
-                      value={gender}
-                      onChange={handleChange}
+                      onChange={handleChangeRegister}
                       InputLabelProps={{
                         shrink: true,
                       }}
                     >
                       <MenuItem key={0} value={0}></MenuItem>
-                      <MenuItem key={1} value={1}>
+                      <MenuItem key={1} value={"Masculino"}>
                         Masculino
                       </MenuItem>
-                      <MenuItem key={2} value={2}>
+                      <MenuItem key={2} value={"Femenino"}>
                         Femenino
                       </MenuItem>
                     </TextField>
@@ -324,7 +329,7 @@ const LoginView = (props) => {
                       className={classes.inputStyle}
                       label="Correo Electronico"
                       variant="outlined"
-                      name="email"
+                      name="correo"
                       error={emailError === 0 ? false : true}
                       helperText={
                         emailError === 1
@@ -333,8 +338,7 @@ const LoginView = (props) => {
                           ? "Introduzca una dirección de correo válida"
                           : null
                       }
-                      value={email}
-                      onChange={handleChange}
+                      onChange={handleChangeRegister}
                       InputLabelProps={{
                         shrink: true,
                       }}
@@ -348,7 +352,7 @@ const LoginView = (props) => {
                       className={classes.inputStyle}
                       label="Contraseña"
                       variant="outlined"
-                      name="password"
+                      name="contraseña"
                       helperText={
                         passwordError === 1
                           ? "Campo obligatorio"
@@ -357,8 +361,7 @@ const LoginView = (props) => {
                           : null
                       }
                       error={passwordError === 0 ? false : true}
-                      value={password}
-                      onChange={handleChange}
+                      onChange={handleChangeRegister}
                       InputLabelProps={{
                         shrink: true,
                       }}
@@ -369,18 +372,20 @@ const LoginView = (props) => {
                   </Grid>
                   <div className={classes.centerButton}>
                     <select
-                      className={classes.buttonLogin}
+                      className={classes.buttonRegister}
+                      onChange={handleChangeRegister}
                       style={{
                         backgroundColor: "#46A2FD",
                         borderColor: "#fff",
                         color: "#fff",
                         outline: "none",
                       }}
-                      name=""
+                      name="tipo"
                       id=""
                     >
-                      <option value="Cliente">Cliente</option>
-                      <option value="Empleado">Empleado</option>
+                      {userType.map((item) => (
+                        <option>{item}</option>
+                      ))}
                     </select>
                     <Button
                       variant="outlined"

@@ -2,6 +2,7 @@ import React from "react";
 import image from "../../../../assets/image/logo.png";
 import "./point-of-sale.style.css";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const PointOfSaleView = (props) => {
   const {
@@ -12,15 +13,24 @@ const PointOfSaleView = (props) => {
     handleFdetail,
     handlerOrder,
     handlerClearCurrendOrder,
+    openAlert,
+    setOpenAlert,
   } = props;
   const ImageUrl = process.env.REACT_APP_URL_IMAGE || "https://localhost:44389";
   return (
     <>
+      <Helmet>
+        <title>Punto de venta</title>
+      </Helmet>
       <div className="container-order">
         <div className="bar__order">
           <Link to="/home">
             <img alt="" src={image} />
           </Link>
+        </div>
+        <div className={openAlert ? "alert-bar open" : "alert-bar"}>
+          <Link to="/login">Login</Link>
+          <button onClick={() => setOpenAlert(false)}>X</button>
         </div>
         <div className="data__order">
           <div className="product__data">

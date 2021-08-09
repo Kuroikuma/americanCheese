@@ -1,10 +1,14 @@
 import "./customization.style.css";
 import Layout from "../../../components/shared/theme/layout";
 import image from "../../../../assets/image/backclip.jpg";
+import { Helmet } from "react-helmet";
 
 const CustomizationView = (props) => {
   return (
     <>
+      <Helmet>
+        <title> Arma tu Pizza</title>
+      </Helmet>
       <Layout />
       <div className="customization-container">
         <div className="build-container">

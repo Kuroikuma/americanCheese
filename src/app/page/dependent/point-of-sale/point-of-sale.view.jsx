@@ -1,6 +1,7 @@
 import React from "react";
 import "./point-of-sale.style.css";
 import Button from "@material-ui/core/Button";
+import { Helmet } from "react-helmet";
 
 const PointOfSaleView = (props) => {
   const {
@@ -17,6 +18,9 @@ const PointOfSaleView = (props) => {
   } = props;
   return (
     <>
+      <Helmet>
+        <title> punto de venta</title>
+      </Helmet>
       <div className="PointOfSaleContainer">
         <div className="PointOfSale__Header">
           <div className="Header__PMenu">

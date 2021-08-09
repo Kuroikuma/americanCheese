@@ -1,4 +1,5 @@
 import { React, useEffect, useState, useContext } from "react";
+import { useHistory } from "react-router-dom";
 import UserContext from "../../../context/UserContext";
 import HomeView from "./home.view";
 import Pizza from "../../../../assets/image/pizzaIcon.png";
@@ -101,11 +102,42 @@ ProductPopular.push({
 });
 
 function Home() {
+  useEffect(() => {
+    history.push("/");
+  }, []);
+
   const userContext = useContext(UserContext);
+
+  const history = useHistory();
+
   const logout = () => {
     userContext.SetCurrent(0);
-    userContext.setUser(null);
+    userContext.setUser({});
   };
+
+  const handleLogin = (e) => {
+    console.log(e.target.attributes.value);
+    if (e.target.attributes.value !== undefined) {
+      if (e.target.attributes.value.value === "Login") {
+        history.push("/login");
+      }
+      if (e.target.attributes.value.value === "Logout") {
+        logout();
+      }
+    }
+  };
+
+  const [anchorEl, setAnchorEl] = useState(null);
+  const isMenuOpen = Boolean(anchorEl);
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleProfileMenuOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
   const [open, setOpen] = useState(false);
   return (
     <HomeView
@@ -116,6 +148,12 @@ function Home() {
       open={open}
       setOpen={setOpen}
       logout={logout}
+      anchorEl={anchorEl}
+      handleLogin={handleLogin}
+      isMenuOpen={isMenuOpen}
+      handleMenuClose={handleMenuClose}
+      User={userContext.user}
+      handleProfileMenuOpen={handleProfileMenuOpen}
     />
   );
 }

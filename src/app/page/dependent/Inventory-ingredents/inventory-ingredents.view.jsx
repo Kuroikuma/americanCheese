@@ -4,6 +4,7 @@ import IntegrationNotistack from "../../../components/form-add-ingrediente/form-
 import { Modal } from "../../../components/modal/modal";
 import { CardSoldOut } from "../../../components/card-sold-out/card-sold-out";
 import "./inventory-ingredents.style.css";
+import { Helmet } from "react-helmet";
 
 const InventoryIngredentsView = (props) => {
   const {
@@ -18,6 +19,9 @@ const InventoryIngredentsView = (props) => {
 
   return (
     <>
+      <Helmet>
+        <title> Inventario De Ingrediente </title>
+      </Helmet>
       <div className="Container">
         <div className="Container__Inventory">
           <div className="Container__Inventory__Header">
