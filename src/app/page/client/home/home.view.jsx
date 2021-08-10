@@ -75,9 +75,13 @@ const HomeView = (props) => {
             </div>
             <div className="homeContainer__sideBar__buttom">
               <button onClick={() => setOpen(false)}>Dashboard</button>
-              <Link to="/point-of-sale">Ordene en lina</Link>
+              <button>
+                <Link to="/point-of-sale">Ordene en lina</Link>
+              </button>
               <button> Ultimos Pedido</button>
-              <Link to="/customization">Arma Tu Pizza</Link>
+              <button>
+                <Link to="/customization">Arma Tu Pizza</Link>
+              </button>
               <div className="homeContainer__sideBar__buttom--delivery">
                 <p>Numero</p>
                 <p> 2422-5882</p>
@@ -92,7 +96,9 @@ const HomeView = (props) => {
                   <img src={instagramUrl} alt="" />
                 </div>
                 <div className="homeContainer__sideBar__follow__net--Facebook">
-                  <img src={facebookUrl} alt="" />
+                  <a href="https://www.facebook.com/search/top?q=american%20cheese%20pizza">
+                    <img src={facebookUrl} alt="" />
+                  </a>
                 </div>
               </div>
             </div>

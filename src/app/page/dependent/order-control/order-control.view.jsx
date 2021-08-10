@@ -3,16 +3,12 @@ import "./order-control.styles.css";
 import imagesearch from "../../../../assets/image/lupa.png";
 import orderedit from "../../../../assets/image/edit.png";
 import orderdelete from "../../../../assets/image/elimanar.png";
-import { Helmet } from "react-helmet";
 
 const OrderControlView = (props) => {
   const { columnas } = props;
   const { filas } = props;
   return (
     <>
-      <Helmet>
-        <title> Control de Ordenes</title>
-      </Helmet>
       <div className="order-table">
         <div className="order-tittle">Control de Ordenes</div>
         <div className="search">

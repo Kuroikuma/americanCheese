@@ -13,44 +13,46 @@ import ChromeReaderModeIcon from "@material-ui/icons/ChromeReaderMode";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import Badge from "@material-ui/core/Badge";
 
+const useStyles = makeStyles({
+  root: {
+    maxWidth: 300,
+    maxHeight: 360,
+    boxShadow: "1px 4.5px 4.5px rgba(0,0,0,0.3)",
+  },
+  center: {
+    display: "flex",
+    flexWrap: "nowrap",
+    justifyContent: "space-around",
+  },
+  media: {
+    height: 120,
+  },
+  tittle: {
+    fontSize: "1.25rem",
+    fontFamily: "Roboto, Helvetica, Arial, sans-serif",
+    fontWeight: "bold",
+    lineHeight: 1.6,
+    letterSpacing: "0.0075em",
+    color: "#3f51b5",
+  },
+  bar: {
+    display: "flex",
+    flexWrap: "nowrap",
+    justifyContent: "space-around",
+    backgroundColor: "rgba(190,190,190)",
+    width: "89%",
+    marginLeft: "auto",
+    marginRight: "auto",
+    borderRadius: "15px",
+    marginBottom: "30px",
+    marginTop: "20px",
+  },
+});
+
 const Menu = (props) => {
+  const apiUrl = "https://localhost:44323/";
   const { data, tittle } = props;
 
-  const useStyles = makeStyles({
-    root: {
-      maxWidth: 300,
-      maxHeight: 360,
-      boxShadow: "1px 4.5px 4.5px rgba(0,0,0,0.3)",
-    },
-    center: {
-      display: "flex",
-      flexWrap: "nowrap",
-      justifyContent: "space-around",
-    },
-    media: {
-      height: 120,
-    },
-    tittle: {
-      fontSize: "1.25rem",
-      fontFamily: "Roboto, Helvetica, Arial, sans-serif",
-      fontWeight: "bold",
-      lineHeight: 1.6,
-      letterSpacing: "0.0075em",
-      color: "#3f51b5",
-    },
-    bar: {
-      display: "flex",
-      flexWrap: "nowrap",
-      justifyContent: "space-around",
-      backgroundColor: "rgba(190,190,190)",
-      width: "89%",
-      marginLeft: "auto",
-      marginRight: "auto",
-      borderRadius: "15px",
-      marginBottom: "30px",
-      marginTop: "20px",
-    },
-  });
   const classes = useStyles();
 
   return (
@@ -73,7 +75,7 @@ const Menu = (props) => {
                     component="img"
                     className={classes.media}
                     alt={info.nombre}
-                    image={info.imagen}
+                    image={`${apiUrl}${info.imagen}`}
                   />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">

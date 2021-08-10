@@ -16,7 +16,7 @@ const PointOfSaleView = (props) => {
     openAlert,
     setOpenAlert,
   } = props;
-  const ImageUrl = process.env.REACT_APP_URL_IMAGE || "https://localhost:44389";
+  const apiUrl = "https://localhost:44323/";
   return (
     <>
       <Helmet>
@@ -54,28 +54,30 @@ const PointOfSaleView = (props) => {
             </div>
             <div className="order">
               <div className="product__order">
-                {data.map((data) => (
-                  <div
-                    onClick={() => handleFdetail(data)}
-                    className="cardProducto"
-                  >
-                    <div className="product">
-                      <div className="product__image">
-                        <img src={ImageUrl + data.imagen} alt="" />
-                        <p>{data.producto}</p>
+                {data
+                  ? data.map((data) => (
+                      <div
+                        onClick={() => handleFdetail(data)}
+                        className="cardProducto"
+                      >
+                        <div className="product">
+                          <div className="product__image">
+                            <img src={`${apiUrl}${data.imagen}`} alt="" />
+                            <p>{data.producto}</p>
+                          </div>
+                        </div>
+                        <div className="ingredients">
+                          <h3>Ingredientes</h3>
+                          {data.ingrediente.map((item) => (
+                            <p>{item.ingrediente}</p>
+                          ))}
+                        </div>
+                        <div className="price">
+                          <div>C${data.precio}</div>
+                        </div>
                       </div>
-                    </div>
-                    <div className="ingredients">
-                      <h3>Ingredientes</h3>
-                      {data.ingrediente.map((item) => (
-                        <p>{item.ingrediente}</p>
-                      ))}
-                    </div>
-                    <div className="price">
-                      <div>C${data.precio}</div>
-                    </div>
-                  </div>
-                ))}
+                    ))
+                  : null}
               </div>
             </div>
           </div>

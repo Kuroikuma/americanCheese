@@ -234,6 +234,7 @@
 }
 .saleItems__products {
   display: flex;
+  height: 15%;
   justify-content: space-around;
   border-bottom: black solid 1px;
   border-left: none;
@@ -241,8 +242,8 @@
 }
 
 .saleItems__products img {
-  height: 30%;
-  width: 30%;
+  height: 100%;
+  width: 25%;
   clip-path: circle(69%);
 }
 .saleItems__products p {

@@ -35,7 +35,7 @@ const CustomizationView = (props) => {
               </div>
             </div>
           </div>
-          <button className="order">Order</button>
+          <button className="orderb">Order</button>
         </div>
         <div className="ingredients-container">
           <div className="ingredients__header">

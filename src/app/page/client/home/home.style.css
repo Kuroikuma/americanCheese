@@ -114,9 +114,20 @@
   align-items: center;
   height: 100%;
 }
+.homeContainer__sideBar__follow__net--Instagram a {
+  height: 100%;
+  width: 100%;
+}
 .homeContainer__sideBar__follow__net--Instagram img {
   height: 70%;
   width: 100%;
+}
+.homeContainer__sideBar__follow__net--Facebook a {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .homeContainer__sideBar__follow__net--Facebook img {
   height: 70%;
