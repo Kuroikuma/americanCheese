@@ -12,6 +12,10 @@
   display: flex;
   flex-wrap: nowrap;
   margin: auto;
+  margin-top: 20px;
+}
+.Container.decreases {
+  width: 80vw;
 }
 .Container__Inventory {
   height: auto;

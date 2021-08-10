@@ -2,11 +2,13 @@ import { React, useState, useEffect } from "react";
 import menu from "../../../../assets/image/menu.png";
 import perfil from "../../../../assets/image/Perfil.jpg";
 import PointOfSaleView from "./point-of-sale.view";
+import { useModal } from "../../../hooks/useModal-material";
 import { selecProductoPorNombre } from "../../../../services/services-product";
 import { postFactura } from "../../../../services/services-factura";
 
 function PointOfSale() {
   const ImageUrl = process.env.REACT_APP_URL_IMAGE || "https://localhost:44389";
+  const [open, handleClose, handleClickOpen] = useModal(false);
   const [Sale, setSale] = useState([]);
   const [detalle, setDetalle] = useState([]);
   const [cantidad, setCantidad] = useState(0);
@@ -80,6 +82,9 @@ function PointOfSale() {
       data={data}
       Sale={Sale}
       total={total}
+      open={open}
+      handleClose={handleClose}
+      handleClickOpen={handleClickOpen}
       setProducto={setProducto}
       handleFdetail={handleFdetail}
       handlerOrder={handlerOrder}

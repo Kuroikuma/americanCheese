@@ -4,6 +4,7 @@ import IntegrationNotistack from "../../../components/form-add-ingrediente/form-
 import { Modal } from "../../../components/modal/modal";
 import { CardSoldOut } from "../../../components/card-sold-out/card-sold-out";
 import "./inventory-ingredents.style.css";
+import { PersistentDrawerLeft } from "../../../components/sidebar-lateral/sidebar";
 import { Helmet } from "react-helmet";
 
 const InventoryIngredentsView = (props) => {
@@ -15,14 +16,19 @@ const InventoryIngredentsView = (props) => {
     setID,
     ID,
     setIngrediente,
+    decreases,
+    setDecreases,
   } = props;
 
   return (
-    <>
+    <PersistentDrawerLeft
+      titulo="Inventario de ingrediente"
+      setDecreases={setDecreases}
+    >
       <Helmet>
         <title> Inventario De Ingrediente </title>
       </Helmet>
-      <div className="Container">
+      <div className={decreases ? "Container decreases" : "Container"}>
         <div className="Container__Inventory">
           <div className="Container__Inventory__Header">
             <div className="Container__Inventory__Header__Title">
@@ -99,7 +105,7 @@ const InventoryIngredentsView = (props) => {
           </div>
         </div>
       </div>
-    </>
+    </PersistentDrawerLeft>
   );
 };
 export default InventoryIngredentsView;

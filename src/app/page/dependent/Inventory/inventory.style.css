@@ -13,6 +13,9 @@
   flex-wrap: nowrap;
   margin: auto;
 }
+.Container.decreases {
+  width: 80vw;
+}
 .Container__Inventory {
   height: auto;
   min-height: 100vh;

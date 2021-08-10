@@ -9,6 +9,7 @@ export default function Inventory(params) {
   const [open, handleClose, handleClickOpen] = useModal(false);
 
   const [ID, setID] = useState("Pizza");
+  const [decreases, setDecreases] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [search, setSearch] = useState("");
   const [Producto, setProducto] = useState([]);
@@ -47,6 +48,8 @@ export default function Inventory(params) {
         setID={setID}
         setProducto={setProducto}
         handleSearch={handleSearch}
+        decreases={decreases}
+        setDecreases={setDecreases}
       />
     </>
   );

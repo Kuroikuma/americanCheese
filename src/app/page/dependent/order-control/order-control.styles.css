@@ -1,10 +1,5 @@
-body {
-  font-family: monospace;
-  background: #f9960170;
-  height: 100vh;
-}
 .order-table {
-  width: 80%;
+  width: 100%;
   background: white;
   margin: 30px auto;
   box-shadow: 0 0 10px #333;
@@ -59,7 +54,7 @@ body {
   height: 54%;
 }
 .search {
-  margin-left: 62.5%;
+  margin-left: 67%;
   position: absolute;
   padding: 10px;
 }
@@ -87,10 +82,10 @@ body {
   text-align: center;
 }
 .search:hover input {
-  width: 210px;
+  width: 110px;
 }
 .search input:focus {
-  width: 210px;
+  width: 110px;
 }
 .button-editar {
   margin: 1%;

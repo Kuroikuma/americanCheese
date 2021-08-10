@@ -35,14 +35,6 @@ export const Modal = ({ children, titulo, open, handleClose }) => {
     >
       <DialogTitle id="alert-dialog-slide-title">{titulo}</DialogTitle>
       <DialogContent>{children}</DialogContent>
-      <DialogActions>
-        <Button onClick={handleClose} color="primary">
-          Disagree
-        </Button>
-        <Button onClick={handleClose} color="primary">
-          Agree
-        </Button>
-      </DialogActions>
     </Dialog>
   );
 };

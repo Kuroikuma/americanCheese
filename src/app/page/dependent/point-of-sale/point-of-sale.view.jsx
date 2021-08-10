@@ -2,6 +2,8 @@ import React from "react";
 import "./point-of-sale.style.css";
 import Button from "@material-ui/core/Button";
 import { Helmet } from "react-helmet";
+import { Modal } from "../../../components/modal-material/modal/modal";
+import OrderControl from "../order-control/order-control";
 
 const PointOfSaleView = (props) => {
   const {
@@ -15,6 +17,9 @@ const PointOfSaleView = (props) => {
     handlerClearCurrendOrder,
     menu,
     perfil,
+    open,
+    handleClose,
+    handleClickOpen,
   } = props;
   return (
     <>
@@ -24,11 +29,20 @@ const PointOfSaleView = (props) => {
       <div className="PointOfSaleContainer">
         <div className="PointOfSale__Header">
           <div className="Header__PMenu">
-            <img src={menu} alt="" />
+            <button onClick={handleClickOpen}>
+              <img src={menu} alt="" />
+            </button>
           </div>
           <div className="Header__PPerfil">
             <img src={perfil} alt="" />
           </div>
+          <Modal
+            titulo="Control de ventas"
+            open={open}
+            handleClose={handleClose}
+          >
+            <OrderControl />
+          </Modal>
         </div>
         <div className="PointOfSale__Spacing"></div>
         <div className="PointOfSale__Search">

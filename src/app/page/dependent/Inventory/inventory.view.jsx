@@ -9,6 +9,7 @@ import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import { Helmet } from "react-helmet";
+import { PersistentDrawerLeft } from "../../../components/sidebar-lateral/sidebar";
 import "./inventory.style.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -31,6 +32,8 @@ const InventoryView = (props) => {
     ID,
     setID,
     setProducto,
+    decreases,
+    setDecreases,
     handleSearch,
   } = props;
   const classes = useStyles();
@@ -44,11 +47,14 @@ const InventoryView = (props) => {
 
   console.log(Producto);
   return (
-    <>
+    <PersistentDrawerLeft
+      titulo="Inventario de Producto"
+      setDecreases={setDecreases}
+    >
       <Helmet>
         <title> Inventario</title>
       </Helmet>
-      <div className="Container">
+      <div className={decreases ? "Container decreases" : "Container"}>
         <div className="Container__Inventory">
           <div className="Container__Inventory__Header">
             <div className="Container__Inventory__Header__Title">
@@ -93,9 +99,6 @@ const InventoryView = (props) => {
                 <IntegrationNotistack setID={setID} ID={ID} />
               </Modal>
             </div>
-          </div>
-          <div className="Container__Inventory__FilterStockQuantity">
-            <h3>Stock Quantity</h3>
           </div>
           <div className="Container__Inventory__Contents">
             <div className="Container__Inventory__Contents__title">
@@ -162,7 +165,7 @@ const InventoryView = (props) => {
           </div>
         </div>
       </div>
-    </>
+    </PersistentDrawerLeft>
   );
 };
 export default InventoryView;

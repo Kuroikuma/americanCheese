@@ -78,17 +78,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function PersistentDrawerLeft({ titulo, children }) {
+export function PersistentDrawerLeft({ titulo, children, setDecreases }) {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
   const handleDrawerOpen = () => {
     setOpen(true);
+    setDecreases(true);
   };
 
   const handleDrawerClose = () => {
     setOpen(false);
+    setDecreases(false);
   };
 
   return (

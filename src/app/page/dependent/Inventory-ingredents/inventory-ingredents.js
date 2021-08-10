@@ -8,6 +8,7 @@ export default function InventoryIngredents(params) {
   const [isOpen, openModal, closeModal] = useModal(false);
   const [ID, setID] = useState(true);
   const [Ingrediente, setIngrediente] = useState([]);
+  const [decreases, setDecreases] = useState(false);
 
   useEffect(() => {
     getIngredient().then((response) => setIngrediente(response));
@@ -23,8 +24,9 @@ export default function InventoryIngredents(params) {
         setID={setID}
         ID={ID}
         setIngrediente={setIngrediente}
+        decreases={decreases}
+        setDecreases={setDecreases}
       />
-      <FormAddIngredient setID={setID} ID={ID} />
     </>
   );
 }

@@ -3,6 +3,7 @@ import "./sales-report.styles.css";
 import html2pdf from "html2pdf.js";
 import { Helmet } from "react-helmet";
 import imagepdf from "../../../../assets/image/pdf.png";
+import { PersistentDrawerLeft } from "../../../components/sidebar-lateral/sidebar";
 import imagesearch from "../../../../assets/image/lupa.png";
 
 function pdf() {
@@ -33,8 +34,9 @@ const SalesReportView = (props) => {
   const { columnas } = props;
   const { filas } = props;
   const { total } = props;
+  const { decreases, setDecreases } = props;
   return (
-    <>
+    <PersistentDrawerLeft titulo="Reporte De Venta" setDecreases={setDecreases}>
       <Helmet>
         <title> Reporte de venta</title>
       </Helmet>
@@ -43,7 +45,7 @@ const SalesReportView = (props) => {
         <div className="search">
           <input type="text" placeholder="buscar" required />
           <button className="button-search">
-            <img className="image-search" src={imagesearch} />
+            <img className="image-search" src={imagesearch} alt="" />
           </button>
         </div>
         <button className="button-pdf" onClick={pdf}>
@@ -95,7 +97,7 @@ const SalesReportView = (props) => {
           </>
         ))}
       </div>
-    </>
+    </PersistentDrawerLeft>
   );
 };
 

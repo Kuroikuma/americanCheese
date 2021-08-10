@@ -1,4 +1,4 @@
-import { React } from "react";
+import React, { useState } from "react";
 import SalesReportView from "./sales-report.view";
 
 const columnas = [
@@ -64,6 +64,15 @@ function sumaTotal() {
 sumaTotal();
 
 function SalesReport() {
-  return <SalesReportView columnas={columnas} filas={filas} total={total} />;
+  const [decreases, setDecreases] = useState(false);
+  return (
+    <SalesReportView
+      columnas={columnas}
+      filas={filas}
+      decreases={decreases}
+      setDecreases={setDecreases}
+      total={total}
+    />
+  );
 }
 export default SalesReport;
