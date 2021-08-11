@@ -7,7 +7,7 @@ import { postFactura } from "../../../../services/services-factura";
 
 function PointOfSale() {
   const userContext = useContext(UserContext);
-  const ImageUrl = process.env.REACT_APP_URL_IMAGE || "https://localhost:44389";
+  const apiUrl = "https://localhost:44323/";
   const [Sale, setSale] = useState([]);
   const [detalle, setDetalle] = useState([]);
   const [data, setData] = useState([]);
@@ -44,7 +44,7 @@ function PointOfSale() {
       title: data.producto,
       amount: 2,
       price: data.precio,
-      image: ImageUrl + data.imagen,
+      image: `${apiUrl}${data.imagen}`,
     };
     setSale((prevSale) => [...prevSale, sale]);
 

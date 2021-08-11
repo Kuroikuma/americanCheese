@@ -1,4 +1,5 @@
-import { React, useState, useEffect } from "react";
+import { React, useEffect, useState, useContext } from "react";
+import UserContext from "../../../context/UserContext";
 import menu from "../../../../assets/image/menu.png";
 import perfil from "../../../../assets/image/Perfil.jpg";
 import PointOfSaleView from "./point-of-sale.view";
@@ -8,6 +9,11 @@ import { postFactura } from "../../../../services/services-factura";
 
 function PointOfSale() {
   const ImageUrl = process.env.REACT_APP_URL_IMAGE || "https://localhost:44389";
+  const userContext = useContext(UserContext);
+  const logout = () => {
+    userContext.SetCurrent(0);
+    userContext.setUser({});
+  };
   const [open, handleClose, handleClickOpen] = useModal(false);
   const [Sale, setSale] = useState([]);
   const [detalle, setDetalle] = useState([]);
@@ -83,9 +89,11 @@ function PointOfSale() {
       Sale={Sale}
       total={total}
       open={open}
+      User={userContext.user}
       handleClose={handleClose}
       handleClickOpen={handleClickOpen}
       setProducto={setProducto}
+      logout={logout}
       handleFdetail={handleFdetail}
       handlerOrder={handlerOrder}
       handleProducto={handleProducto}

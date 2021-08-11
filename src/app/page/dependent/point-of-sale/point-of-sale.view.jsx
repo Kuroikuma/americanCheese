@@ -13,6 +13,8 @@ const PointOfSaleView = (props) => {
     handleProducto,
     handleFdetail,
     handleCantidad,
+    logout,
+    User,
     handlerOrder,
     handlerClearCurrendOrder,
     menu,
@@ -21,6 +23,7 @@ const PointOfSaleView = (props) => {
     handleClose,
     handleClickOpen,
   } = props;
+  const apiUrl = "https://localhost:44323/";
   return (
     <>
       <Helmet>
@@ -33,8 +36,8 @@ const PointOfSaleView = (props) => {
               <img src={menu} alt="" />
             </button>
           </div>
-          <div className="Header__PPerfil">
-            <img src={perfil} alt="" />
+          <div onClick={logout} className="Header__PPerfil">
+            <img src={`${apiUrl}${User.imagen}`} alt="" />
           </div>
           <Modal
             titulo="Control de ventas"

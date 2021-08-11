@@ -243,7 +243,7 @@ const Login = () => {
           ? 1
           : tipoR === "Empleado"
           ? 2
-          : tipoR === "Adminitrador"
+          : tipoR === "Administrador"
           ? 3
           : tipoR === "Root"
           ? 4
@@ -252,6 +252,7 @@ const Login = () => {
       contraseña: contraseñaR,
       genero: generoR,
     };
+    console.log(userLogin);
     switch (userLogin.tipo) {
       case 1:
         fetchCliente.postCliente(userLogin);
