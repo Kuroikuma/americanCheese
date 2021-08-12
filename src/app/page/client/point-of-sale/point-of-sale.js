@@ -9,6 +9,7 @@ function PointOfSale() {
   const userContext = useContext(UserContext);
   const apiUrl = "https://localhost:44323/";
   const [Sale, setSale] = useState([]);
+  const [band, setBand] = useState(false);
   const [detalle, setDetalle] = useState([]);
   const [data, setData] = useState([]);
   const [openAlert, setOpenAlert] = useState(false);
@@ -20,10 +21,10 @@ function PointOfSale() {
     ClienteID: userContext.user.clienteID
       ? userContext.user.clienteID
       : "invitado",
-    EmpleadoID: "d82874a1-4476-4919-917d-c6eec25a0217",
+    EmpleadoID: "d4319550-9481-4632-bb4d-ae96f27646c5",
     Fecha: `${fechaD.getFullYear()}-0${
       parseInt(fechaD.getMonth()) + 1
-    }-0${fechaD.getDate()}`,
+    }-${fechaD.getDate()}`,
     facturaDetallesNav: detalle,
   };
   const handleID = (e) => {
@@ -39,22 +40,7 @@ function PointOfSale() {
     }
   };
   console.log(Sale);
-  const handleFdetail = (data) => {
-    const sale = {
-      title: data.producto,
-      amount: 2,
-      price: data.precio,
-      image: `${apiUrl}${data.imagen}`,
-    };
-    setSale((prevSale) => [...prevSale, sale]);
 
-    const Detalle = {
-      ProductoID: data.productoID,
-      CatidadProductosVendido: 2,
-    };
-    setDetalle((prevDetalle) => [...prevDetalle, Detalle]);
-    setTotal((prevTotal) => parseInt(prevTotal) + parseInt(data.precio) * 2);
-  };
   const handlerOrder = () => {
     if (factura.ClienteID !== "invitado") {
       postFactura(factura);
@@ -81,11 +67,16 @@ function PointOfSale() {
       handleID={handleID}
       total={total}
       setID={setID}
-      handleFdetail={handleFdetail}
       handlerOrder={handlerOrder}
       handlerClearCurrendOrder={handlerClearCurrendOrder}
       openAlert={openAlert}
       setOpenAlert={setOpenAlert}
+      setSale={setSale}
+      detalle={detalle}
+      setDetalle={setDetalle}
+      setTotal={setTotal}
+      band={band}
+      setBand={setBand}
     />
   );
 }
