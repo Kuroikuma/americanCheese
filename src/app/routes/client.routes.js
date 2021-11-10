@@ -2,6 +2,7 @@ import React, { Suspense, lazy } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import image from "../../assets/image/logo.png";
 import { Spinner } from "../components/spinner/spinner";
+
 //import Home from "../page/client/home/home";
 const Customization = lazy(() =>
   import("../page/client/customization/customization")
@@ -40,7 +41,9 @@ function ClientRoutes() {
       >
         <Switch>
           <Route exact path="/" component={Home} />
+
           <Route exact path="/point-of-sale" component={PointOfSale} />
+
           <Route exact path="/customization" component={Customization} />
           <Route exact path="/menu-combo" component={MenuCombo} />
           <Route exact path="/menu-drink" component={MenuDrink} />

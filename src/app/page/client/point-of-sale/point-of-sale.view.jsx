@@ -89,9 +89,15 @@ const PointOfSaleView = (props) => {
             <div className="products__currentOrder">
               {Sale.map((sale) => (
                 <SaleItem
+                  setSale={setSale}
+                  Sale={Sale}
+                  setDetalle={setDetalle}
+                  setTotal={setTotal}
+                  detalle={detalle}
                   image={sale.image}
                   title={sale.title}
                   cantidad={sale.cantidad}
+                  productoID={sale.ProductoID}
                   price={sale.price}
                 />
               ))}

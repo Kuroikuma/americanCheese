@@ -1,6 +1,7 @@
 import React, { useState, Suspense, lazy, useContext } from "react";
 import image from "../../assets/image/logo.png";
 import UserContext from "../context/UserContext";
+import { DeleteSaleItemContextProvider } from "../context/deleteSaleContext";
 const ClientRoutes = lazy(() => import("./client.routes"));
 const DependentRoutes = lazy(() => import("./dependent.routes"));
 const AdminRoutes = lazy(() => import("./administrador.routes"));
@@ -52,7 +53,9 @@ function IndexRoutes() {
     >
       <button onClick={HandleCurrent}>{Details}</button>
       {Current === 1 ? (
-        <ClientRoutes />
+        <DeleteSaleItemContextProvider>
+          <ClientRoutes />
+        </DeleteSaleItemContextProvider>
       ) : Current === 2 ? (
         <DependentRoutes />
       ) : Current === 3 ? (
@@ -60,7 +63,9 @@ function IndexRoutes() {
       ) : Current === 4 ? (
         <RootRoutes />
       ) : Current === 0 ? (
-        <InvitadoRoutes />
+        <DeleteSaleItemContextProvider>
+          <InvitadoRoutes />
+        </DeleteSaleItemContextProvider>
       ) : null}
     </Suspense>
   );

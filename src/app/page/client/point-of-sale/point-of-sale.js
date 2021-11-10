@@ -7,6 +7,7 @@ import { postFactura } from "../../../../services/services-factura";
 
 function PointOfSale() {
   const userContext = useContext(UserContext);
+
   const apiUrl = "https://localhost:44323/";
   const [Sale, setSale] = useState([]);
   const [band, setBand] = useState(false);

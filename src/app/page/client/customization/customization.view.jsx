@@ -2,6 +2,7 @@ import "./customization.style.css";
 import Layout from "../../../components/shared/theme/layout";
 import image from "../../../../assets/image/backclip.jpg";
 import { Helmet } from "react-helmet";
+import { React } from "react";
 
 const CustomizationView = (props) => {
   return (
@@ -16,7 +17,7 @@ const CustomizationView = (props) => {
             <h1 className="build-header__title">Custom your own pizza!</h1>
           </div>
           <div className="build__aside">
-            <div className="build__pizza"></div>
+            s<div className="build__pizza"></div>
             <div className="build__img">
               <img src={image} />
             </div>

@@ -32,28 +32,26 @@ const TextField = (props) => {
     }
   };
   return (
-    <>
-      <div className="texfield">
-        <label
-          for="input"
-          className={`label ${focu && "focu"} ${
-            focu ? null : field ? "full" : null
-          }`}
-        >
-          {placeHolder}
-        </label>
-        <input
-          name={name}
-          value={field}
-          onFocus={handleInput}
-          onBlur={handleInput}
-          onSubmit={handleSubmitInput}
-          onChange={handlerInputChange}
-          className={focu ? "input focu" : "input"}
-          type={type}
-        />
-      </div>
-    </>
+    <div className="texfield">
+      <label
+        for="input"
+        className={`label ${focu && "focu"} ${
+          focu ? null : field ? "full" : null
+        }`}
+      >
+        {placeHolder}
+      </label>
+      <input
+        name={name}
+        value={field}
+        onFocus={handleInput}
+        onBlur={handleInput}
+        onSubmit={handleSubmitInput}
+        onChange={handlerInputChange}
+        className={focu ? "input focu" : "input"}
+        type={type}
+      />
+    </div>
   );
 };
 export default TextField;

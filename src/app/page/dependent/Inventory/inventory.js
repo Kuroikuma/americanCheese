@@ -1,11 +1,16 @@
 import { React, useEffect, useState } from "react";
 import { useModal } from "../../../hooks/useModal-material";
+import { useHistory } from "react-router-dom";
 import { ServicesCategoryProduct } from "../../../../services/services-product";
 import InventoryView from "./inventory.view";
 import { Spinner } from "../../../components/spinner/spinner";
 import { fetchProduct } from "../../../../services/services-product";
 
 export default function Inventory(params) {
+  useEffect(() => {
+    history.push("/");
+  }, []);
+  const history = useHistory();
   const [open, handleClose, handleClickOpen] = useModal(false);
 
   const [ID, setID] = useState("Pizza");

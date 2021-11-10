@@ -270,3 +270,6 @@
   height: 20%;
   width: 100%;
 }
+.SaleDelete {
+  cursor: pointer;
+}

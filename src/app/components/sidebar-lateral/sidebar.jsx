@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import clsx from "clsx";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
@@ -18,12 +18,18 @@ import ListItemText from "@material-ui/core/ListItemText";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
 import { Link } from "react-router-dom";
+import UserContext from "../../context/UserContext";
 
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
+  },
+  imgUser: {
+    width: "20%",
+    borderRadius: "30px",
+    marginRight: theme.spacing(9),
   },
   appBar: {
     transition: theme.transitions.create(["margin", "width"], {
@@ -79,9 +85,17 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export function PersistentDrawerLeft({ titulo, children, setDecreases }) {
+  const apiUrl = "https://localhost:44323/";
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+
+  const userContext = useContext(UserContext);
+
+  const logout = () => {
+    userContext.SetCurrent(0);
+    userContext.setUser({});
+  };
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -127,6 +141,13 @@ export function PersistentDrawerLeft({ titulo, children, setDecreases }) {
         }}
       >
         <div className={classes.drawerHeader}>
+          <img
+            className={classes.imgUser}
+            onClick={logout}
+            src={`${apiUrl}${userContext.user.imagen}`}
+            alt=""
+          />
+          {userContext.user.nombre}
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "ltr" ? (
               <ChevronLeftIcon />
