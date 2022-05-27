@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { Fragments } from "react";
 import { Link } from "react-router-dom";
 import "./home.style.css";
 import { Helmet } from "react-helmet";
@@ -59,7 +59,7 @@ const HomeView = (props) => {
   );
 
   return (
-    <>
+    <Fragments>
       <Helmet>
         <title>Home</title>
       </Helmet>
@@ -349,7 +349,7 @@ const HomeView = (props) => {
         </div>
       </div>
       {renderMenu}
-    </>
+    </Fragments>
   );
 };
 export default HomeView;

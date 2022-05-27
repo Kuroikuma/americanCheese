@@ -1,4 +1,4 @@
-import { React, useState, Suspense, lazy, useEffect } from "react";
+import { React, useState, Suspense, lazy, useEffect, Fragments } from "react";
 import "./card-inventory-ingredient.css";
 import { useIngredient } from "../../hooks/useIngredient";
 import { fetchIngredient } from "../../../services/services-ingredient";
@@ -140,7 +140,7 @@ export const CardInventoryIngredient = (props) => {
   const classes = useStyles();
 
   return (
-    <>
+    <Fragments>
       <div className={increase ? "Spacing increase" : "Spacing"}></div>
       <div className={increase ? "container-card increase" : "container-card"}>
         <div className="container-card__ContentsGrid">
@@ -191,7 +191,7 @@ export const CardInventoryIngredient = (props) => {
           <button onClick={handlerSaveIngredient}>Guardar Cambios</button>
         </div>
       </div>
-    </>
+    </Fragments>
   );
 };
 

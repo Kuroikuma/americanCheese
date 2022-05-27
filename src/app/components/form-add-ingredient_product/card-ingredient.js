@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React,  { Fragments, useState, useEffect } from "react";
 import { fetchIngredient } from "../../../services/services-ingredient";
 import TextField from "@material-ui/core/TextField";
 import "./form-add-ingredient_product.style.css";
@@ -56,7 +56,7 @@ const CardIngredient = (props) => {
     }
   };
   return (
-    <>
+    <Fragments>
       <TextField
         required
         className={classes.TextField}
@@ -80,7 +80,7 @@ const CardIngredient = (props) => {
         defaultValue="Hello World"
         variant="outlined"
       />
-    </>
+    </Fragments>
   );
 };
 

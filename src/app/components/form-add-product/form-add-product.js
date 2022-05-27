@@ -1,4 +1,4 @@
-import { React, useState, Suspense, lazy, useEffect } from "react";
+import { React, useState, Suspense, lazy, useEffect, Fragments } from "react";
 import "./form-add-product.style.css";
 import { withStyles } from "@material-ui/core/styles";
 import { green } from "@material-ui/core/colors";
@@ -9,8 +9,6 @@ import { SnackbarProvider, useSnackbar } from "notistack";
 import { ServicesGetNameCategory } from "../../../services/services-categoria";
 import { fetchProduct } from "../../../services/services-product";
 import { makeStyles } from "@material-ui/core/styles";
-import IconButton from "@material-ui/core/IconButton";
-import PhotoCamera from "@material-ui/icons/PhotoCamera";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -190,7 +188,7 @@ const FormAddProduct = (props) => {
   };
 
   return (
-    <>
+    <Fragments>
       <div className="FormAddProduct__container">
         <TextField
           required
@@ -286,7 +284,7 @@ const FormAddProduct = (props) => {
           Guardar Producto
         </button>
       </div>
-    </>
+    </Fragments>
   );
 };
 export default function IntegrationNotistack(props) {

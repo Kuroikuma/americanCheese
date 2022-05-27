@@ -1,4 +1,4 @@
-import React from "react";
+import {Fragments,React } from "react";
 import "./order-control.styles.css";
 import imagesearch from "../../../../assets/image/lupa.png";
 import orderedit from "../../../../assets/image/edit.png";
@@ -8,7 +8,7 @@ const OrderControlView = (props) => {
   const { columnas } = props;
   const { filas } = props;
   return (
-    <>
+    <Fragments>
       <div className="order-table">
         <div className="order-tittle">Control de Ordenes</div>
         <div className="search">
@@ -21,7 +21,7 @@ const OrderControlView = (props) => {
           <div className="order-columns">{columnas.name}</div>
         ))}
         {filas.map((filas) => (
-          <>
+          <Fragments>
             <div className="order-filas">{filas.Cantidad}</div>
             <div className="order-filas">{filas.Orden}</div>
             <div className="order-filas">{filas.Mesa}</div>
@@ -38,13 +38,13 @@ const OrderControlView = (props) => {
                 </div>
               </button>
             </div>
-          </>
+          </Fragments>
         ))}
         <div className="order-agregar">
           <button className="button-agregar">NUEVA ORDEN</button>
         </div>
       </div>
-    </>
+    </Fragments>
   );
 };
 export default OrderControlView;

@@ -1,4 +1,4 @@
-import { React, useState, Suspense, lazy } from "react";
+import { React, useState, Suspense, lazy, Fragments } from "react";
 import "./card-inventory.css";
 import { useProduct } from "../../hooks/useProducto";
 import { fetchProduct } from "../../../services/services-product";
@@ -85,7 +85,7 @@ export const CardInventory = (props) => {
     }
   };
   return (
-    <>
+    <Fragments>
       <div className={increase ? "Spacing increase" : "Spacing"}></div>
       <div className={increase ? "container-card increase" : "container-card"}>
         <div className="container-card__ContentsGrid">
@@ -148,6 +148,6 @@ export const CardInventory = (props) => {
           <button onClick={handlerSaveProduct}>Guardar Cambios</button>
         </div>
       </div>
-    </>
+    </Fragments>
   );
 };

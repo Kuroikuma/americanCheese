@@ -1,4 +1,4 @@
-import React from "react";
+import {React, Fragments } from "react";
 import { Modal } from "../modal-material/modal/modal";
 import { useModal } from "../../hooks/useModal-material";
 import CardIngredient from "./card-ingredient";
@@ -21,7 +21,7 @@ const FormAddIngredientPrduct = (props) => {
   };
 
   return (
-    <>
+    <Fragments>
       <div className="IngredientContainer">
         <button
           className="IngredientContainer--OpenModal"
@@ -55,7 +55,7 @@ const FormAddIngredientPrduct = (props) => {
           </div>
         </Modal>
       </div>
-    </>
+    </Fragments>
   );
 };
 

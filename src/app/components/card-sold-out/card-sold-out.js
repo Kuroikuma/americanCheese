@@ -1,10 +1,10 @@
-import React from "react";
+import { React, Fragments } from "react";
 import "./card-sold-out.style.css";
 import pizza from "../../../assets/image/MenuPizzas/menupizza1.jpg";
 export const CardSoldOut = (props) => {
- const {red, yellow}=props;
+  const { red, yellow } = props;
   return (
-    <>
+    <Fragments>
       <div className={`cardProducto ${red} ${yellow}`}>
         <div className="cardProduct__image">
           <img src={pizza} alt="" />
@@ -16,6 +16,6 @@ export const CardSoldOut = (props) => {
           <p>0</p>
         </div>
       </div>
-    </>
+    </Fragments>
   );
 };

@@ -1,8 +1,9 @@
+import { React, Fragments } from "react";
 export const CardPointSaleView = (props) => {
   const { nombre, ingrediente, precio, handleFdetail, imagen } = props;
   const apiUrl = "https://localhost:44323/";
   return (
-    <>
+    <Fragments>
       <div onClick={() => handleFdetail()} className="cardProducto">
         <div className="product">
           <div className="product__image">
@@ -20,6 +21,6 @@ export const CardPointSaleView = (props) => {
           <div>C${precio}</div>
         </div>
       </div>
-    </>
+    </Fragments>
   );
 };

@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { Fragments, React, useState } from "react";
 import "./form-add-ingredients.style.css";
 import Texfield from "../textfield/texfield";
 import { fetchIngredient } from "../../../services/services-ingredient";
@@ -111,7 +111,7 @@ export const FormAddIngredient = (props) => {
     ID === true ? setID(false) : setID(true);
   };
   return (
-    <>
+    <Fragments>
       <div className="FormAddIngredient__container">
         <div className="FormAddIngredient__container__title">
           <h1> Agregar Ingrediente</h1>
@@ -179,7 +179,7 @@ export const FormAddIngredient = (props) => {
           Guardar Ingrediente
         </button>
       </div>
-    </>
+    </Fragments>
   );
 };
 

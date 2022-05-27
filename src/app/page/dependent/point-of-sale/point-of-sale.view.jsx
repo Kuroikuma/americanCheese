@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragments } from "react";
 import "./point-of-sale.style.css";
 import Button from "@material-ui/core/Button";
 import { Helmet } from "react-helmet";
@@ -25,7 +25,7 @@ const PointOfSaleView = (props) => {
   } = props;
   const apiUrl = "https://localhost:44323/";
   return (
-    <>
+    <Fragments>
       <Helmet>
         <title> punto de venta</title>
       </Helmet>
@@ -148,7 +148,7 @@ const PointOfSaleView = (props) => {
           </div>
         </div>
       </div>
-    </>
+    </Fragments>
   );
 };
 export default PointOfSaleView;

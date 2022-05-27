@@ -10,12 +10,12 @@ function MenuPizza() {
   }, []);
   console.log(data);
   return (
-    <>
+    <fragments>
       <Helmet>
         <title>Menu Pizza</title>
       </Helmet>
       <Menu data={data} tittle="PIZZAS" />
-    </>
+    </fragments>
   );
 }
 

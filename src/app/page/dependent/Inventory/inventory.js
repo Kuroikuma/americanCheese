@@ -1,4 +1,4 @@
-import { React, useEffect, useState } from "react";
+import { React, useEffect, useState, Fragments } from "react";
 import { useModal } from "../../../hooks/useModal-material";
 import { useHistory } from "react-router-dom";
 import { ServicesCategoryProduct } from "../../../../services/services-product";
@@ -42,7 +42,7 @@ export default function Inventory(params) {
   };
   if (isLoading) return <Spinner />;
   return (
-    <>
+    <Fragments>
       <InventoryView
         handlerProductDelete={handlerProductDelete}
         open={open}
@@ -56,6 +56,6 @@ export default function Inventory(params) {
         decreases={decreases}
         setDecreases={setDecreases}
       />
-    </>
+    </Fragments>
   );
 }

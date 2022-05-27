@@ -11,12 +11,12 @@ function MenuSmoothie() {
   console.log(data);
 
   return (
-    <>
+    <fragments>
       <Helmet>
         <title>Menu batidos</title>
       </Helmet>
       <Menu data={data} tittle="Batidos" />
-    </>
+    </fragments>
   );
 }
 

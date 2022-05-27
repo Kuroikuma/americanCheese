@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragments } from "react";
 import {
   Grid,
   Typography,
@@ -69,7 +69,7 @@ const LoginView = (props) => {
     passwordLoginError,
   } = state;
   return (
-    <>
+    <Fragments>
       <Helmet>
         <title> Login</title>
       </Helmet>
@@ -402,7 +402,7 @@ const LoginView = (props) => {
           </Grid>
         </section>
       </div>
-    </>
+    </Fragments>
   );
 };
 

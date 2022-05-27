@@ -6,7 +6,7 @@ const HeaderView = (props) => {
   const { data } = props;
 
   return (
-    <>
+    <fragments>
       {data.map((data) => (
         <div className="HeaderContainer">
           <Link to="/home" className="logo">
@@ -42,7 +42,7 @@ const HeaderView = (props) => {
           </div>
         </div>
       ))}
-    </>
+    </fragments>
   );
 };
 

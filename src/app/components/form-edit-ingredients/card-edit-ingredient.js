@@ -1,4 +1,4 @@
-import React from "react";
+import {React,  Fragments } from "react";
 import "./form-edit-ingredients.style.css";
 import Texfield from "../textfield/texfield";
 const CardEditIngredient = (props) => {
@@ -14,7 +14,7 @@ const CardEditIngredient = (props) => {
     }
   };
   return (
-    <>
+    <Fragments>
       <div className="FormEditIngredients__container_item__name">
         <Texfield
           handlerChange={handlerInputIngredient}
@@ -31,7 +31,7 @@ const CardEditIngredient = (props) => {
           type={"number"}
         />
       </div>
-    </>
+    </Fragments>
   );
 };
 

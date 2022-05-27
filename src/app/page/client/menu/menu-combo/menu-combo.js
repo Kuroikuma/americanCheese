@@ -10,12 +10,12 @@ function MenuCombo() {
   }, []);
   console.log(data);
   return (
-    <>
+    <fragments>
       <Helmet>
         <title>Menu Combo</title>
       </Helmet>
       <Menu data={data} tittle="LISTADO DE COMBOS " />
-    </>
+    </fragments>
   );
 }
 export default MenuCombo;

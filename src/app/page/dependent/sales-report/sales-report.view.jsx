@@ -1,4 +1,4 @@
-import React from "react";
+import {Fragments, React} from "react";
 import "./sales-report.styles.css";
 import html2pdf from "html2pdf.js";
 import { Helmet } from "react-helmet";
@@ -55,7 +55,7 @@ const SalesReportView = (props) => {
           <div className="report-columns">{columnas.name}</div>
         ))}
         {filas.map((fila) => (
-          <>
+          <Fragments>
             <div className="report-filas">{fila.Producto}</div>
             <div className="report-filas">{fila.Lunes}</div>
             <div className="report-filas">{fila.Martes}</div>
@@ -73,10 +73,10 @@ const SalesReportView = (props) => {
                 fila.Sabado +
                 fila.Domingo}
             </div>
-          </>
+          </Fragments>
         ))}
         {total.map((total) => (
-          <>
+          <Fragments>
             <div className="report-total">{total.Producto}</div>
             <div className="report-total">{total.Lunes}</div>
             <div className="report-total">{total.Martes}</div>
@@ -94,7 +94,7 @@ const SalesReportView = (props) => {
                 total.Sabado +
                 total.Domingo}
             </div>
-          </>
+          </Fragments>
         ))}
       </div>
     </PersistentDrawerLeft>

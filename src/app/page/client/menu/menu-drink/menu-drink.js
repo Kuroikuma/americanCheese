@@ -11,12 +11,12 @@ function MenuDrink() {
   console.log(data);
 
   return (
-    <>
+    <fragments>
       <Helmet>
         <title>menu Bebidas</title>
       </Helmet>
       <Menu data={data} tittle="BEBIDAS" />
-    </>
+    </fragments>
   );
 }
 

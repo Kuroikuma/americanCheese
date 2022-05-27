@@ -15,7 +15,7 @@ export default function InventoryIngredents(params) {
   }, [ID]);
 
   return (
-    <>
+    <fragments>
       <InventoryIngredentsView
         isOpen={isOpen}
         openModal={openModal}
@@ -27,6 +27,6 @@ export default function InventoryIngredents(params) {
         decreases={decreases}
         setDecreases={setDecreases}
       />
-    </>
+    </fragments>
   );
 }
