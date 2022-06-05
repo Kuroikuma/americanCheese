@@ -22,7 +22,7 @@ function PointOfSale() {
     ClienteID: userContext.user.clienteID
       ? userContext.user.clienteID
       : "invitado",
-    EmpleadoID: "d4319550-9481-4632-bb4d-ae96f27646c5",
+    EmpleadoID: "85926d79-fde3-4a38-9fe8-5282cf9bc4f8",
     Fecha: `${fechaD.getFullYear()}-0${
       parseInt(fechaD.getMonth()) + 1
     }-${fechaD.getDate()}`,

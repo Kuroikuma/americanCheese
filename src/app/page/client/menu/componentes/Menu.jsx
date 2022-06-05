@@ -1,4 +1,4 @@
-import {React, Fragments} from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -25,6 +25,7 @@ const useStyles = makeStyles({
   },
   media: {
     height: 120,
+    objectFit: "contain",
   },
   tittle: {
     fontSize: "1.25rem",
@@ -55,7 +56,7 @@ const Menu = (props) => {
   const classes = useStyles();
 
   return (
-    <Fragments>
+    <>
       <Header />
       <div className={classes.bar}>
         <h1 className={classes.tittle}>{tittle}</h1>
@@ -102,7 +103,7 @@ const Menu = (props) => {
             ))
           : null}
       </div>
-    </Fragments>
+    </>
   );
 };
 export default Menu;

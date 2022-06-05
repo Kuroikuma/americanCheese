@@ -1,4 +1,4 @@
-import { React, useState, Suspense, lazy, useEffect, Fragments } from "react";
+import { React, useState, Suspense, lazy, useEffect } from "react";
 import "./form-add-product.style.css";
 import { withStyles } from "@material-ui/core/styles";
 import { green } from "@material-ui/core/colors";
@@ -99,9 +99,13 @@ const FormAddProduct = (props) => {
         break;
     }
   };
-  const hadleChangeCategoria = (e) => {
+  const hadleChangeCategoria = async (e) => {
     const { value } = e.target;
-    console.log(value);
+    
+    ServicesGetNameCategory(value).then((response) =>
+      response && setCategoria(response.categoriaID)
+    );
+
     if (value === "Pizza") {
       setCategoria(value);
       setTamañoArray(Pizza);
@@ -188,7 +192,7 @@ const FormAddProduct = (props) => {
   };
 
   return (
-    <Fragments>
+    <>
       <div className="FormAddProduct__container">
         <TextField
           required
@@ -284,7 +288,7 @@ const FormAddProduct = (props) => {
           Guardar Producto
         </button>
       </div>
-    </Fragments>
+    </>
   );
 };
 export default function IntegrationNotistack(props) {

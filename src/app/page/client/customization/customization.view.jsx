@@ -6,7 +6,7 @@ import { React } from "react";
 
 const CustomizationView = (props) => {
   return (
-    <fragments>
+    <>
       <Helmet>
         <title> Arma tu Pizza</title>
       </Helmet>
@@ -62,7 +62,7 @@ const CustomizationView = (props) => {
           <div className="ingredients__footer"></div>
         </div>
       </div>
-    </fragments>
+    </>
   );
 };
 

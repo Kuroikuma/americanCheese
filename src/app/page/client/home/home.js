@@ -2,16 +2,13 @@ import React, { useEffect, useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import UserContext from "../../../context/UserContext";
 import HomeView from "./home.view";
-import Pizza from "../../../../assets/image/pizzaIcon.png";
-import Calzone from "../../../../assets/image/calzonepng.png";
-import Batido from "../../../../assets/image/batidopng.png";
-import Frappe from "../../../../assets/image/frappepng.png";
-import Hamburguesa from "../../../../assets/image/hamburguesapng.png";
+import BasoCervecero from "../../../../assets/eros/baso-cervecero.png";
+import Camisa from "../../../../assets/eros/camisa.png";
+import Gorras from "../../../../assets/eros/Gorras-trucker-para-sublimación.png";
+import Taza from "../../../../assets/eros/taza.png";
+import Termo from "../../../../assets/eros/termo.png";
 import PizzaIcon from "../../../../assets/pizzaIcon.png";
 
-const logoUrl = "https://localhost:44389/Content/images/logo.png";
-const facebookUrl = "https://localhost:44389/Content/images/Facebook_Logo";
-const instagramUrl = "https://localhost:44389/Content/images/Instagran_Logo";
 
 const data = [];
 const data2 = [];
@@ -19,85 +16,41 @@ const ProductPopular = [];
 const ProductPopular2 = [];
 
 data.push({
-  img: Pizza,
-  name: "pizza",
+  img: BasoCervecero,
+  name: "Baso",
 });
 data.push({
-  img: Calzone,
-  name: "Calzone",
+  img: Camisa,
+  name: "Camisa",
 });
 data.push({
-  img: Batido,
-  name: "batido",
+  img: Gorras,
+  name: "Gorras",
 });
 data.push({
-  img: Frappe,
-  name: "Frappe",
+  img: Taza,
+  name: "Taza",
 });
 data.push({
-  img: Hamburguesa,
-  name: "Hamburguesa",
-});
-data.push({
-  img: Hamburguesa,
-  name: "Hamburguesa",
+  img: Termo,
+  name: "Termo",
 });
 
-data2.push({
-  img: Pizza,
-  name: "pizza",
-});
-data2.push({
-  img: Calzone,
-  name: "Calzone",
-});
-data2.push({
-  img: Batido,
-  name: "batido",
-});
-data2.push({
-  img: Frappe,
-  name: "Frappe",
-});
-data2.push({
-  img: Hamburguesa,
-  name: "Hamburguesa",
-});
 
-ProductPopular2.push({
-  img: PizzaIcon,
-  name: "Producto1",
-});
-ProductPopular2.push({
-  img: PizzaIcon,
-  name: "Producto2",
-});
-ProductPopular2.push({
-  img: PizzaIcon,
-  name: "Producto3",
-});
-ProductPopular2.push({
-  img: PizzaIcon,
-  name: "Producto4",
-});
-ProductPopular2.push({
-  img: PizzaIcon,
-  name: "Producto5",
-});
 ProductPopular.push({
-  img: PizzaIcon,
+  img: Termo,
   name: "Producto1",
 });
 ProductPopular.push({
-  img: PizzaIcon,
+  img: Gorras,
   name: "Producto2",
 });
 ProductPopular.push({
-  img: PizzaIcon,
+  img: BasoCervecero,
   name: "Producto3",
 });
 ProductPopular.push({
-  img: PizzaIcon,
+  img: Taza,
   name: "Producto4",
 });
 

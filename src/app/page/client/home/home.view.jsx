@@ -1,15 +1,15 @@
-import React, { Fragments } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "./home.style.css";
 import { Helmet } from "react-helmet";
-import logoUrl from "../../../../assets/image/AmericanCheeseLogopng.png";
+import logoUrl from "../../../../assets/image/logo.png";
 import facebookUrl from "../../../../assets/image/Facebook_Logo.png";
 import instagramUrl from "../../../../assets/image/Instagran_Logo.png";
 import Perfil from "../../../../assets/image/Perfil.jpg";
 import user from "../../../../assets/image/user.png";
 import Campanita from "../../../../assets/image/activo.png";
 import Carrito from "../../../../assets/image/anadir-al-carrito.png";
-import PizzaRandom from "../../../../assets/image/PizzaRandom.jpg";
+import PizzaRandom from "../../../../assets/eros/taza.png";
 
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
@@ -59,7 +59,7 @@ const HomeView = (props) => {
   );
 
   return (
-    <Fragments>
+    <>
       <Helmet>
         <title>Home</title>
       </Helmet>
@@ -122,28 +122,14 @@ const HomeView = (props) => {
                 <img src={MenuImg} alt="" />
               </button>
               <div className="homeContainer__dashboard__header__title">
-                <h1>American Cheese</h1>
+                <h1>Multiservicios Eros</h1>
               </div>
               <div className="homeContainer__dashboard__header__input">
                 <input type="text" placeholder="Buscar" />
               </div>
             </div>
             <div className="homeContainer__dashboard__category">
-              {open
-                ? data2.map((item, index) => (
-                    <Link
-                      to={`/menu-${item.name}`}
-                      className={
-                        open
-                          ? "homeContainer__dashboard__category__content__img"
-                          : "homeContainer__dashboard__category__content__img Open"
-                      }
-                    >
-                      <p>{item.name}</p>
-                      <img src={item.img} alt="" />
-                    </Link>
-                  ))
-                : data.map((item, index) => (
+              {data.map((item, index) => (
                     <Link
                       to={`/menu-${item.name}`}
                       className={
@@ -210,20 +196,7 @@ const HomeView = (props) => {
                 <h2>Productos Mas Populares</h2>
               </div>
               <div className="homeContainer__dashboard__productPopular__content">
-                {open
-                  ? ProductPopular.map((item) => (
-                      <div
-                        className={
-                          open
-                            ? "homeContainer__dashboard__productPopular__content__card"
-                            : "homeContainer__dashboard__productPopular__content__card Open"
-                        }
-                      >
-                        <img src={item.img} alt="" />
-                        <h3>{item.name}</h3>
-                      </div>
-                    ))
-                  : ProductPopular2.map((item) => (
+                {ProductPopular.map((item) => (
                       <div
                         className={
                           open
@@ -349,7 +322,7 @@ const HomeView = (props) => {
         </div>
       </div>
       {renderMenu}
-    </Fragments>
+    </>
   );
 };
 export default HomeView;

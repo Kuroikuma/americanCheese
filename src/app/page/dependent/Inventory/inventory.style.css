@@ -12,6 +12,7 @@
   display: flex;
   flex-wrap: nowrap;
   margin: auto;
+  padding-top: 35px;
 }
 .Container.decreases {
   width: 80vw;

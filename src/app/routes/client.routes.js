@@ -12,6 +12,9 @@ const Textfield = lazy(() => import("../components/textfield/texfield"));
 const MenuCombo = lazy(() =>
   import("../page/client/menu/menu-combo/menu-combo")
 );
+const MenuTaza = lazy(() =>
+  import("../page/client/menu/menu-taza/menu-taza")
+);
 const MenuDrink = lazy(() =>
   import("../page/client/menu/menu-drink/menu-drink")
 );
@@ -45,13 +48,13 @@ function ClientRoutes() {
           <Route exact path="/point-of-sale" component={PointOfSale} />
 
           <Route exact path="/customization" component={Customization} />
-          <Route exact path="/menu-combo" component={MenuCombo} />
-          <Route exact path="/menu-drink" component={MenuDrink} />
-          <Route exact path="/menu-pizza" component={MenuPizza} />
-          <Route exact path="/menu-batido" component={MenuSmoothie} />
+          <Route exact path="/menu-Camisa" component={MenuCombo} />
+          <Route exact path="/menu-Gorras" component={MenuDrink} />
+          <Route exact path="/menu-Termo" component={MenuPizza} />
+          <Route exact path="/menu-Baso" component={MenuSmoothie} />
           <Route exact path="/spinner" component={Spinner} />
           <Route exact path="/textfield" component={Textfield} />
-
+          <Route exact path="/menu-Taza" component={MenuTaza} />
           <Route component={Home} />
         </Switch>
       </Suspense>

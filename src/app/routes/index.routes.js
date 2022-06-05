@@ -51,7 +51,6 @@ function IndexRoutes() {
         </div>
       }
     >
-      <button onClick={HandleCurrent}>{Details}</button>
       {Current === 1 ? (
         <DeleteSaleItemContextProvider>
           <ClientRoutes />

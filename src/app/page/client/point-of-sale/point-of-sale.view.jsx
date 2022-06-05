@@ -25,7 +25,7 @@ const PointOfSaleView = (props) => {
   } = props;
   const apiUrl = "https://localhost:44323/";
   return (
-    <fragments>
+    <>
       <Helmet>
         <title>Punto de venta</title>
       </Helmet>
@@ -122,7 +122,7 @@ const PointOfSaleView = (props) => {
           </div>
         </div>
       </div>
-    </fragments>
+    </>
   );
 };
 export default PointOfSaleView;

@@ -6,17 +6,17 @@ import { Helmet } from "react-helmet";
 function MenuSmoothie() {
   const [data, setData] = useState([]);
   useEffect(() => {
-    ServicesCategoryProduct("batidos").then((response) => setData(response));
+    ServicesCategoryProduct("Basos").then((response) => setData(response));
   }, []);
   console.log(data);
 
   return (
-    <fragments>
+    <>
       <Helmet>
-        <title>Menu batidos</title>
+        <title>Menu Baso</title>
       </Helmet>
-      <Menu data={data} tittle="Batidos" />
-    </fragments>
+      <Menu data={data} tittle="Baso" />
+    </>
   );
 }
 

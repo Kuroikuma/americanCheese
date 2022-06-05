@@ -6,16 +6,16 @@ import { Helmet } from "react-helmet";
 function MenuPizza() {
   const [data, setData] = useState([]);
   useEffect(() => {
-    ServicesCategoryProduct("Pizza").then((response) => setData(response));
+    ServicesCategoryProduct("Termo").then((response) => setData(response));
   }, []);
   console.log(data);
   return (
-    <fragments>
+    <>
       <Helmet>
-        <title>Menu Pizza</title>
+        <title>Menu Termo</title>
       </Helmet>
-      <Menu data={data} tittle="PIZZAS" />
-    </fragments>
+      <Menu data={data} tittle="Termo" />
+    </>
   );
 }
 
